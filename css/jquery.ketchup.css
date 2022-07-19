@@ -1,0 +1,30 @@
+.ketchup-error {
+  position: absolute;
+  width: auto;
+}
+
+.ketchup-error ul {
+  margin: 0;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  color: #111;
+  background: #fffcd2;
+  padding: 20px;
+  -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px;
+  list-style: none;
+  line-height: 16px;
+  padding-top:1px;
+  padding-bottom:25px;
+}
+
+.ketchup-error span {
+  display: block;
+  width: 0; 
+  height: 0; 
+  border-left: 0 solid transparent; 
+  border-right: 15px solid transparent;
+  border-top: 10px solid #fffcd2;
+  border-bottom: 0;
+  margin-left: 10px;
+}
