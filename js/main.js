@@ -36,7 +36,7 @@
       * Home Screen Counter
       */
      counter: function() {
-     $('.countdown').countdown({ date: "February 7, 2014 15:03:26" });
+     $('.countdown').countdown({ date: "September 12, 2022 23:59:59" });
      },
  
  
@@ -148,8 +148,6 @@
          $.vegas('slideshow', {
          backgrounds:[
                       { src:'images/slide1.jpg', fade:1000 },
-                      { src:'images/slide2.jpg', fade:1000 },
-                      { src:'images/slide3.jpg', fade:1000 }
                       ]
          })('overlay', {
             src:'images/overlays/01.png'
