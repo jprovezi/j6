@@ -1,0 +1,35 @@
+<div class="our-blog latest-news section-spacing">
+    <div class="container">
+        <div class="theme-title-one">
+            <h2>Últimas Novidades</h2>
+            <p>Abaixo últimas notícias da Querosite.digital, e matérias que condizem com nosso negócio.</p>
+        </div> <!-- /.theme-title-one -->
+        <div class="wrapper">
+            <div class="clearfix">
+                <div class="latest-news-slider">
+                    
+                <?php for($i=0; $i<5; $i++): ?>
+                    <div class="item">
+                    <a href="<?=SITE_URL;?>/blog/detalhes/nome-da-noticia">
+                            
+                            <div class="image-box">
+                                <img src="<?= TEMPLATE_CHARLES; ?>/images/home/15.jpg" style="border-radius: 5px;">
+                            </div> <!-- /.image-box -->
+                            
+                            <div class="post-meta" style="margin-top: -20px;">
+                                <h5 class="title">
+                                    <a href="<?=SITE_URL;?>/blog/detalhes/nome-da-noticia">Porque a minha empresa precisa de um site profissional?</a>
+                                </h5>
+                                <div class="overlay">
+                                    <a href="<?=SITE_URL;?>/blog/detalhes/nome-da-noticia" class="date" style="padding: 5px; font-size: 12px;">19/05/2022</a>
+                                </div>
+                            </div> <!-- /.post-meta -->
+                    </a>
+                    </div> <!-- /.col- -->
+                    <?php endfor; ?>
+
+                </div> <!-- /.latest-news-slider -->
+            </div> <!-- /.row -->
+        </div> <!-- /.wrapper -->
+    </div> <!-- /.container -->
+</div> <!-- /.our-blog -->

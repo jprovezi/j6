@@ -1,0 +1,49 @@
+<div class="our-case section-spacing">
+    <div class="container">
+        <div class="theme-title-one">
+            <?php if (Common::getControlador() == "index"){
+                echo "<h2>".Common::colocaAcento($nomeControlador)."</h2>";
+                $estilo = "";
+            }else{
+                $estilo = "style='margin: -50px 0 20px 0;'";
+            }
+            ?>
+            <p <?=$estilo;?>>Confira abaixo os <?=Common::colocaAcento($nomeControlador);?> da <?=TITULO_FRAMEWORK; ?>
+            </p>
+        </div> <!-- /.theme-title-one -->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-sm-12 theme-sidebar-one">
+                    <div class="sidebar-box service-categories">
+                        <ul>
+                            <li class="col-sm-4 float-left"><a href="#">Nome Categoria 1</a></li>
+                            <li class="col-sm-4 float-left active"><a href="#">Nome Categoria 2</a></li>
+                            <li class="col-sm-4 float-left"><a href="#">Nome Categoria 3</a></li>
+                        </ul>
+                    </div> <!-- /.service-categories -->
+                </div>
+                <div class="col-sm-9 col-sm-12">
+                    <?php for ($i = 0; $i < 9; $i++) : ?>
+                    <div class="col-sm-4 float-left">
+                        <div class="single-case-block">
+                            <a href="<?= SITE_URL; ?>/<?=$nomeControlador;?>/detalhes/nome-do-produto-aqui">
+                                <img src="<?= TEMPLATE_CHARLES; ?>/images/home/15.jpg">
+                            </a>
+
+                            <div class="float-left">
+                                <a href="<?= SITE_URL; ?>/<?=$nomeControlador;?>/detalhes/nome-do-produto-aqui">
+                                    <h5>Google ADS</h5>
+                                </a>
+                            </div>
+                        </div> <!-- /.single-case-block -->
+                    </div> <!-- /.col- -->
+                    <?php endfor; ?>
+                </div>
+
+            </div> <!-- /.row -->
+        </div> <!-- /.wrapper -->
+        <div class="view-all">
+            <a href="#" class="theme-button-one">Carregar mais</a>
+        </div>
+    </div> <!-- /.container -->
+</div> <!-- /.our-case -->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<?php $this->loadview('templates/moniz/includes/head'); ?>
+
+<body>
+
+
+    <div class="preloader">
+        <img class="preloader__image" width="120" src="<?= TEMPLATE_MONIZ; ?>/images/loader.png" />
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+
+    <?php $this->loadview('templates/moniz/includes/header'); ?>
+
+        <!--Page Header Start-->
+        <section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+            <div class="page-header-shape-1"></div>
+            <div class="page-header-shape-2"></div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="<?=SITE_URL; ?>">Home</a></li>
+                        <li><span>.</span></li>
+                        <li>Titulo Page</li>
+                    </ul>
+                    <h2>Titulo Page</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Section-->
+        <section class="">
+            <div class="container">
+                <div class="row">
+                    todo write content...
+                </div>
+            </div>
+        </section>
+        <!--Section Page End-->        
+
+        <!--Site Footer One Start-->
+        <?php $this->loadview('templates/moniz/includes/footer'); ?>
+        <!--Site Footer One End-->
+
+    </div><!-- /.page-wrapper -->
+
+
+    <?php $this->loadview('templates/moniz/includes/navbarmobile'); ?>
+    <?php $this->loadview('templates/moniz/includes/scripts'); ?>
+
+</body>
+
+</html>

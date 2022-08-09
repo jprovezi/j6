@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head'); ?>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+			
+
+			<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+			<?php $this->loadview('templates/charles/includes/header'); ?>
+
+
+			<!-- 
+			=============================================
+				Error Page 
+			============================================== 
+			-->
+			<div class="container error-page">
+				<h2 style="font-size: 60px; font-weight: 900; margin-top: 20px;">Pagamento Aprovado</h2>
+				<p>Seu pagamento no valor de <strong><?=Common::converteValorURL($valor); ?></strong> para o produto <strong style="text-transform: capitalize;"><?=Common::converteUrlParaString($nomeURL); ?></strong> foi aprovado com sucesso!</p>
+				<div style="margin-bottom: 20px; padding: 0 100px;">
+					Em breve nossa equipe entrará em contato para maiores detalhes de como daremos inicio ao seu serviço.<br>
+					Caso desejar acelerar esse processo entre em contato no email: contato@querosite.digital ou pelo whatsapp. Informando seu nome e telefone.<br><br>
+					Desde já agradecemos o seu interesse, equipe QueroSite.digital
+				</div>
+				<div>
+					<a href="<?=SITE_URL; ?>" class="theme-button-one">Voltar para o site</a>
+				</div>
+			</div> <!-- /.error-page -->
+
+			
+			<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+			<?php $this->loadview('templates/charles/includes/footer'); ?>			
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+    	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    	<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

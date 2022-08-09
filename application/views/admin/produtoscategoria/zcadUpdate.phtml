@@ -1,0 +1,118 @@
+<?php
+$dadosHeader["tituloPagina"] = $tituloPagina; //Titulo da página
+$dadosHeader["breadcrumb"] = $breadcrumb; //Cria os breadcrumbs da página
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <?php $this->loadView("admin/includes/headPadroes"); ?>
+    <link rel="stylesheet" media="screen" type="text/css" href="<?=STATIC_URL; ?>/plugins/colorpicker/css/colorpicker.css" />
+    </head>
+    <body>
+        <!--MENU-->
+        <?php $this->loadView("admin/includes/menu"); ?>
+
+        <!--breadcrumbs e titulo-->
+        <?php $this->loadView("admin/includes/tituloPage", $dadosHeader); ?>
+
+        <!--Conteúdo-->
+        <section>
+            <form id="cadastroForm" enctype="multipart/form-data" action="" onsubmit="return false;">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card border-light mb-3">
+                          <div class="card-header">Nome da Categoria</div>
+                          <div class="card-body">
+                            <div class="input-group mb-3">
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-building"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Categoria" id="categoria" name="categoria" value="<?=$dados["categoria"]; ?>">
+                                    </div>
+                                </div>
+                                <!--Fim Campo input-->
+                                <div class="col-lg-2">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-sort-numeric-up"></i>
+                                            </span>
+                                        </div>
+                                        <input type="number" class="form-control" placeholder="Ordem" id="ordem" name="ordem" value="<?=$dados["ordem"]; ?>">
+                                    </div>
+                                </div>
+                                <!--Fim Campo input-->                                
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fim Bloco-->
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card border-light mb-3">
+                          <div class="card-header">Cores da Empresa</div>
+                          <div class="card-body">
+                            <div class="input-group mb-3">
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-fill-drip"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Cor Bloco" id="cor_bloco" name="cor_bloco" value="<?=$dados["cor_bloco"]; ?>">
+                                    </div>
+                                </div>
+                                <!--Fim Campo input-->
+                                
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-fill-drip"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Cor Texto" id="cor_texto" name="cor_texto" value="<?=$dados["cor_texto"]; ?>">
+                                    </div>
+                                </div>
+                                <!--Fim Campo input-->                             
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fim Bloco-->                     
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button type="button" class="btn btn-primary float-right" id="bt-salvar" onclick="formSubmit('<?=$urlAction; ?>','#cadastroForm');">
+                            Salvar <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="resposta-form" class="float-right">
+                            <!--Resposta do Server-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </section>
+
+        <!--RODAPÉ E SCRIPTS PADRÕES-->
+        <?php $this->loadView("admin/includes/footerScripts"); ?>
+        <script src="<?= STATIC_URL; ?>/js/jquery-mask/jquery.mask.min.js"></script>
+        <script src="<?= STATIC_URL; ?>/plugins/colorpicker/js/colorpicker.js"></script>
+        <script src="<?= STATIC_URL; ?>/js/views/categoria.js"></script>
+    </body>
+</html>

@@ -1,0 +1,136 @@
+<?php
+$arrBusca = array(
+	"EMPRESA" => array(1,2,3,4),
+	"PRODUTOS" => array("DSA","DAS"),
+	"SERVIÇOS" => array("DSA","DAS",5),
+	"PROJETOS" => array("DSA","DAS",5),
+	//"BLOG" => array("DSA","DAS",5,5,5,5,6,5,6),
+	"DÚVIDAS" => array("DSA","DAS",5,5),
+	//"EQUIPE" => array(2),
+	"PÁGINAS EXTRAS" => array(2,65,654),
+);
+
+//Contando total de buscas
+$totalBusca = (count($arrBusca, COUNT_RECURSIVE)) - count($arrBusca) ;
+
+$cont = 0;
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head'); ?>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+			
+
+			<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+			<?php $this->loadview('templates/charles/includes/header'); ?>
+
+
+			<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+			<div class="theme-inner-banner section-spacing">
+				<div class="overlay">
+					<div class="container">
+						<h1>Pesquisa no Site</h1>
+					</div> <!-- /.container -->
+				</div> <!-- /.overlay -->
+			</div> <!-- /.theme-inner-banner -->
+
+
+		<!-- 
+			=============================================
+				BUSCA
+			============================================== 
+			-->
+			<div class="callout-banner callout-banner-institucional no-bg">
+				<div class="container clearfix">
+					<h3 class="title">BUSCA</h3>
+					<p>Você buscou pela palavra <strong>Repolho do seu zé</strong>. Confira abaixo o resultado da sua busca!</p>
+				</div>
+			</div> <!-- /.callout-banner -->			
+			<div class="theme-title-one" style="margin-bottom: 20px;">
+				<h3><strong style="font-size: 50px;"><?=$totalBusca; ?></strong> RESULTADOS ENCONTRADOS!</h3>
+			</div> <!-- /.theme-title-one -->			
+
+			<!-- 
+			=============================================
+				LISTAGEM DE BUSCA
+			============================================== 
+			-->
+			<div class="faq-page section-spacing">
+				<div class="container">
+					<div class="panel-group theme-accordion" id="accordion">
+						<div class="faq-panel">
+							<div class="panel-group theme-accordion" id="accordion">
+
+									<?php foreach( $arrBusca as $indice => $busca ): 
+									$cont++;
+									?>
+									<div class="panel">
+										<div class="panel-heading">
+											<h6 class="panel-title">
+												<a data-toggle="collapse" data-parent="#accordion" href="#busca-<?=$cont; ?>">
+													<?=count($busca);?> página(s) encontrada(s) em <strong><?=$indice; ?></strong>
+												</a>
+											</h6>
+										</div>
+										<div id="busca-<?=$cont; ?>" class="panel-collapse collapse">
+											
+											<?php foreach($busca as $indice => $valor): ?>
+											<div class="panel-body">
+												<p>
+													<img src="<?= TEMPLATE_CHARLES; ?>/images/home/3.jpg" style="float: left; padding-right: 10px;">
+													A tale of a fateful trip that started from this tropic port aboard this <strong>repolho do seu zé</strong> ship today still wanted by the government they survive as soldiers of fortune to a deluxe you apartment...
+												</p>
+												<a href="http://local.querosite.digital/empresa" class="theme-button-one" style="margin-top: 20px;">
+													ACESSAR LINK
+												</a>
+											</div>
+											<?php endforeach; ?>
+
+										</div>
+									</div> <!-- /panel-->
+									<?php endforeach; ?>
+
+							</div> <!-- end #accordion -->
+						</div> <!-- /.faq-panel -->
+						
+					</div> 
+				</div> <!-- /.container -->	
+			</div>		
+
+
+
+			
+			<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+			<?php $this->loadview('templates/charles/includes/footer'); ?>			
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+    	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    	<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

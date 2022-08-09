@@ -1,0 +1,187 @@
+<?php
+	$dados["nomeControlador"] = $nomeControlador;
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head'); ?>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+			
+
+			<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+			<?php $this->loadview('templates/charles/includes/header'); ?>
+
+			
+			<!-- 
+			=============================================
+				Theme Main Banner
+			============================================== 
+			-->
+			<?php $this->loadview('templates/charles/includes/banner-home'); ?>
+			
+			
+			<!-- 
+			=============================================
+				CallOut Banner 
+			============================================== 
+			-->
+			<div class="callout-banner section-spacing">
+				<div class="container clearfix">
+					<h3 class="title">Soluções digitais para o seu negócio</h3>
+					<p>Nossa empresa é focada em soluções digitais para o seu negócio. Descomplicando e com preço justo. Para saber mais entre em contato.</p>
+					<a href="<?=SITE_URL;?>/empresa" class="theme-button-one">SAIBA MAIS</a>
+				</div>
+			</div> <!-- /.callout-banner -->
+
+			<!--
+			=====================================================
+				Why Choose us
+			=====================================================
+			-->
+			<div class="why-choose-us section-spacing">
+				<div class="container">
+					<div class="theme-title-one">
+						<h2>Porque nos escolher?</h2>
+					</div> <!-- /.theme-title-one -->
+
+					<div class="wrapper">
+						<div class="row">
+							<div class="col-lg-4 col-12">
+								<div class="single-block">
+									<i class="icon flaticon-puzzle"></i>
+									<h5><a href="#">Qualidade acima da MÉDIA</a></h5>
+									<p>Tudo que criamos é pensando na melhor qualidade dos nossos produtos e serviços.</p>
+								</div> <!-- /.single-block -->
+							</div> <!-- /.col- -->
+							<div class="col-lg-4 col-12">
+								<div class="single-block">
+									<i class="icon flaticon-presentation"></i>
+									<h5><a href="#">Alto desempenho no GOOGLE</a></h5>
+									<p>Nossos sites são desenvolvidos para ter um máximo desempenho de SEO.</p>
+								</div> <!-- /.single-block -->
+							</div> <!-- /.col- -->
+							<div class="col-lg-4 col-12">
+								<div class="single-block">
+									<i class="icon flaticon-people"></i>
+									<h5><a href="#">Suporte AMIGO</a></h5>
+									<p>Nossa equipe de suporte está sempre pronta para lhe atender e tirar suas dúvidas.</p>
+								</div> <!-- /.single-block -->
+							</div> <!-- /.col- -->
+						</div> <!-- /.row -->
+					</div> <!-- /.wrapper -->
+				</div> <!-- /.container -->
+			</div> <!-- /.why-choose-us -->
+
+
+
+			<!-- 
+			=============================================
+				About Company Stye Two
+			============================================== 
+			-->
+			<div class="about-compnay-two section-spacing">
+				<div class="overlay">
+					<div class="container">
+						<div class="row no-gutters">
+							<div class="col-lg-7 col-12 text">
+								<div class="theme-title-one">
+									<h2>SOBRE NÓS</h2>
+								</div> <!-- /.theme-title-one -->
+								<p>A Querosite.digital nasceu com o propósito de levar qualidade e agilidade nos serviços digitais. Priorizamos muito preço justo a todos os nossos clientes desde sempre.</p>
+								<p>Nossa empresa é focada em construção de site profissional com alto índice de SEO para busca no google e pacote de serviços digitais para o seu negócio.</p>
+								<a href="<?=SITE_URL;?>/empresa">
+									<button class="theme-button-one">SAIBA MAIS</button>
+								</a>
+							</div> <!-- /.col- -->
+							<div class="col-lg-5 col-12">
+								<div class="quote-form">
+									<form action="#" class="theme-form-one">
+										<div class="row">
+											<div class="col-md-6"><input type="text" placeholder="Nome *"></div>
+											<div class="col-md-6"><input type="text" placeholder="Whatsapp *"></div>
+											<div class="col-md-6"><input type="email" placeholder="Email *"></div>
+											<div class="col-md-6">
+												<select class="form-control" id="exampleSelect1">
+											      <option>Assunto</option>
+											      <option>Orçamento</option>
+											      <option>Dúvida</option>
+											      <option>Suporte</option>
+											      <option>Reclamação</option>
+											      <option>Outros</option>
+											    </select>
+											</div>
+											<div class="col-12"><textarea placeholder="Mensagem"></textarea></div>
+										</div> <!-- /.row -->
+										<button class="theme-button-one">ENVIAR</button>
+									</form>
+								</div> <!-- /.quote-form -->
+							</div>
+						</div> <!-- /.row -->
+					</div> <!-- /.container -->
+				</div> <!-- /.overlay -->
+			</div> <!-- /.about-compnay-two -->
+
+
+			<!-- 
+			=============================================
+				Serviços / Produtos
+			============================================== 
+			-->
+			<?php $this->loadview('templates/charles/includes/listagem-itens',$dados); ?>
+
+
+
+			<!--
+			=====================================================
+				Faq Section
+			=====================================================
+			-->
+			<?php $this->loadview('templates/charles/includes/faq-home'); ?>
+
+
+
+			<!--
+			=====================================================
+				Short Banner
+			=====================================================
+			-->
+			<?php $this->loadview('templates/charles/includes/banner-curto'); ?>
+
+
+			<!--
+			=====================================================
+				Latest News
+			=====================================================
+			-->
+			<?php $this->loadview('templates/charles/includes/ultimas-noticias'); ?>
+
+			
+			<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+			<?php $this->loadview('templates/charles/includes/footer'); ?>			
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+    	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    	<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

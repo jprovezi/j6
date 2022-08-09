@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head'); ?>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+			
+
+			<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+			<?php $this->loadview('templates/charles/includes/header'); ?>
+
+
+			<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+			<div class="theme-inner-banner section-spacing">
+				<div class="overlay">
+					<div class="container">
+						<h1>Matérias do Blog</h1>
+					</div> <!-- /.container -->
+				</div> <!-- /.overlay -->
+			</div> <!-- /.theme-inner-banner -->
+
+
+		<!-- 
+			=============================================
+				BUSCA
+			============================================== 
+			-->
+			<div class="callout-banner callout-banner-institucional no-bg">
+			<div class="container clearfix">
+				<h3 class="title">BUSCA</h3>
+				<p>Você buscou pela palavra <strong>Tecnologia em ação</strong>. Confira abaixo o resultado da sua busca!</p>
+			</div>
+		</div> <!-- /.callout-banner -->			
+
+
+			<!-- 
+			=============================================
+				Our Blog
+			============================================== 
+			-->
+			<div class="blog-inner-page section-spacing">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-9 col-lg-8 col-12 our-blog">
+							<div class="post-wrapper">
+								
+								<?php for($i=0; $i<4; $i++): ?>
+								<div class="single-blog">
+									<div class="image-box">
+										<img src="<?=TEMPLATE_CHARLES; ?>/images/blog/9.jpg" alt="">
+										<div class="overlay"><a href="#" class="date">05/05/2022</a></div>
+									</div> <!-- /.image-box -->
+									<div class="post-meta">
+										<h5 class="title"><a href="blog-details.html">Saiba a importancia de ter um site para sua empresa</a></h5>
+										<p>Aqui um breve texto da matéria que você está publicando, na verdade é o inicio do texto ele irá jogar aqui.</p>
+										<a href="<?=SITE_URL;?>/blog/detalhes/saiba-a-importancia-de-ter-um-site-para-sua-empresa" class="read-more">SAIBA MAIS</a>
+									</div> <!-- /.post-meta -->
+								</div> <!-- /.single-blog -->
+								<?php endfor; ?>
+							</div> <!-- /.post-wrapper -->
+							<div class="theme-pagination">
+								<ul>
+									<li><a href="#">1</a></li>
+									<li class="active"><a href="#">2</a></li>
+									<li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ===================== Blog Sidebar ==================== -->
+						<?php $this->loadview("templates/charles/includes/blog-sidebar"); ?>
+						
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+			</div> <!-- /.blog-inner-page -->
+
+
+
+			
+			<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+			<?php $this->loadview('templates/charles/includes/footer'); ?>			
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+    	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    	<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>
