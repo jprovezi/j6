@@ -12,10 +12,14 @@ class Notfound extends Controller{
         
         parent::__construct();
         
-        //Abre a view erro e envia para ela a mensagem do erro
+        //Configurações
         $config = $this->objModelConfig->getByid(1);
 
-        $this->loadView("templates/{$config['template']}/404");
+        //SEO
+        $dados["seo"] = $this->objModelSeo->getByid(2);
+
+        $this->loadView("templates/{$config['template']}/404", $dados);
+        exit;
         
     }
     

@@ -51,7 +51,6 @@ class Router {
         }else{
             
             //Controlador não encontrado, lança a exceção
-            
             Common::redir("notfound");
         }
         

@@ -19,8 +19,8 @@ define('STATIC_URL',SITE_URL.'/static');
 define('IMG_URL',SITE_URL.'/static/img');
 define('TEMPLATE_CHARLES', STATIC_URL."/templates/charles");
 define('TEMPLATE_HEXZY', STATIC_URL."/templates/hexzy/assets");
-define('TEMPLATE_BUILDSTATE', STATIC_URL."/templates/buildstate");
 define('TEMPLATE_MONIZ', STATIC_URL."/templates/moniz/assets");
+define('TEMPLATE_INOVEX', STATIC_URL."/templates/inovex/assets");
 
 
 //URLS FIXAS DAS PASTAS DO SISTEMA

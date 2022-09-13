@@ -17,18 +17,18 @@ class Index extends Controller{
 
     public function __construct() {
         parent::__construct();
-        
     }
     
     //Essa classe é chamada por primeiro no controller
     public function main(){
-
         
-        //Dados de configuração
+        //Configurações
         $config = $this->objModelConfig->getByid(1);
 
-        //Carregando view index
-        $dados["nomeControlador"] = "index"; //servicos ou produtos {enviar uma das duas strings}
+        //SEO
+        $dados["seo"] = $this->objModelSeo->getByid(1);
+
+        //Carregando view
         $this->loadview("templates/{$config['template']}/index", $dados);
         
     }
@@ -54,57 +54,12 @@ class Index extends Controller{
        
     }
     
-    /**
-     * Retorna vazio, ou o int da primeira categoria
-     * @return string
-     */
-    public function verificaIdCategoria(){
-        
-        $retorno = "";
-        
-        //Verificando se tem produtos sem categoria
-        $this->modelHome->setTabela("produtos");
-        $produtoNull = $this->modelHome->getAll(array("where" => "ISNULL(categoria_id)", "orderBy" => "id DESC"));
-        
-        //Se for VAZIO, ele busca o id da primeira categoria
-        if(empty($produtoNull)){
-            //Recebendo ID primeira categoria
-            $this->modelHome->setTabela("produtos_categoria");
-            $categoriaId = $this->modelHome->idPrimeiraCategoria();
-            $retorno = "/".$categoriaId["id"];
-        }
-        
-        return $retorno;
-        
-    }
-	
-    
+
     public function single($slug, $id){
         //Passar variáveis para a view
         
         $this->modelHome->setTabela("empresa");
         $dados["arrEmpresa"] = $this->modelHome->getByid(1);
-        
-        $this->modelHome->setTabela("info_estatico");
-        $dados["arrInfoEstatico"] = $this->modelHome->getByid(1);
-        
-        $this->modelHome->setTabela("info_estatico");
-        $dados["conheca"] = $this->modelHome->getByid(6);
-        
-        $this->modelHome->setTabela("info_estatico");
-        $dados["informacoesreforco"] = $this->modelHome->getByid(7);
-        
-        $this->modelHome->setTabela("valores");
-        $dados["valores"] = $this->modelHome->getAll(['orderBy' => 'id desc']);
-        
-        $this->modelHome->setTabela("config");
-        $dados["config"] = $this-> modelHome->getByid(1);
-        
-        $this->modelHome->setTabela("informacoes_landing_page");
-        $dados["informacoesLandingPage"] = $this->modelHome->getAll(['orderBy' => 'id']);
-        
-        $this->modelHome->setTabela("produtos");
-        $dados["single"] = $this->modelHome->getByid($id);
         
         //Criando Galeria
         $nomeDiretorioGaleria = $dados["single"]["dir_galeria"];
@@ -112,18 +67,7 @@ class Index extends Controller{
         $objDiretorio = new diretorio($nomeDiretorioGaleria, $pathDiretorioGaleria);          
         $dados["galeria"] = $objDiretorio->lerDiretorio(array("thumb120_","thumb25_","thumb400_","thumb800_"));
         
-        
-        if(!empty($dados['arrInfoEstatico']['url_redirecionamento'])){
-            $dados['urlBotao'] = $dados['arrInfoEstatico']['url_redirecionamento'];
-        }else{
-            $telefone = "55".str_replace(['(', ')', ' ', '-'], '', $dados['arrInfoEstatico']['whatsapp']);
-            $dados['urlBotao'] = "https://api.whatsapp.com/send?phone={$telefone}&amp;text={$dados['arrInfoEstatico']['texto_whatsapp']}";
-        }
-        
-        
         //chama a view
-        var_dump("dsadas");
-        exit;
         $this->loadview('template/01/index', $dados);
     }
     
@@ -152,11 +96,6 @@ class Index extends Controller{
             $this->objLeads->cadastrar($dataPost);
             
         }
-        
-        
-        //var_dump($arrRetorno);
-        //exit;
-        
         echo json_encode($arrRetorno);
 
     }    

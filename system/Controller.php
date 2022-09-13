@@ -14,6 +14,7 @@ class Controller {
     protected $objModelUsuario;
     protected $objModelNotificacao;
     protected $objModelConfig;
+    protected $objModelSeo;
     
     /**
      * Método construtor
@@ -30,6 +31,7 @@ class Controller {
         $this->loadModel('usuario');
         $this->loadModel('notificacoes');
         $this->loadModel('config');
+        $this->loadModel('seo');
 
         //Instancia as classes modelos do sistema
         $this->objModelLog = new Log();
@@ -37,6 +39,7 @@ class Controller {
         $this->objModelUsuario = new Usuario();
         $this->objModelNotificacao = new Notificacoes();
         $this->objModelConfig = new Config();
+        $this->objModelSeo = new Seo();
     }
     
     /**
