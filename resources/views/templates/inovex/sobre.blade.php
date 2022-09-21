@@ -1,0 +1,109 @@
+@extends('templates.inovex.main')
+@section('title','Sobre a J6 Soluções Digitais')
+@section('description','Somos uma agência online, 100% focada em soluções digitais. Nascemos no ano de 2022, porém a experiência da nossa empresa soma + de 10 anos.')
+@section('content')
+<section class="page-header">
+    <div class="particles-snow" id="header-snow"></div><!-- /#header-snow.particles-snow -->
+
+    <img src="assets/images/shapes/page-header-shape-1-1.png" class="page-header__bg-shape-1" alt="">
+    <img src="assets/images/shapes/page-header-shape-1-2.png" class="page-header__bg-shape-2" alt="">
+    <img src="assets/images/shapes/footer-shape-1-1.png" class="page-header__bg-shape-3" alt="">
+    <img src="assets/images/shapes/footer-shape-1-3.png" class="page-header__bg-shape-4" alt="">
+    <div class="container text-center">
+        <h2>Conheça mais sobre a J6 Soluções Digitais</h2>
+        <ul class="list-unstyled thm-breadcrumb">
+            <li><a href="{{ config("app.url") }}">Home</a></li>
+            <li><span>Sobre nós</span></li>
+        </ul><!-- /.thm-breadcrumb -->
+    </div><!-- /.container text-center -->
+</section><!-- /.page-header -->
+
+<section class="portfolio-details">
+
+    <img src="assets/images/shapes/bg-shape-1-1.png" class="error-404__bg-shape-1" alt="">
+    <img src="assets/images/shapes/bg-shape-1-2.png" class="error-404__bg-shape-2" alt="">
+    <img src="assets/images/shapes/bg-shape-1-3.png" class="error-404__bg-shape-3" alt="">
+
+
+    <div class="error-404__bubble-1"></div><!-- /.error-404__bubble-1 -->
+    <div class="error-404__bubble-2"></div><!-- /.error-404__bubble-2 -->
+    <div class="error-404__bubble-3"></div><!-- /.error-404__bubble-3 -->
+    <div class="error-404__bubble-4"></div><!-- /.error-404__bubble-4 -->
+    <div class="error-404__bubble-5"></div><!-- /.error-404__bubble-5 -->
+    <div class="error-404__bubble-6"></div><!-- /.error-404__bubble-6 -->
+    <div class="error-404__bubble-7"></div><!-- /.error-404__bubble-7 -->
+    <div class="error-404__bubble-8"></div><!-- /.error-404__bubble-8 -->
+
+    <div class="portfolio-details__image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <img src="templates/inovex/images/portfolio/empresa-j6-solucoes-digitais.png">
+                </div><!-- /.col-lg-9 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.portfolio-details__image -->
+    <div class="portfolio-details__main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="portfolio-details__content">
+                        <h3>Como nascemos</h3>
+                        <p>Iniciamos nossas atividades em 2022, mas somamos experiência na área desde 2004.
+                            <br>
+                            São 18 anos de experiência, com programação, sites, e marketing digital. Já tendo participado de vários projetos e startups pelo processo.
+                        </p>
+                        <p>Hoje entramos no mercado para fazer a diferença, e executar um serviço de qualidade e comprometimento.</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="templates/inovex/images/portfolio/copo-cafe-j6.png">
+                            </div><!-- /.col-md-6 -->
+                            <div class="col-md-6">
+                                <img src="templates/inovex/images/portfolio/mulher-camisa-j6.png">
+                            </div><!-- /.col-md-6 -->
+                        </div><!-- /.row -->
+                        <p>
+                            Já tivemos o prazer de atender clientes de muitas áreas diferentes, e com isso criamos várias soluções digitais, que são serviços profissionais a um ótimo custo benefício.
+                            Hoje atendemos desde de micro empreendedores, a grande empresas.
+                        </p>
+                        <p>Entre em contato conosco e traga já a sua empresa para J6, e faça ela decolar como um foguete!</p>
+                    </div><!-- /.portfolio-details__content -->
+                </div><!-- /.col-lg-8 -->
+                <div class="col-lg-4 wow fadeInRight" data-wow-duration="1500ms">
+                    <div class="portfolio-details__info">
+                        <h3>Informações da J6</h3>
+                        <div class="portfolio-details__info-single">
+                            <div class="portfolio-details__info-title">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Inicio :</span>
+                            </div><!-- /.portfolio-details__info-title -->
+                            <div class="portfolio-details__info-text">
+                                <p>Ano de 2002</p>
+                            </div><!-- /.portfolio-details__info-text -->
+                        </div><!-- /.portfolio-details__info-single -->
+                        <div class="portfolio-details__info-single">
+                            <div class="portfolio-details__info-title">
+                                <i class="far fa-map-marker-alt"></i>
+                                <span>Local :</span>
+                            </div><!-- /.portfolio-details__info-title -->
+                            <div class="portfolio-details__info-text">
+                                <p>Balneário Piçarras, SC</p>
+                            </div><!-- /.portfolio-details__info-text -->
+                        </div><!-- /.portfolio-details__info-single -->
+                        <div class="portfolio-details__info-single">
+                            <div class="portfolio-details__info-title">
+                                <i class="far fa-tag"></i>
+                                <span>Tags :</span>
+                            </div><!-- /.portfolio-details__info-title -->
+                            <div class="portfolio-details__info-text">
+                                <p>Sites <br> Sistemas<br> MKT Digital<br> Redes Sociais<br> Artes Digitais</p>
+                            </div><!-- /.portfolio-details__info-text -->
+                        </div><!-- /.portfolio-details__info-single -->
+                    </div><!-- /.portfolio-details__info -->
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.portfolio-details__main -->
+</section><!-- /.portfolio-details -->
+    
+@endsection

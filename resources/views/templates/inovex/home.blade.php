@@ -1,7 +1,7 @@
 @extends('templates.inovex.main')
 
 @section('title','J6 Soluções Digitais')
-@section('description','Posts Para Redes Sociais, Artes Digitais, Criação de Sites e muito mais confira.')
+@section('description','Somos uma agência com soluções digitais para o seu negócio. Redes Sociais, Sites e muito mais confira.')
 
 @section('content')
     <section class="banner-one">
@@ -118,7 +118,7 @@
                 <div class="service-one__single">
                     <div class="service-one__icon">
                         <div class="service-one__icon-inner">
-                            <img src="templates/inovex/images/shapes/service-i-1.png" alt="">
+                            <img src="templates/inovex/images/shapes/service-i-1.png">
                         </div><!-- /.service-one__icon-inner -->
                     </div><!-- /.service-one__icon -->
                     <div class="service-one__content">
@@ -130,8 +130,8 @@
             <div class="col-lg-6 col-md-12 wow fadeInRight" data-wow-duration="1500ms">
                 <div class="service-one__single">
                     <div class="service-one__icon">
-                        <div class="service-one__icon-inner">
-                            <img src="templates/inovex/images/shapes/service-i-2.png" alt="">
+                        <div class="service-one__icon-inner service-one__icon-inner-2">
+                            <img src="templates/inovex/images/shapes/service-i-2.png">
                         </div><!-- /.service-one__icon-inner -->
                     </div><!-- /.service-one__icon -->
                     <div class="service-one__content">
@@ -143,8 +143,8 @@
             <div class="col-lg-6 col-md-12 wow fadeInLeft" data-wow-duration="1500ms">
                 <div class="service-one__single">
                     <div class="service-one__icon">
-                        <div class="service-one__icon-inner">
-                            <img src="templates/inovex/images/shapes/service-i-3.png" alt="">
+                        <div class="service-one__icon-inner service-one__icon-inner-3">
+                            <img src="templates/inovex/images/shapes/service-i-3.png">
                         </div><!-- /.service-one__icon-inner -->
                     </div><!-- /.service-one__icon -->
                     <div class="service-one__content">
@@ -156,8 +156,8 @@
             <div class="col-lg-6 col-md-12 wow fadeInRight" data-wow-duration="1500ms">
                 <div class="service-one__single">
                     <div class="service-one__icon">
-                        <div class="service-one__icon-inner">
-                            <img src="templates/inovex/images/shapes/service-i-4.png" alt="">
+                        <div class="service-one__icon-inner service-one__icon-inner-4">
+                            <img src="templates/inovex/images/shapes/service-i-4.png">
                         </div><!-- /.service-one__icon-inner -->
                     </div><!-- /.service-one__icon -->
                     <div class="service-one__content">
@@ -169,8 +169,8 @@
             <div class="col-lg-6 col-md-12 wow fadeInRight" data-wow-duration="1500ms">
                 <div class="service-one__single">
                     <div class="service-one__icon">
-                        <div class="service-one__icon-inner">
-                            <img src="templates/inovex/images/shapes/service-i-4.png" alt="">
+                        <div class="service-one__icon-inner service-one__icon-inner-5">
+                            <img src="templates/inovex/images/shapes/service-i-5.png">
                         </div><!-- /.service-one__icon-inner -->
                     </div><!-- /.service-one__icon -->
                     <div class="service-one__content">
@@ -208,7 +208,7 @@
                             <p>{{ $item["depoimento"]; }}</p>
                             <h3>{{ $item["nome"]; }}</h3>
                         </div><!-- /.testimonials-one__single -->
-                    </div><!-- /.item -->                    
+                    </div><!-- /.item -->    
                 @endforeach
 
 
@@ -228,79 +228,43 @@
             <div class="col-lg-6 d-flex">
                 <div class="my-auto">
                     <div class="block-title text-left">
-                        <p><span>Our FAQ’S</span></p>
-                        <h3>Freequently Ask <br> <span>Questions.</span></h3>
-                    </div><!-- /.block-title text-center -->
+                        <p><span>Perguntas e Respostas</span></p>
+                        <h3>Dúvidas Frequentes dos <br> <span>nossos clientes.</span></h3>
+                    </div><!-- /.block-title text-center -->                 
                     <div class="accrodion-grp" data-grp-name="career-one__accrodion">
-                        <div class="accrodion ">
+                        @foreach ($duvidas as $item)
+                        <div class="accrodion {{ $item["active"]; }}">
                             <div class="accrodion-title">
-                                <h4>Can Users Choose to Install the SEO App?</h4>
+                                <h4>{{ $item["pergunta"]; }}</h4>
                             </div>
                             <div class="accrodion-content">
                                 <div class="inner">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit eusmod tempor
-                                        incididunt labore dolore magna aliqua. enim minim veniam quis nostrud.
-                                    </p>
+                                    <p>{{ $item["resposta"]; }}</p>
                                 </div><!-- /.inner -->
                             </div>
                         </div>
-                        <div class="accrodion active">
-                            <div class="accrodion-title">
-                                <h4>Does Disabling SEO Free Up Space?</h4>
-                            </div>
-                            <div class="accrodion-content">
-                                <div class="inner">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit eusmod tempor
-                                        incididunt labore dolore magna aliqua. enim minim veniam quis nostrud.
-                                    </p>
-                                </div><!-- /.inner -->
-                            </div>
-                        </div>
-                        <div class="accrodion">
-                            <div class="accrodion-title">
-                                <h4>Why are Mobile SEO Apps Important?</h4>
-                            </div>
-                            <div class="accrodion-content">
-                                <div class="inner">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit eusmod tempor
-                                        incididunt labore dolore magna aliqua. enim minim veniam quis nostrud.
-                                    </p>
-                                </div><!-- /.inner -->
-                            </div>
-                        </div>
-                        <div class="accrodion">
-                            <div class="accrodion-title">
-                                <h4>How Does the Moodle SEO Work? </h4>
-                            </div>
-                            <div class="accrodion-content">
-                                <div class="inner">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit eusmod tempor
-                                        incididunt labore dolore magna aliqua. enim minim veniam quis nostrud.
-                                    </p>
-                                </div><!-- /.inner -->
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div><!-- /.my-auto -->
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
-
     </div><!-- /.container -->
 </section><!-- /.faq-one__form-wrap -->
 
+<!--
 <section class="blog-one blog-one__home-one">
     <div class="container">
         <div class="blog-one__top">
             <div class="block-title text-left">
-                <p><span>Latest News</span></p>
+                <p><span>Blog</span></p>
                 <h3>Learn Some New info from <br> <span>Our Latest News.</span></h3>
-            </div><!-- /.block-title text-center -->
+            </div>
 
             <div class="blog-one__carousel-btn">
                 <a href="#" class="blog-one__carousel-btn-left"><i class="far fa-angle-left"></i></a>
                 <a href="#" class="blog-one__carousel-btn-right"><i class="far fa-angle-right"></i></a>
-            </div><!-- /.blog-one__carousel-btn -->
-        </div><!-- /.blog-one__top -->
+            </div>
+        </div>
 
 
         <div class="thm__owl-carousel blog-one__carousel owl-carousel owl-theme" data-carousel-prev-btn=".blog-one__carousel-btn-left" data-carousel-next-btn=".blog-one__carousel-btn-right" data-options='{
@@ -313,224 +277,26 @@
                         "1199": { "items": 3, "margin": 40}
                     }
                 }'>
+
             <div class="item">
                 <div class="blog-one__single">
                     <div class="blog-one__image">
                         <img src="templates/inovex/images/blog/blog-1-1.jpg" alt="">
                         <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
+                    </div>
                     <div class="blog-one__content">
                         <div class="blog-one__meta">
                             <a href="blog-details.html">Sara dodly</a>
                             <span>-</span>
                             <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
+                        </div>
                         <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
                         <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-2.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-3.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-4.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-5.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-6.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-7.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-8.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-9.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-10.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-11.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="blog-one__single">
-                    <div class="blog-one__image">
-                        <img src="templates/inovex/images/blog/blog-1-12.jpg" alt="">
-                        <a href="blog-details.html"><i class="fal fa-plus"></i></a>
-                    </div><!-- /.blog-one__image -->
-                    <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <a href="blog-details.html">Sara dodly</a>
-                            <span>-</span>
-                            <a href="blog-details.html">Mar 15, 2020</a>
-                        </div><!-- /.blog-one__meta -->
-                        <h3><a href="blog-details.html">Additional Services that will Grow Your...</a></h3>
-                        <a href="blog-details.html" class="thm-btn blog-one__btn"><span>Read More</span></a>
-                        <!-- /.thm-btn blog-one__btn -->
-                    </div><!-- /.blog-one__content -->
-                </div><!-- /.blog-one__single -->
-            </div><!-- /.item -->
-        </div><!-- /.row -->
 
-    </div><!-- /.container -->
+                    </div>
+                </div>
+            </div>
+
+    </div>
 </section><!-- /.blog-grid -->
 @endsection
