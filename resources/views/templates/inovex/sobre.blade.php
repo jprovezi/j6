@@ -4,11 +4,6 @@
 @section('content')
 <section class="page-header">
     <div class="particles-snow" id="header-snow"></div><!-- /#header-snow.particles-snow -->
-
-    <img src="assets/images/shapes/page-header-shape-1-1.png" class="page-header__bg-shape-1" alt="">
-    <img src="assets/images/shapes/page-header-shape-1-2.png" class="page-header__bg-shape-2" alt="">
-    <img src="assets/images/shapes/footer-shape-1-1.png" class="page-header__bg-shape-3" alt="">
-    <img src="assets/images/shapes/footer-shape-1-3.png" class="page-header__bg-shape-4" alt="">
     <div class="container text-center">
         <h2>Conheça mais sobre a J6 Soluções Digitais</h2>
         <ul class="list-unstyled thm-breadcrumb">
@@ -19,11 +14,6 @@
 </section><!-- /.page-header -->
 
 <section class="portfolio-details">
-
-    <img src="assets/images/shapes/bg-shape-1-1.png" class="error-404__bg-shape-1" alt="">
-    <img src="assets/images/shapes/bg-shape-1-2.png" class="error-404__bg-shape-2" alt="">
-    <img src="assets/images/shapes/bg-shape-1-3.png" class="error-404__bg-shape-3" alt="">
-
 
     <div class="error-404__bubble-1"></div><!-- /.error-404__bubble-1 -->
     <div class="error-404__bubble-2"></div><!-- /.error-404__bubble-2 -->
@@ -38,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <img src="templates/inovex/images/portfolio/empresa-j6-solucoes-digitais.png">
+                    <img src="{{ asset("templates/inovex/images/portfolio/empresa-j6-solucoes-digitais.png") }}">
                 </div><!-- /.col-lg-9 -->
             </div><!-- /.row -->
         </div><!-- /.container -->
@@ -56,10 +46,10 @@
                         <p>Hoje entramos no mercado para fazer a diferença, e executar um serviço de qualidade e comprometimento.</p>
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="templates/inovex/images/portfolio/copo-cafe-j6.png">
+                                <img src="{{ asset("templates/inovex/images/portfolio/copo-cafe-j6.png") }}">
                             </div><!-- /.col-md-6 -->
                             <div class="col-md-6">
-                                <img src="templates/inovex/images/portfolio/mulher-camisa-j6.png">
+                                <img src="{{ asset("templates/inovex/images/portfolio/mulher-camisa-j6.png") }}">
                             </div><!-- /.col-md-6 -->
                         </div><!-- /.row -->
                         <p>

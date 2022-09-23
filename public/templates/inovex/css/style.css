@@ -4670,7 +4670,7 @@ a:focus {
 --------------------------------------------------------------*/
 
 .portfolio-details {
-	padding-top: 170px;
+	padding-top: 50px;
 }
 
 .portfolio-details__image img {
@@ -5664,7 +5664,7 @@ a:focus {
 --------------------------------------------------------------*/
 
 .service-one {
-	padding-top: 170px;
+	padding-top: 50px;
 	padding-bottom: 120px;
 }
 
@@ -5810,7 +5810,7 @@ a:focus {
 --------------------------------------------------------------*/
 
 .service-details {
-	padding-top: 170px;
+	padding-top: 80px;
 	padding-bottom: 170px;
 }
 
@@ -5881,6 +5881,18 @@ a:focus {
 
 .service-details__list li:nth-child(3) i {
 	background-image: linear-gradient(-45deg, #61d8ff 0%, #6168ff 100%);
+}
+
+.service-details__list li:nth-child(4) i {
+	background-image: linear-gradient(-45deg, #f9ff59 0%, #8a8f00 100%);
+}
+
+.service-details__list li:nth-child(5) i {
+	background-image: linear-gradient(-45deg, #ff7979 0%, #ff0000 100%);
+}
+
+.service-details__list li:nth-child(6) i {
+	background-image: linear-gradient(-45deg, #9cff83 0%, #00a708 100%);
 }
 
 /*-------------------------------------------------------------- 
@@ -6886,4 +6898,11 @@ a:focus {
 	-moz-transition: all 0.3s ease 0s;
 	-o-transition: all 0.3s ease 0s;
 	-ms-transition: all 0.3s ease 0s;
+  }
+
+  .destaque{
+	background-color: beige; 
+	padding: 10px 20px; 
+	color: black;
+	font-weight: bold;
   }

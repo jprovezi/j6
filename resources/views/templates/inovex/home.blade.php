@@ -8,9 +8,9 @@
         <div class="particles-snow" id="banner-one-snow"></div><!-- /#cta-one-snow.particles-snow -->
         <div class="container">
             <div class="banner-one__image wow slideInUp" data-wow-duration="1500ms">
-            <img src="templates/inovex/images/shapes/foguete-1.png" class="banner-one__bg-shape-2" alt="">
-            <img src="templates/inovex/images/shapes/planeta-4.png" class="banner-one__bg-shape-3" alt="">
-            <img src="templates/inovex/images/shapes/planeta-5.png" class="banner-one__bg-shape-5" alt="">
+            <img src="{{ asset("templates/inovex/images/shapes/foguete-1.png") }}" class="banner-one__bg-shape-2">
+            <img src="{{ asset("templates/inovex/images/shapes/planeta-4.png") }}" class="banner-one__bg-shape-3">
+            <img src="{{ asset("templates/inovex/images/shapes/planeta-5.png") }}" class="banner-one__bg-shape-5">
             </div><!-- /.banner-one__image -->
             <div class="row">
                 <div class="col-xl-7">
@@ -33,7 +33,7 @@
             "items": 5, "margin": 95, "smartSpeed": 700, "loop": true, "autoplay": true, "autoplayTimeout": 5000, "autoplayHoverPause": false, "nav": false, "dots": false, "responsive": {"0": { "margin": 20, "items": 2 }, "575": { "margin": 30, "items": 3 },"767": { "margin": 40, "items": 4 },   "991": { "margin": 70, "items": 4 }, "1199": { "margin": 95, "items": 5 } } }'>
             @foreach ($clientes as $item)
                 <div class="item">
-                    <img src="templates/inovex/images/brand/{{ $item["img"] }}" title="{{ $item["nome"] }}">
+                    <img src="{{ asset("templates/inovex/images/brand/".$item["img"]) }}" title="{{ $item["nome"] }}">
                 </div><!-- /.item -->                
             @endforeach
         </div><!-- /.brand-one__carousel owl-carousel thm__owl-carousel owl-theme -->
@@ -41,9 +41,9 @@
 </section><!-- /.brand-one -->    
 
 <section class="about-one">
-    <img src="templates/inovex/images/shapes/bg-shape-1-1.png" class="error-404__bg-shape-1" alt="">
-    <img src="templates/inovex/images/shapes/bg-shape-1-2.png" class="error-404__bg-shape-2" alt="">
-    <img src="templates/inovex/images/shapes/bg-shape-1-3.png" class="error-404__bg-shape-3" alt="">
+    <img src="{{ asset("templates/inovex/images/shapes/bg-shape-1-1.png") }}" class="error-404__bg-shape-1">
+    <img src="{{ asset("templates/inovex/images/shapes/bg-shape-1-2.png") }}" class="error-404__bg-shape-2">
+    <img src="{{ asset("templates/inovex/images/shapes/bg-shape-1-3.png") }}" class="error-404__bg-shape-3">
 
     <div class="error-404__bubble-1"></div><!-- /.error-404__bubble-1 -->
     <div class="error-404__bubble-2"></div><!-- /.error-404__bubble-2 -->
@@ -105,83 +105,33 @@
 </section><!-- /.about-one -->
 
 <section class="service-one service-one__home-three">
-    <img src="templates/inovex/images/shapes/service-1-h3-shape-1.png" class="service-one__home-three__bg-1" alt="">
-    <img src="templates/inovex/images/shapes/service-1-h3-shape-2.png" class="service-one__home-three__bg-2" alt="">
-    <img src="templates/inovex/images/shapes/service-1-h3-shape-3.png" class="service-one__home-three__bg-3" alt="">
+    <img src="{{ asset("templates/inovex/images/shapes/service-1-h3-shape-1.png") }}" class="service-one__home-three__bg-1">
+    <img src="{{ asset("templates/inovex/images/shapes/service-1-h3-shape-2.png") }}" class="service-one__home-three__bg-2">
+    <img src="{{ asset("templates/inovex/images/shapes/service-1-h3-shape-3.png") }}" class="service-one__home-three__bg-3">
     <div class="container">
         <div class="block-title text-center">
             <p><span>Nossas Soluções</span></p>
             <h3>Qualidade em serviços digitais <br> <span>Além das estrelas</span></h3>
         </div><!-- /.block-title text-center -->
         <div class="row high-gutters">
+            @foreach ($solucoes as $item)
             <div class="col-lg-6 col-md-12 wow fadeInLeft" data-wow-duration="1500ms">
                 <div class="service-one__single">
                     <div class="service-one__icon">
-                        <div class="service-one__icon-inner">
-                            <img src="templates/inovex/images/shapes/service-i-1.png">
+                        <div class="">
+                            <img src="{{asset("templates/inovex/images/shapes/".$item["img"]) }}">
                         </div><!-- /.service-one__icon-inner -->
                     </div><!-- /.service-one__icon -->
                     <div class="service-one__content">
-                        <h3><a href="service-details.html">Posts Para Redes Sociais</a></h3>
-                        <p>Criamos postagens e copywriting profissionais, para as redes sociais do seu negócio.</p>
+                        <h3><a href="{{ $item["url-single"] }}">{{ $item["titulo"] }}</a></h3>
+                        <p>{{ $item["descricao"] }}</p>
                     </div><!-- /.service-one__content -->
                 </div><!-- /.service-one__single -->
-            </div><!-- /.col-lg-6 col-md-12 -->
-            <div class="col-lg-6 col-md-12 wow fadeInRight" data-wow-duration="1500ms">
-                <div class="service-one__single">
-                    <div class="service-one__icon">
-                        <div class="service-one__icon-inner service-one__icon-inner-2">
-                            <img src="templates/inovex/images/shapes/service-i-2.png">
-                        </div><!-- /.service-one__icon-inner -->
-                    </div><!-- /.service-one__icon -->
-                    <div class="service-one__content">
-                        <h3><a href="service-details.html">Campanhas no Google ADS</a></h3>
-                        <p>Para o seu site aparecer na primeira página do Google, quando um cliente pesquisar sobre o seu negócio.</p>
-                    </div><!-- /.service-one__content -->
-                </div><!-- /.service-one__single -->
-            </div><!-- /.col-lg-6 col-md-12 -->
-            <div class="col-lg-6 col-md-12 wow fadeInLeft" data-wow-duration="1500ms">
-                <div class="service-one__single">
-                    <div class="service-one__icon">
-                        <div class="service-one__icon-inner service-one__icon-inner-3">
-                            <img src="templates/inovex/images/shapes/service-i-3.png">
-                        </div><!-- /.service-one__icon-inner -->
-                    </div><!-- /.service-one__icon -->
-                    <div class="service-one__content">
-                        <h3><a href="service-details.html">Artes Digitais</a></h3>
-                        <p>Comunicação visual de qualidade, como logomarcas, apresentações em PDF, Catálogos Online e muito mais.</p>
-                    </div><!-- /.service-one__content -->
-                </div><!-- /.service-one__single -->
-            </div><!-- /.col-lg-6 col-md-12 -->
-            <div class="col-lg-6 col-md-12 wow fadeInRight" data-wow-duration="1500ms">
-                <div class="service-one__single">
-                    <div class="service-one__icon">
-                        <div class="service-one__icon-inner service-one__icon-inner-4">
-                            <img src="templates/inovex/images/shapes/service-i-4.png">
-                        </div><!-- /.service-one__icon-inner -->
-                    </div><!-- /.service-one__icon -->
-                    <div class="service-one__content">
-                        <h3><a href="service-details.html">Site Express</a></h3>
-                        <p>Sites profissionais com ótimo custo benefício, nossa solução express poderá atender a sua empresa.</p>
-                    </div><!-- /.service-one__content -->
-                </div><!-- /.service-one__single -->
-            </div><!-- /.col-lg-6 col-md-12 -->
-            <div class="col-lg-6 col-md-12 wow fadeInRight" data-wow-duration="1500ms">
-                <div class="service-one__single">
-                    <div class="service-one__icon">
-                        <div class="service-one__icon-inner service-one__icon-inner-5">
-                            <img src="templates/inovex/images/shapes/service-i-5.png">
-                        </div><!-- /.service-one__icon-inner -->
-                    </div><!-- /.service-one__icon -->
-                    <div class="service-one__content">
-                        <h3><a href="service-details.html">Site Personalizado</a></h3>
-                        <p>Sites com qualidade excepcional para clientes que necessitam de algo único e inesquecível.</p>
-                    </div><!-- /.service-one__content -->
-                </div><!-- /.service-one__single -->
-            </div><!-- /.col-lg-6 col-md-12 -->
+            </div><!-- /.col-lg-6 col-md-12 -->                
+            @endforeach
         </div><!-- /.row -->
     </div><!-- /.container -->
-</section><!-- /.service-one -->1
+</section><!-- /.service-one -->
 
 <section class="testimonials-one testimonials-one__about-one testimonials-one__home-three">
     <div class="container">
@@ -203,7 +153,7 @@
                     <div class="item">
                         <div class="testimonials-one__single">
                             <div class="testimonials-one__icon">
-                                <img src="templates/inovex/images/shapes/testi-qoute-1-1.png" alt="">
+                                <img src="{{ asset("templates/inovex/images/shapes/testi-qoute-1-1.png") }}">
                             </div><!-- /.testimonials-one__icon -->
                             <p>{{ $item["depoimento"]; }}</p>
                             <h3>{{ $item["nome"]; }}</h3>
@@ -221,8 +171,8 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="faq-one__form-image">
-                    <img src="templates/inovex/images/mocups/faq-moc-1-1.png" alt="">
-                    <img src="templates/inovex/images/mocups/faq-moc-1-2.png" alt="">
+                    <img src="{{ asset("templates/inovex/images/mocups/faq-moc-1-1.png") }}">
+                    <img src="{{ asset("templates/inovex/images/mocups/faq-moc-1-2.png") }}">
                 </div><!-- /.faq-one__form-image -->
             </div><!-- /.col-lg-6 -->
             <div class="col-lg-6 d-flex">
