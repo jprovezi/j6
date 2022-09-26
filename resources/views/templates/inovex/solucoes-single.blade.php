@@ -1,6 +1,6 @@
 @extends('templates.inovex.main')
-@section('title', $info['titulo'] . ' - J6 Soluções Digitais')
-@section('description', 'aqui a descrição')
+@section('title', $seo['titulo'])
+@section('description', $seo['descricao'])
 @section('content')
     <section class="page-header">
         <div class="particles-snow" id="header-snow"></div><!-- /#header-snow.particles-snow -->
@@ -49,7 +49,7 @@
                             <h3 class="sidebar__title">Material Extra</h3>
                             <ul class="list-unstyled sidebar__category-list">
                                 <li>
-                                    <a href="{{ asset('templates/inovex/pdf/apresentacao.pdf') }}">Apresentação em PDF <i
+                                    <a href="{{ asset('templates/inovex/pdf/apresentacao.pdf') }}" target="_blank">Apresentação em PDF <i
                                             class="far fa-file-pdf"></i></a>
                                 </li>
                             </ul><!-- /.list-unstyled sidebar__category-list -->
@@ -70,7 +70,6 @@
                                 @endforeach
                             </ul><!-- /.service-details__list list-unstyled -->
                             <br>
-                            <h5>Alguns dos nossos trabalhos</h5>
                             <div class="row">
                                 @foreach ($info["img-exemplo"] as $img)
                                 <div class="col-md-6">
@@ -90,4 +89,39 @@
             </div><!-- /.row -->
         </div><!-- /.container -->
     </section><!-- /.blog-standard -->
+
+    @if (!is_null($planos))
+    <section class="pricing-one" style="margin: -200px 0 0 0;">
+        <div class="container">
+            <div class="block-title text-center">
+                <p class="color-2"><span>Nossos Planos</span></p>
+                <h3>Confira nossos planos</span></h3>
+            </div><!-- /.block-title text-center -->
+    
+            <div class="row high-gutters">
+                @foreach ($planos as $item)
+                <div class="col-lg-4 wow fadeInLeft" data-wow-duration="1500ms">
+                    <div class="pricing-one__single">
+                        <div class="">
+                            <img src="{{ asset("j6/".$item["img"]) }}">
+                        </div><!-- /.pricing-one__icon -->
+                        <h3>{{ $item["titulo"] }}</h3>
+                        <ul class="pricing-one__list list-unstyled">
+                            @foreach ($item["itens"] as $valor)
+                            <li>{{$valor}}</li>
+                            @endforeach
+                            <li class="disabled">* Valores para planos de 12 meses</li>
+                        </ul><!-- /.pricing-one__list list-unstyled -->
+                        <p>{{ $item["valor"] }}</p>
+                        <a href="{{ $item["url"] }}" class="thm-btn pricing-one__btn" style="width: 70%;">
+                            Fale Conosco
+                        </a>
+                    </div><!-- /.pricing-one__single -->
+                </div><!-- /.col-lg-4 -->
+                @endforeach
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.pricing-one -->    
+    @endif
+ 
 @endsection

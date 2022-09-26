@@ -38,7 +38,8 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="portfolio-details__content">
-                        <h3>Como nascemos</h3>
+                        <h3>Um pouco mais sobre a J6</h3>
+                        <p>Somos uma Agência 100% digital com experiência e soluções que profissionalizam e trazem resultados para muitas empresas.</p>
                         <p>Iniciamos nossas atividades em 2022, mas somamos experiência na área desde 2004.
                             <br>
                             São 18 anos de experiência, com programação, sites, e marketing digital. Já tendo participado de vários projetos e startups pelo processo.

@@ -5314,6 +5314,7 @@ a:focus {
 	border-radius: 10px;
 	padding-top: 43px;
 	padding-bottom: 75px;
+	min-height: 575px;
 }
 
 

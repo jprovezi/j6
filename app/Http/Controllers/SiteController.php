@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use function PHPUnit\Framework\isNull;
+use App\Helpers\Seo;
 
 class SiteController extends Controller
 {
@@ -255,12 +253,146 @@ class SiteController extends Controller
                         "Estratégia de Mkt Digital",
                     ]
                 ];
-            }
-            
 
+                //Planos menores
+                $planos = [
+                    [   
+                        "img" => "icone-posts.png",
+                        "titulo" => "Plano X1",
+                        "itens" => ["Identidade Visual","Cronograma Mensal","1 Post por semana","4 Posts mensal","Copywriting"],
+                        "valor" => "R$ 240,00*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                    [   
+                        "img" => "icone-posts.png",
+                        "titulo" => "Plano X2",
+                        "itens" => ["Identidade Visual","Cronograma Mensal","2 Post por semana","8 Posts mensal","Copywriting"],
+                        "valor" => "R$ 408,00*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                    [   
+                        "img" => "icone-posts.png",
+                        "titulo" => "Plano X3",
+                        "itens" => ["Identidade Visual","Cronograma Mensal","3 Post por semana","12 Posts mensal","Copywriting", "Agendamenteo do Post"],
+                        "valor" => "R$ 576,00*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                    [   
+                        "img" => "icone-posts.png",
+                        "titulo" => "Plano X4",
+                        "itens" => ["Identidade Visual","Cronograma Mensal","4 Post por semana","16 Posts mensal","Copywriting","Agendamento do Post"],
+                        "valor" => "R$ 720,00*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                    [   
+                        "img" => "icone-posts.png",
+                        "titulo" => "Plano X4",
+                        "itens" => ["Identidade Visual","Cronograma Mensal","4 Post por semana","16 Posts mensal","Copywriting", "Agendamento do Post", "ADS"],
+                        "valor" => "R$ 840,00*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                ];                     
+
+            }else if($id == "campanha-no-google-ads"){
+
+                //Ativando menu
+                $solucoes[1]["active"] = "active";
+                $info = [
+                    "titulo" => "Campanha no Google Ads",
+                    "descricao" => "
+                    Se você está precisando <strong>gerar mais contatos</strong> para o seu time de vendas, vender mais e aumentar o número de clientes, as campanhas no Google ADS são perfeitas para conseguir esse feito.<br>
+                    Por exemplo, se você é dono de uma pizzaria, quando seus clientes pesquisarem pizzaria no Google, nossas campanhas farão esses clientes encontrarem o seu negócio, e entrarem em contato com a sua empresa.
+                    <br><br>
+                    Criamos campanhas profissionais no Google ADS, e conseguimos trazer os melhores resultados quando o assunto é marketing de performance.
+                    <br><br>
+                    Possuímos planos para pequenas, médias e grandes empresas. Não importa o tamanho do seu negócio, anunciar na internet sempre vai ser uma ótima forma de obter bons resultados.
+                    ",
+                    "capa" => "capa-campanha-no-google-ads.png",
+                    "img-exemplo" => [
+                        "google-1.png",
+                        "google-2.png",
+                    ],
+                    "destaques" => [
+                        "Aumento das suas vendas",
+                        "Campanhas de alto desempenho",
+                        "Mais acessos ao seu site",
+                        "Mais reconhecimento da sua marca",
+                        "Campanha direcionada por região",
+                        "Sua empresa no Google",
+                    ]
+                ];
+
+                $planos = [
+                    [   
+                        "img" => "icone-google.png",
+                        "titulo" => "Plano X1",
+                        "itens" => ["Indicado para Pequenas Empresas", "1 campanha","12 Manutenções","1 Relatório Mensal","Valor de ADS não incluso*"],
+                        "valor" => "R$ 250,00*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                    [   
+                        "img" => "icone-google.png",
+                        "titulo" => "Plano X2",
+                        "itens" => ["Indicado para Médias Empresas", "3 campanhas","12 Manutenções","1 Relatório Mensal","Valor de ADS não incluso*"],
+                        "valor" => "R$ 500,00*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                    [   
+                        "img" => "icone-google.png",
+                        "titulo" => "Plano X3",
+                        "itens" => ["Indicado para Grandes Empresas", "5+ campanhas","12 Manutenções","1 Relatório Mensal","Reunião de alinhamento mensal","Valor de ADS não incluso*"],
+                        "valor" => "R$ 900,00*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                ];                    
+            }else if($id == "artes-digital"){
+
+                //Ativando menu
+                $solucoes[2]["active"] = "active";
+                $info = [
+                    "titulo" => "Artes Digital",
+                    "descricao" => "<strong>Uma imagem vale mais que mil palavras</strong>, certamente você já escutou essa frase e ela é verdade.
+                    <br>
+                    O que chama atenção primeiro das pessoas é as imagens, e após isso o texto, sendo assim oferecemos criação de artes digital de qualidade.
+                    <br>
+                    Criamos artes digitais como:",
+                    "capa" => "capa-artes-digital.png",
+                    "img-exemplo" => [
+                        "artes-digital-1.png",
+                        "artes-digital-2.png",
+                        "artes-digital-3.png",
+                        "artes-digital-4.png",
+                        "artes-digital-5.png",
+                        "artes-digital-6.png",
+                        "artes-digital-7.png",
+                        "artes-digital-8.png",
+                    ],
+                    "destaques" => [
+                        "catálogo em PDF para equipe comercial",
+                        "cardápios",
+                        "logomarcas",
+                        "cartão de visita digital",
+                        "banners para sites",
+                        "cartão com qrcode",
+                        "propaganda para whatsapp",
+                        "flyers digital",
+                        "E muito mais",
+                    ]
+                ];
+
+                $planos = null;  
+            }
+
+            $seo = [
+                "titulo" => Seo::title($info["titulo"]." - ".config("j6.cliente")),
+                "descricao" => Seo::metadescription($info["descricao"]),
+            ];
+            
             return view("templates.inovex.solucoes-single", [
                 "solucoes" => $solucoes,
                 "info" => $info,
+                "seo" => $seo,
+                "planos" => $planos,
             ]);
         }
     }
