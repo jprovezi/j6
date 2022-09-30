@@ -56,11 +56,7 @@
                             <li class="dropdown">
                                 <a href="<?=config("app.url"); ?>/solucoes">Nossas Soluções</a>
                                 <ul>
-                                    <li><a href="{{ config("app.url"); }}/solucoes/posts-para-redes-sociais">Posts para Redes Sociais</a></li>
-                                    <li><a href="{{ config("app.url"); }}/solucoes/campanha-no-google-ads">Campanha no Google ADS</a></li>
-                                    <li><a href="{{ config("app.url"); }}/solucoes/artes-digital">Artes Digital</a></li>
-                                    <li><a href="{{ config("app.url"); }}/solucoes/site-express">Site Express</a></li>
-                                    <li><a href="{{ config("app.url"); }}/solucoes/site-personalizado">Site Personalizado</a></li>
+                                    @yield('menuSolucoes')
                                 </ul>
                             </li>
                             <li><a href="<?=config("app.url"); ?>/portfolio">Portfólio</a></li>
@@ -99,11 +95,7 @@
                             <div class="footer-widget footer-widget__links__1">
                                 <h3 class="footer-widget__title">Soluções</h3>
                                 <ul class="list-unstyled footer-widget__links-list">
-                                    <li><a href="#">Posts para Redes Sociais</a></li>
-                                    <li><a href="#">Campanha no Google ADS</a></li>
-                                    <li><a href="#">Criação de Artes Digital</a></li>
-                                    <li><a href="#">Site Express</a></li>
-                                    <li><a href="#">Site Personalizado</a></li>
+                                    @yield('menuSolucoes')
                                 </ul><!-- /.list-unstyled footer-widget__links-list -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
@@ -209,6 +201,8 @@
     <script src="{{config("app.url")}}/templates/inovex/js/particel-config.js"></script>
     <script src="{{config("app.url")}}/templates/inovex/js/theme.js"></script>
     <script src="{{config("app.url")}}/templates/inovex/plugins/lightbox2/dist/js/lightbox.min.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.img-responsive').on("click", function() {

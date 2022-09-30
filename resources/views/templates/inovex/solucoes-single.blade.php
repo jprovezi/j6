@@ -1,6 +1,11 @@
 @extends('templates.inovex.main')
 @section('title', $seo['titulo'])
 @section('description', $seo['descricao'])
+@section('menuSolucoes')
+    @foreach ($solucoes as $item)
+        <li><a href="{{ $item["url-single"] }}">{{ $item["titulo"] }}</a></li>
+    @endforeach
+@endsection
 @section('content')
     <section class="page-header">
         <div class="particles-snow" id="header-snow"></div><!-- /#header-snow.particles-snow -->

@@ -1,7 +1,13 @@
-@extends('templates.inovex.main')
+@extends("templates.inovex.main")
 
 @section('title','J6 Soluções Digitais')
 @section('description','Somos uma agência com soluções digitais para o seu negócio. Redes Sociais, Sites e muito mais confira.')
+
+@section('menuSolucoes')
+    @foreach ($solucoes as $item)
+        <li><a href="{{ $item["url-single"] }}">{{ $item["titulo"] }}</a></li>
+    @endforeach
+@endsection
 
 @section('content')
     <section class="banner-one">
@@ -33,7 +39,7 @@
             "items": 5, "margin": 95, "smartSpeed": 700, "loop": true, "autoplay": true, "autoplayTimeout": 5000, "autoplayHoverPause": false, "nav": false, "dots": false, "responsive": {"0": { "margin": 20, "items": 2 }, "575": { "margin": 30, "items": 3 },"767": { "margin": 40, "items": 4 },   "991": { "margin": 70, "items": 4 }, "1199": { "margin": 95, "items": 5 } } }'>
             @foreach ($clientes as $item)
                 <div class="item">
-                    <img src="{{ asset("templates/inovex/images/brand/".$item["img"]) }}" title="{{ $item["nome"] }}">
+                    <img src="{{ asset("j6/clientes/".$item["img"]) }}" title="{{ $item["nome"] }}">
                 </div><!-- /.item -->                
             @endforeach
         </div><!-- /.brand-one__carousel owl-carousel thm__owl-carousel owl-theme -->
@@ -137,7 +143,7 @@
     <div class="container">
         <div class="block-title text-left">
             <p class="color-2"><span>Depoimentos</span></p>
-            <h3>Alguns clientes <br> <span>além das estrelas.</span></h3>
+            <h3>Alguns clientes <br> <span>muito além do universo.</span></h3>
         </div><!-- /.block-title text-center -->
         <div class="testimonials-one__carousel thm__owl-carousel owl-carousel owl-theme" data-options='{
                     "items": 3, "margin": 40, "smartSpeed": 700, "autoplay": true, "autoplayTimeout": 5000,
@@ -248,5 +254,5 @@
             </div>
 
     </div>
-</section><!-- /.blog-grid -->
+</section>-->
 @endsection

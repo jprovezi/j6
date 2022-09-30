@@ -1,6 +1,11 @@
 @extends('templates.inovex.main')
 @section('title','Sobre a J6 Soluções Digitais')
 @section('description','Somos uma agência online, 100% focada em soluções digitais. Nascemos no ano de 2022, porém a experiência da nossa empresa soma + de 10 anos.')
+@section('menuSolucoes')
+    @foreach ($solucoes as $item)
+        <li><a href="{{ $item["url-single"] }}">{{ $item["titulo"] }}</a></li>
+    @endforeach
+@endsection
 @section('content')
 <section class="page-header">
     <div class="particles-snow" id="header-snow"></div><!-- /#header-snow.particles-snow -->

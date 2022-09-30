@@ -3,12 +3,134 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Seo;
+use App\Helpers\Geral;
 
 class SiteController extends Controller
 {
-    public function index()
-    {
 
+    /**
+     * Retorna as soluções da empresa
+     *
+     * @return array
+     */
+    public function getSolucoes()
+    {
+        //Lista de serviços
+        $solucoes = [
+            [
+                "titulo" => "Posts Para Redes Sociais",
+                "descricao" => "Criamos postagens profissionais para as redes sociais da sua empresa. Deixe seu feed com uma melhor apresentação.",
+                "img" => "service-i-1.png",
+                "url-single" => config("app.url")."/solucoes/posts-para-redes-sociais",
+                "active" => "",
+            ],
+            [
+                "titulo" => "Campanhas no Google ADS",
+                "descricao" => "Para o seu site aparecer na primeira página do Google, quando um cliente pesquisar sobre o seu negócio.",
+                "img" => "service-i-2.png",
+                "url-single" => config("app.url")."/solucoes/campanha-no-google-ads",
+                "active" => "",
+            ],
+            [
+                "titulo" => "Artes Digital",
+                "descricao" => "Comunicação visual de qualidade, como logomarcas, apresentações em PDF, Catálogos Online e muito mais.",
+                "img" => "service-i-3.png",
+                "url-single" => config("app.url")."/solucoes/artes-digital",
+                "active" => "",
+            ],
+            [
+                "titulo" => "Site Express",
+                "descricao" => "Sites profissionais com ótimo custo benefício, nossa solução express poderá atender a sua empresa.",
+                "img" => "service-i-4.png",
+                "url-single" => config("app.url")."/solucoes/site-express",
+                "active" => "",
+            ],
+            [
+                "titulo" => "Site Personalizado",
+                "descricao" => "Sites com qualidade excepcional para clientes que necessitam de algo único e inesquecível.",
+                "img" => "service-i-5.png",
+                "url-single" => config("app.url")."/solucoes/site-personalizado",
+                "active" => "",
+            ],
+        ];
+        return $solucoes;
+    }
+
+public function getDuvidas()
+{
+    $duvidas = [
+        [
+            "pergunta" => "Quanto custa um pacote de postagens para redes sociais?",
+            "resposta" => "Temos planos à partir de R$240,00 mensal.",
+            "active" => "active",
+        ],
+        [
+            "pergunta" => "Vocês gerenciam a rede social da nossa empresa?",
+            "resposta" => "Sim, temos planos para a gestão das redes sociais completo.",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "Vocês entregam o projeto do site pronto?",
+            "resposta" => "Sim, todos as nossas soluções de sites são entregues 100% prontos para o cliente, junto com o treinamento da ferramenta.",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "O que é SiteExress?",
+            "resposta" => "SiteExpress, é uma ferramenta que desenvolvemos para as empresas terem sites extremamentes profissionais, a um custo acessível de mercado",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "Se eu precisar de uma solução especifica?",
+            "resposta" => "Iremos analisar a demanda, e montar uma proposta em cima da necessidade do cliente.",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "Vocês são uma agência de marketing?",
+            "resposta" => "Sim, somos uma agência de marketing digital, focado em soluções digitais. Todos as nossas soluções são criadas a partir de necessidade reais de negócios.",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "Vocês criam logomarcas?",
+            "resposta" => "Temos vários tipos de criações de artes, incluindo as logomarcas. Outas artes que desenvolvemos são: Cardápios, Flyers, Posts, Banners, e qualquer necessidade de arte digital.",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "Quero fazer muitos serviços com a empresa, tenho desconto?",
+            "resposta" => "Quando o cliente tem uma demanda muito alta, conseguimos sempre ajudar o cliente e tentar encaixar a melhor negociação necessária.",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "Vocês trabalham com alguma solução para delivery?",
+            "resposta" => "Temos a solução perfeita para delivery no geral, chamada Foguete Delivery.",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "O que é Foguete delivery?",
+            "resposta" => "Nosso software para pedido de comida, bebida e qualquer tipo de consumível entregável online.",
+            "active" => "active",
+        ],
+        [
+            "pergunta" => "O que está incluso no sistema de delivery?",
+            "resposta" => "Criamos desde da parte de fotografia, implantação e atualizações do nosso sistema. É a solução completa e definitiva das entregas online.",
+            "active" => "",
+        ],
+        [
+            "pergunta" => "Fechei um plano com vocês, e agora?",
+            "resposta" => "Seguimos um protocolo de 3 passos para iniciar com nossos clientes, 1º Criamos um grupo no whatsapp, 2º Enviamos um briefing inicial, 2º Agendamos uma reunião de alinhamento",
+            "active" => "",
+        ],
+    ];
+
+    return $duvidas;
+}
+
+    /**
+     * Retorna a lista dos clientes
+     *
+     * @return array
+     */
+    public function getClientes()
+    {
         $clientes = [
             [
                 "nome" => "Alux Pro Sports",
@@ -51,8 +173,16 @@ class SiteController extends Controller
                 "img" => "schwanke-casa.png",
             ]
         ];
-        
-        //Lista de depoimentos
+        return $clientes;
+    }
+
+    /**
+     * View Index
+     *
+     * @return void
+     */
+    public function index()
+    {
         $depoimentos = [
             [
                 "nome" => "Jean Capital Container",
@@ -77,119 +207,34 @@ class SiteController extends Controller
             ],
         ];
 
-        //Perguntas e Respostas
-        $duvidas = [
-            [
-                "pergunta" => "Quanto custa um pacote de postagens para redes sociais?",
-                "resposta" => "Temos planos à partir de R$240,00 mensal.",
-                "active" => "active",
-            ],
-            [
-                "pergunta" => "Vocês gerenciam a rede social da nossa empresa?",
-                "resposta" => "Sim, temos planos para a gestão das redes sociais completo.",
-                "active" => "",
-            ],
-            [
-                "pergunta" => "Vocês entregam o projeto do site pronto?",
-                "resposta" => "Sim, todos as nossas soluções de sites são entregues 100% prontos para o cliente, junto com o treinamento da ferramenta.",
-                "active" => "",
-            ],
-            [
-                "pergunta" => "O que é SiteExress?",
-                "resposta" => "SiteExpress, é uma ferramenta que desenvolvemos para as empresas terem sites extremamentes profissionais, a um custo acessível de mercado",
-                "active" => "",
-            ],
-            
-        ];
-
-        //Lista de serviços
-        $solucoes = [
-            [
-                "titulo" => "Posts Para Redes Sociais",
-                "descricao" => "Criamos postagens profissionais para as redes sociais da sua empresa. Deixe seu feed com uma melhor apresentação.",
-                "img" => "service-i-1.png",
-                "url-single" => "solucoes/posts-para-redes-sociais",
-            ],
-            [
-                "titulo" => "Campanhas no Google ADS",
-                "descricao" => "Para o seu site aparecer na primeira página do Google, quando um cliente pesquisar sobre o seu negócio.",
-                "img" => "service-i-2.png",
-                "url-single" => "solucoes/campanha-no-google-ads",
-            ],
-            [
-                "titulo" => "Artes Digital",
-                "descricao" => "Comunicação visual de qualidade, como logomarcas, apresentações em PDF, Catálogos Online e muito mais.",
-                "img" => "service-i-3.png",
-                "url-single" => "solucoes/artes-digital",
-            ],
-            [
-                "titulo" => "Site Express",
-                "descricao" => "Sites profissionais com ótimo custo benefício, nossa solução express poderá atender a sua empresa.",
-                "img" => "service-i-4.png",
-                "url-single" => "solucoes/site-express",
-            ],
-            [
-                "titulo" => "Site Personalizado",
-                "descricao" => "Sites com qualidade excepcional para clientes que necessitam de algo único e inesquecível.",
-                "img" => "service-i-5.png",
-                "url-single" => "solucoes/site-personalizado",
-            ],
-        ];
-        
         return view("templates.inovex.home", [
-            "clientes" => $clientes,
+            "clientes" => $this->getClientes(),
             "depoimentos" => $depoimentos,
-            "duvidas" => $duvidas,
-            "solucoes" => $solucoes,
+            "duvidas" => Geral::sortearArray(4,$this->getDuvidas()),
+            "solucoes" => $this->getSolucoes(),
         ]);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function sobre()
     {
-        return view("templates.inovex.sobre");
+        return view("templates.inovex.sobre",[
+            "solucoes" => $this->getSolucoes(),
+        ]);
     }
 
+    /**
+     * View Soluções
+     *
+     * @param string $id
+     * @return void
+     */
     public function solucoes($id = "")
     {
-
-        //Lista de serviços
-        $solucoes = [
-            [
-                "titulo" => "Posts Para Redes Sociais",
-                "descricao" => "Criamos postagens profissionais para as redes sociais da sua empresa. Deixe seu feed com uma melhor apresentação.",
-                "img" => "service-i-1.png",
-                "url-single" => config("app.url")."/solucoes/posts-para-redes-sociais",
-                "active" => "",
-            ],
-            [
-                "titulo" => "Campanhas no Google ADS",
-                "descricao" => "Para o seu site aparecer na primeira página do Google, quando um cliente pesquisar sobre o seu negócio.",
-                "img" => "service-i-2.png",
-                "url-single" => config("app.url")."/solucoes/campanha-no-google-ads",
-                "active" => "",
-            ],
-            [
-                "titulo" => "Artes Digital",
-                "descricao" => "Comunicação visual de qualidade, como logomarcas, apresentações em PDF, Catálogos Online e muito mais.",
-                "img" => "service-i-3.png",
-                "url-single" => config("app.url")."/solucoes/artes-digital",
-                "active" => "",
-            ],
-            [
-                "titulo" => "Site Express",
-                "descricao" => "Sites profissionais com ótimo custo benefício, nossa solução express poderá atender a sua empresa.",
-                "img" => "service-i-4.png",
-                "url-single" => config("app.url")."/solucoes/site-express",
-                "active" => "",
-            ],
-            [
-                "titulo" => "Site Personalizado",
-                "descricao" => "Sites com qualidade excepcional para clientes que necessitam de algo único e inesquecível.",
-                "img" => "service-i-5.png",
-                "url-single" => config("app.url")."/solucoes/site-personalizado",
-                "active" => "",
-            ],
-        ];
 
         if( empty($id) ){
 
@@ -220,7 +265,7 @@ class SiteController extends Controller
 
 
             return view("templates.inovex.solucoes",[
-                "solucoes" => $solucoes,
+                "solucoes" => $this->getSolucoes(),
                 "planosMenores" => $planosMenores,
             ]);
 
@@ -372,11 +417,103 @@ class SiteController extends Controller
                         "cardápios",
                         "logomarcas",
                         "cartão de visita digital",
+                        "Artes para e-mail marketing",
                         "banners para sites",
                         "cartão com qrcode",
                         "propaganda para whatsapp",
                         "flyers digital",
                         "E muito mais",
+                    ]
+                ];
+
+                $planos = null;  
+            }else if($id == "site-express"){
+
+                //Ativando menu
+                $solucoes[3]["active"] = "active";
+                $info = [
+                    "titulo" => "Site Express",
+                    "descricao" => "
+                    Já pensou em ter um site profissional para a sua empresa, com desenvolvimento ágil, preço justo e com alta indexação no Google.
+                    <br><br>
+                    O Site Express, é um produto da J6 Soluções, onde construimos o site inteiro para você, e hospedamos em servidores próprios.
+                    <br><br>
+                    Como funciona:<br>
+                    1º A empresa contrata uma das nossas 3 opções de desenvolvimento;<br>
+                    2º Nossa equipe irá desenvolver todo o projeto em cima dos módulos que temos disponíveis;<br>
+                    3º Iremos fazer a hospedagem, criar as contas de email e deixar tudo pronto para o cliente;<br>
+                    4º O cliente não precisa se preocupar com paineis complexos, e artes mau feitas, deixaremos tudo lindo para você;<br>
+                    5º Iremos entregar o seu login e senha, para alterações futuras de produtos, serviços e informações;<br>
+                    6º Prestaremos o suporte, todo o tempo que precisar :)<br>
+                    ",
+                    "capa" => "capa-site-express.png",
+                    "img-exemplo" => [
+                        "site-1.png",
+                        "site-2.png",
+                        "site-3.png",
+                        "site-4.png",
+                    ],
+                    "destaques" => [
+                        "Alta velocidade na criação do projeto",
+                        "Projetos 100% entregues",
+                        "Site completo para pequenas, médias e grandes empresas",
+                        "E-mails com seu domínio",
+                        "Blog",
+                        "Alta indexação com o Google",
+                        "Painel administrador incluso",
+                        "Atualizações constantes",
+                    ]
+                ];
+
+                $planos = [
+                    [   
+                        "img" => "icone-site-express.png",
+                        "titulo" => "Básico X1",
+                        "itens" => ["Indicado para Pequenas Empresas", "1 Conta de email","1 Página","5 GB espaço","Admin"],
+                        "valor" => "R$ 19,90*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                    [   
+                        "img" => "icone-site-express.png",
+                        "titulo" => "Médio X2",
+                        "itens" => ["Indicado para Médias empresas", "10 Contas de email","Páginas ilimitadas","25 GB espaço","Admin","SEO","Blog","+10 módulos"],
+                        "valor" => "R$ 49,90*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                    [   
+                        "img" => "icone-site-express.png",
+                        "titulo" => "Super X3",
+                        "itens" => ["Indicado para Grandes empresas", "30 Contas de email","Páginas ilimitadas","50 GB espaço","Admin","SEO","Blog","+15 módulos","Google Analytics"],
+                        "valor" => "R$ 69,90*",
+                        "url" => config("app.url")."/fale-conosco",
+                    ],
+                ];                
+
+            }else if($id == "site-personalizado"){
+                //Ativando menu
+                $solucoes[4]["active"] = "active";
+                $info = [
+                    "titulo" => "Site Personalizado",
+                    "descricao" => "Um site personalizado ele é 100% customizado para o cliente, como layout, instalação do projeto no servidor do cliente, e regras de negócio dentro do site que puderem surgir como exemplo:<br>
+                    Sistema de cadastro para franquias, LandingPages customizadas, Sistema de agendamento, Integrações com outros sistemas, etc.
+                    <br><br>
+                    Em um projeto assim, iniciamos sempre com uma reunião de briefing, e seguimos com reuniões de alinhamento do projeto, até a entrega dele 100% conforme todo o combinado.",
+                    "capa" => "capa-site-personalizado.png",
+                    "img-exemplo" => [
+                        "sitep-1.png",
+                        "sitep-2.png",
+                        "sitep-3.png",
+                        "sitep-4.png",
+                        "sitep-5.png",
+                        "sitep-6.png",
+                    ],
+                    "destaques" => [
+                        "Layout 100% customizado para o cliente",
+                        "Regras de negócio conforme a necessidade",
+                        "Reunião de alinhamento",
+                        "Reuniões de etapas do projeto",
+                        "Alta conversão de SEO",
+                        "Configurado no servidor do cliente",
                     ]
                 ];
 
@@ -389,11 +526,170 @@ class SiteController extends Controller
             ];
             
             return view("templates.inovex.solucoes-single", [
-                "solucoes" => $solucoes,
+                "solucoes" => $this->getSolucoes(),
                 "info" => $info,
                 "seo" => $seo,
                 "planos" => $planos,
             ]);
         }
+    }//Fim soluções
+
+    public function portfolio()
+    {
+        $menu = [
+            [
+               "tag" => "redes-sociais",
+               "titulo" => "Redes Sociais",
+            ],
+            [
+               "tag" => "artes-digital",
+               "titulo" => "Artes Digital",
+            ],
+            [
+               "tag" => "sites",
+               "titulo" => "Sites",
+            ]
+        ];
+
+        $portfolio = [
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-1.png",
+                "menu" => $menu[0]
+            ],
+            [
+                "titulo" => "Site personalizado para Postos de Gasolina",
+                "img" => "sitep-3.png",
+                "menu" => $menu[2]
+            ],
+            [
+                "titulo" => "Flyer Digital panificadora",
+                "img" => "artes-digital-1.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Flyer Digital empresa quadras esportivas",
+                "img" => "artes-digital-2.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-2.png",
+                "menu" => $menu[0]
+            ],            
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-3.png",
+                "menu" => $menu[0]
+            ],
+            [
+                "titulo" => "Site personalizado para construtora",
+                "img" => "sitep-1.png",
+                "menu" => $menu[2]
+            ],
+            [
+                "titulo" => "Catálogo de produtos esportivos",
+                "img" => "artes-digital-3.png",
+                "menu" => $menu[1]
+            ],                                    
+            [
+                "titulo" => "Catálogo de produtos perecíveis",
+                "img" => "artes-digital-4.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Site Express Empresa de container",
+                "img" => "site-3.png",
+                "menu" => $menu[2]
+            ],                                                
+            [
+                "titulo" => "Site Express Clínica Pediátrica",
+                "img" => "site-1.png",
+                "menu" => $menu[2]
+            ],
+            [
+                "titulo" => "Cartão de visitas digital clicável",
+                "img" => "artes-digital-8.png",
+                "menu" => $menu[1]
+            ],                                                
+            [
+                "titulo" => "Banners para e-commerce",
+                "img" => "artes-digital-7.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Arte para Feed",
+                "img" => "post-4.png",
+                "menu" => $menu[0]
+            ],
+            [
+                "titulo" => "Apresentação em PDF equipe de vendas",
+                "img" => "artes-digital-6.png",
+                "menu" => $menu[1]
+            ],            
+            [
+                "titulo" => "Logomarcas",
+                "img" => "artes-digital-5.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Site Responsivo personalizado",
+                "img" => "sitep-6.png",
+                "menu" => $menu[2]
+            ],
+            [
+                "titulo" => "Arte para e-mail marketing",
+                "img" => "artes-digital-9.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-5.png",
+                "menu" => $menu[0]
+            ],                                                      
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-6.png",
+                "menu" => $menu[0]
+            ],                                                      
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-7.png",
+                "menu" => $menu[0]
+            ],                                                      
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-8.png",
+                "menu" => $menu[0]
+            ],
+            [
+                "titulo" => "Logomarca clínica de estética",
+                "img" => "artes-digital-10.jpg",
+                "menu" => $menu[1]
+            ],                                                                  
+        ];
+
+        return view("templates.inovex.portfolio", [
+            "menu" => $menu,
+            "portfolio" => $portfolio,
+            "solucoes" => $this->getSolucoes(),
+        ]);
+
     }
+
+    public function duvidas()
+    {
+        return view("templates.inovex.duvidas",[
+            "duvidas" => Geral::dividirArray($this->getDuvidas()),
+            "solucoes" => $this->getSolucoes(),
+        ]);
+    }
+
+    public function faleConosco()
+    {
+        return view("templates.inovex.faleconosco",[
+            "solucoes" => $this->getSolucoes(),
+        ]);
+    }
+
 }
