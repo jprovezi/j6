@@ -61,26 +61,6 @@
             <h3>Conheça alguns planos básicos <br> <span>das nossas soluções</span></h3>
         </div><!-- /.block-title text-center -->
 
-        <div class="row high-gutters">
-            @foreach ($planosMenores as $item)
-            <div class="col-lg-4 wow fadeInLeft" data-wow-duration="1500ms">
-                <div class="pricing-one__single">
-                    <div class="">
-                        <img src="{{ asset("templates/inovex/images/shapes/".$item["img"]) }}">
-                    </div><!-- /.pricing-one__icon -->
-                    <h3>{{ $item["titulo"] }}</h3>
-                    <ul class="pricing-one__list list-unstyled">
-                        @foreach ($item["itens"] as $valor)
-                        <li>{{$valor}}</li>
-                        @endforeach
-                        <li class="disabled">* Valores à partir de</li>
-                    </ul><!-- /.pricing-one__list list-unstyled -->
-                    <p>{{ $item["valor"] }}</p>
-                    <a href="{{ $item["url"] }}" class="thm-btn pricing-one__btn">Ver tudo</a><!-- /.thm-btn pricing-one__btn -->
-                </div><!-- /.pricing-one__single -->
-            </div><!-- /.col-lg-4 -->
-            @endforeach
-        </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- /.pricing-one -->
 

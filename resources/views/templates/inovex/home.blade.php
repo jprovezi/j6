@@ -32,7 +32,7 @@
     <div class="container">
         <div class="block-title text-center">
             <p class="color-2"><span>Clientes</span></p>
-            <h3>Mais de 150 empresas <br> <span>que confiaram na J6 Soluções Digitais</span></h3>
+            <h3>Faça como muitas empresas <br> <span>que confiaram na J6 Soluções Digitais</span></h3>
         </div><!-- /.block-title text-center -->
 
         <div class="brand-one__carousel owl-carousel thm__owl-carousel owl-theme" data-options='{
@@ -83,8 +83,8 @@
                                 <i class="fa fa-check"></i>
                             </div><!-- /.about-one__box-icon -->
                             <div class="about-one__box-content">
-                                <h3>Custo Benefício e Experiência</h3>
-                                <p>Por termos experiência de sobra com as nossas soluções, conseguimos entregar o mesmo a um ótimo valor.</p>
+                                <h3>Personalizamos o trabalho para a sua necessidade</h3>
+                                <p>Nosso trabalho é em cima da necessidade de cada empresa e cliente, levando assim sempre a melhor solução digital.</p>
                             </div><!-- /.about-one__box-content -->
                         </div><!-- /.about-one__box -->
                         <div class="about-one__box">
@@ -92,8 +92,8 @@
                                 <i class="fa fa-check"></i>
                             </div><!-- /.about-one__box-icon -->
                             <div class="about-one__box-content">
-                                <h3>Suporte Ativo</h3>
-                                <p>Nossa empresa está disposta a sempre ajuda o cliente, tirando todas as suas possíveis dúvidas.</p>
+                                <h3>Atendimento diferenciado</h3>
+                                <p>Nosso atendimento é diferenciado, exclusivo aos nossos clientes e amigos.</p>
                             </div><!-- /.about-one__box-content -->
                         </div><!-- /.about-one__box -->
                     </div><!-- /.about-one__box-wrapper -->

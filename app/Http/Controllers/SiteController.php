@@ -18,7 +18,7 @@ class SiteController extends Controller
         //Lista de serviços
         $solucoes = [
             [
-                "titulo" => "Posts Para Redes Sociais",
+                "titulo" => "Redes Sociais",
                 "descricao" => "Criamos postagens profissionais para as redes sociais da sua empresa. Deixe seu feed com uma melhor apresentação.",
                 "img" => "service-i-1.png",
                 "url-single" => config("app.url")."/solucoes/posts-para-redes-sociais",
@@ -32,24 +32,17 @@ class SiteController extends Controller
                 "active" => "",
             ],
             [
-                "titulo" => "Artes Digital",
+                "titulo" => "Artes Offline",
                 "descricao" => "Comunicação visual de qualidade, como logomarcas, apresentações em PDF, Catálogos Online e muito mais.",
                 "img" => "service-i-3.png",
                 "url-single" => config("app.url")."/solucoes/artes-digital",
                 "active" => "",
             ],
             [
-                "titulo" => "Site Express",
-                "descricao" => "Sites profissionais com ótimo custo benefício, nossa solução express poderá atender a sua empresa.",
-                "img" => "service-i-4.png",
-                "url-single" => config("app.url")."/solucoes/site-express",
-                "active" => "",
-            ],
-            [
-                "titulo" => "Site Personalizado",
+                "titulo" => "Criação de Sites",
                 "descricao" => "Sites com qualidade excepcional para clientes que necessitam de algo único e inesquecível.",
                 "img" => "service-i-5.png",
-                "url-single" => config("app.url")."/solucoes/site-personalizado",
+                "url-single" => config("app.url")."/solucoes/criacao-de-sites",
                 "active" => "",
             ],
         ];
@@ -60,23 +53,18 @@ public function getDuvidas()
 {
     $duvidas = [
         [
-            "pergunta" => "Quanto custa um pacote de postagens para redes sociais?",
-            "resposta" => "Temos planos à partir de R$240,00 mensal.",
+            "pergunta" => "Quanto custa um trabalho com redes sociais?",
+            "resposta" => "Todas as nossas soluções são baseadas na necessidade do trabalho de cada cliente.",
             "active" => "active",
         ],
         [
             "pergunta" => "Vocês gerenciam a rede social da nossa empresa?",
-            "resposta" => "Sim, temos planos para a gestão das redes sociais completo.",
+            "resposta" => "Sim, realizamos a gestão das redes sociais.",
             "active" => "",
         ],
         [
             "pergunta" => "Vocês entregam o projeto do site pronto?",
             "resposta" => "Sim, todos as nossas soluções de sites são entregues 100% prontos para o cliente, junto com o treinamento da ferramenta.",
-            "active" => "",
-        ],
-        [
-            "pergunta" => "O que é SiteExress?",
-            "resposta" => "SiteExpress, é uma ferramenta que desenvolvemos para as empresas terem sites extremamentes profissionais, a um custo acessível de mercado",
             "active" => "",
         ],
         [
@@ -86,7 +74,7 @@ public function getDuvidas()
         ],
         [
             "pergunta" => "Vocês são uma agência de marketing?",
-            "resposta" => "Sim, somos uma agência de marketing digital, focado em soluções digitais. Todos as nossas soluções são criadas a partir de necessidade reais de negócios.",
+            "resposta" => "Sim, somos uma agência digital, nosso foco é o posicionamento das empresas no mundo digital.",
             "active" => "",
         ],
         [
@@ -97,26 +85,6 @@ public function getDuvidas()
         [
             "pergunta" => "Quero fazer muitos serviços com a empresa, tenho desconto?",
             "resposta" => "Quando o cliente tem uma demanda muito alta, conseguimos sempre ajudar o cliente e tentar encaixar a melhor negociação necessária.",
-            "active" => "",
-        ],
-        [
-            "pergunta" => "Vocês trabalham com alguma solução para delivery?",
-            "resposta" => "Temos a solução perfeita para delivery no geral, chamada Foguete Delivery.",
-            "active" => "",
-        ],
-        [
-            "pergunta" => "O que é Foguete delivery?",
-            "resposta" => "Nosso software para pedido de comida, bebida e qualquer tipo de consumível entregável online.",
-            "active" => "active",
-        ],
-        [
-            "pergunta" => "O que está incluso no sistema de delivery?",
-            "resposta" => "Criamos desde da parte de fotografia, implantação e atualizações do nosso sistema. É a solução completa e definitiva das entregas online.",
-            "active" => "",
-        ],
-        [
-            "pergunta" => "Fechei um plano com vocês, e agora?",
-            "resposta" => "Seguimos um protocolo de 3 passos para iniciar com nossos clientes, 1º Criamos um grupo no whatsapp, 2º Enviamos um briefing inicial, 2º Agendamos uma reunião de alinhamento",
             "active" => "",
         ],
     ];
@@ -237,36 +205,9 @@ public function getDuvidas()
     {
 
         if( empty($id) ){
-
-            //Planos menores
-            $planosMenores = [
-                [   
-                    "img" => "service-i-1.png",
-                    "titulo" => "Post para redes sociais X1",
-                    "itens" => ["Identidade Visual","Cronograma Mensal","1 Post por semana","4 Posts mensal","Copywriting"],
-                    "valor" => "R$ 240,00*",
-                    "url" => config("app.url")."/solucoes/posts-para-redes-sociais",
-                ],
-                [   
-                    "img" => "service-i-2.png",
-                    "titulo" => "Campanha no Google ADS X1",
-                    "itens" => ["Análise de concorrentes","1 campanha","12 Manutenções","1 Relatório Mensal","Valor de ADS não incluso*"],
-                    "valor" => "R$ 250,00*",
-                    "url" => config("app.url")."/solucoes/campanha-no-google-ads",
-                ],
-                [   
-                    "img" => "service-i-3.png",
-                    "titulo" => "Artes Digital",
-                    "itens" => ["Banners para sites","Cartões de visitas virtuais","Logomarcas","Catálogo de produtos em PDF","Cardápio para restaurantes"],
-                    "valor" => "R$ 80,00*",
-                    "url" => config("app.url")."/solucoes/artes-digital",
-                ],
-            ];            
-
-
+       
             return view("templates.inovex.solucoes",[
                 "solucoes" => $this->getSolucoes(),
-                "planosMenores" => $planosMenores,
             ]);
 
         }else{
@@ -298,45 +239,7 @@ public function getDuvidas()
                         "Estratégia de Mkt Digital",
                     ]
                 ];
-
-                //Planos menores
-                $planos = [
-                    [   
-                        "img" => "icone-posts.png",
-                        "titulo" => "Plano X1",
-                        "itens" => ["Identidade Visual","Cronograma Mensal","1 Post por semana","4 Posts mensal","Copywriting"],
-                        "valor" => "R$ 240,00*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                    [   
-                        "img" => "icone-posts.png",
-                        "titulo" => "Plano X2",
-                        "itens" => ["Identidade Visual","Cronograma Mensal","2 Post por semana","8 Posts mensal","Copywriting"],
-                        "valor" => "R$ 408,00*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                    [   
-                        "img" => "icone-posts.png",
-                        "titulo" => "Plano X3",
-                        "itens" => ["Identidade Visual","Cronograma Mensal","3 Post por semana","12 Posts mensal","Copywriting", "Agendamenteo do Post"],
-                        "valor" => "R$ 576,00*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                    [   
-                        "img" => "icone-posts.png",
-                        "titulo" => "Plano X4",
-                        "itens" => ["Identidade Visual","Cronograma Mensal","4 Post por semana","16 Posts mensal","Copywriting","Agendamento do Post"],
-                        "valor" => "R$ 720,00*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                    [   
-                        "img" => "icone-posts.png",
-                        "titulo" => "Plano X4",
-                        "itens" => ["Identidade Visual","Cronograma Mensal","4 Post por semana","16 Posts mensal","Copywriting", "Agendamento do Post", "ADS"],
-                        "valor" => "R$ 840,00*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                ];                     
+                    
 
             }else if($id == "campanha-no-google-ads"){
 
@@ -366,30 +269,7 @@ public function getDuvidas()
                         "Sua empresa no Google",
                     ]
                 ];
-
-                $planos = [
-                    [   
-                        "img" => "icone-google.png",
-                        "titulo" => "Plano X1",
-                        "itens" => ["Indicado para Pequenas Empresas", "1 campanha","12 Manutenções","1 Relatório Mensal","Valor de ADS não incluso*"],
-                        "valor" => "R$ 250,00*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                    [   
-                        "img" => "icone-google.png",
-                        "titulo" => "Plano X2",
-                        "itens" => ["Indicado para Médias Empresas", "3 campanhas","12 Manutenções","1 Relatório Mensal","Valor de ADS não incluso*"],
-                        "valor" => "R$ 500,00*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                    [   
-                        "img" => "icone-google.png",
-                        "titulo" => "Plano X3",
-                        "itens" => ["Indicado para Grandes Empresas", "5+ campanhas","12 Manutenções","1 Relatório Mensal","Reunião de alinhamento mensal","Valor de ADS não incluso*"],
-                        "valor" => "R$ 900,00*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                ];                    
+                   
             }else if($id == "artes-digital"){
 
                 //Ativando menu
@@ -426,70 +306,7 @@ public function getDuvidas()
                     ]
                 ];
 
-                $planos = null;  
-            }else if($id == "site-express"){
-
-                //Ativando menu
-                $solucoes[3]["active"] = "active";
-                $info = [
-                    "titulo" => "Site Express",
-                    "descricao" => "
-                    Já pensou em ter um site profissional para a sua empresa, com desenvolvimento ágil, preço justo e com alta indexação no Google.
-                    <br><br>
-                    O Site Express, é um produto da J6 Soluções, onde construimos o site inteiro para você, e hospedamos em servidores próprios.
-                    <br><br>
-                    Como funciona:<br>
-                    1º A empresa contrata uma das nossas 3 opções de desenvolvimento;<br>
-                    2º Nossa equipe irá desenvolver todo o projeto em cima dos módulos que temos disponíveis;<br>
-                    3º Iremos fazer a hospedagem, criar as contas de email e deixar tudo pronto para o cliente;<br>
-                    4º O cliente não precisa se preocupar com paineis complexos, e artes mau feitas, deixaremos tudo lindo para você;<br>
-                    5º Iremos entregar o seu login e senha, para alterações futuras de produtos, serviços e informações;<br>
-                    6º Prestaremos o suporte, todo o tempo que precisar :)<br>
-                    ",
-                    "capa" => "capa-site-express.png",
-                    "img-exemplo" => [
-                        "site-1.png",
-                        "site-2.png",
-                        "site-3.png",
-                        "site-4.png",
-                    ],
-                    "destaques" => [
-                        "Alta velocidade na criação do projeto",
-                        "Projetos 100% entregues",
-                        "Site completo para pequenas, médias e grandes empresas",
-                        "E-mails com seu domínio",
-                        "Blog",
-                        "Alta indexação com o Google",
-                        "Painel administrador incluso",
-                        "Atualizações constantes",
-                    ]
-                ];
-
-                $planos = [
-                    [   
-                        "img" => "icone-site-express.png",
-                        "titulo" => "Básico X1",
-                        "itens" => ["Indicado para Pequenas Empresas", "1 Conta de email","1 Página","5 GB espaço","Admin"],
-                        "valor" => "R$ 19,90*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                    [   
-                        "img" => "icone-site-express.png",
-                        "titulo" => "Médio X2",
-                        "itens" => ["Indicado para Médias empresas", "10 Contas de email","Páginas ilimitadas","25 GB espaço","Admin","SEO","Blog","+10 módulos"],
-                        "valor" => "R$ 49,90*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                    [   
-                        "img" => "icone-site-express.png",
-                        "titulo" => "Super X3",
-                        "itens" => ["Indicado para Grandes empresas", "30 Contas de email","Páginas ilimitadas","50 GB espaço","Admin","SEO","Blog","+15 módulos","Google Analytics"],
-                        "valor" => "R$ 69,90*",
-                        "url" => config("app.url")."/fale-conosco",
-                    ],
-                ];                
-
-            }else if($id == "site-personalizado"){
+            }else if($id == "criacao-de-sites"){
                 //Ativando menu
                 $solucoes[4]["active"] = "active";
                 $info = [
@@ -506,6 +323,10 @@ public function getDuvidas()
                         "sitep-4.png",
                         "sitep-5.png",
                         "sitep-6.png",
+                        "site-1.png",
+                        "site-2.png",
+                        "site-3.png",
+                        "site-4.png",                        
                     ],
                     "destaques" => [
                         "Layout 100% customizado para o cliente",
@@ -514,10 +335,11 @@ public function getDuvidas()
                         "Reuniões de etapas do projeto",
                         "Alta conversão de SEO",
                         "Configurado no servidor do cliente",
+                        "Templates únicos, exclusivos e profissionais",
+                        "Sites Responsivos"
                     ]
                 ];
 
-                $planos = null;  
             }
 
             $seo = [
@@ -529,7 +351,6 @@ public function getDuvidas()
                 "solucoes" => $this->getSolucoes(),
                 "info" => $info,
                 "seo" => $seo,
-                "planos" => $planos,
             ]);
         }
     }//Fim soluções

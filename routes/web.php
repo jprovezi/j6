@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/', [SiteController::class, "index"]);
-Route::get('/sobre', [SiteController::class, "sobre"]);
-Route::get('/solucoes/{id?}', [SiteController::class, "solucoes"]);
-Route::get('/portfolio', [SiteController::class, "portfolio"]);
-Route::get('/duvidas', [SiteController::class, "duvidas"]);
-Route::get('/fale-conosco', [SiteController::class, "faleConosco"]);
+Route::get('/', [SiteController::class, "index"])->name('site.home');
+Route::get('/sobre', [SiteController::class, "sobre"])->name('site.sobre');
+Route::get('/solucoes/{id?}', [SiteController::class, "solucoes"])->name('site.solucoes');
+Route::get('/portfolio', [SiteController::class, "portfolio"])->name('site.portfolio');
+Route::get('/duvidas', [SiteController::class, "duvidas"])->name('site.duvidas');
+Route::get('/fale-conosco', [SiteController::class, "faleConosco"])->name('site.faleconosco');

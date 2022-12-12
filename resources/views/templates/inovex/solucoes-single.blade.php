@@ -85,8 +85,10 @@
                                 @endforeach
                             </div><!-- /.row -->
                             <br>
-                            <p class="destaque">Todas as nossas soluções são de alta qualidade, faça como muitas empresas e profissionalize o
-                                digital do seu negócio.</p>
+                            <p class="destaque">Todas as nossas soluções são de alta qualidade, faça como muitas empresas e posicione o seu negócio no mundo digital.</p>
+                            <p>
+                                <button class="btn btn-primary" onclick="document.location.href='{{ route('site.faleconosco') }}'">Fale Conosco</button>
+                            </p>
                         </div><!-- /.service-details__content -->
                     </div><!-- /.service-details__main -->
                 </div><!-- /.col-lg-8 -->
@@ -94,39 +96,5 @@
             </div><!-- /.row -->
         </div><!-- /.container -->
     </section><!-- /.blog-standard -->
-
-    @if (!is_null($planos))
-    <section class="pricing-one" style="margin: -200px 0 0 0;">
-        <div class="container">
-            <div class="block-title text-center">
-                <p class="color-2"><span>Nossos Planos</span></p>
-                <h3>Confira nossos planos</span></h3>
-            </div><!-- /.block-title text-center -->
-    
-            <div class="row high-gutters">
-                @foreach ($planos as $item)
-                <div class="col-lg-4 wow fadeInLeft" data-wow-duration="1500ms">
-                    <div class="pricing-one__single">
-                        <div class="">
-                            <img src="{{ asset("j6/".$item["img"]) }}">
-                        </div><!-- /.pricing-one__icon -->
-                        <h3>{{ $item["titulo"] }}</h3>
-                        <ul class="pricing-one__list list-unstyled">
-                            @foreach ($item["itens"] as $valor)
-                            <li>{{$valor}}</li>
-                            @endforeach
-                            <li class="disabled">* Valores para planos de 12 meses</li>
-                        </ul><!-- /.pricing-one__list list-unstyled -->
-                        <p>{{ $item["valor"] }}</p>
-                        <a href="{{ $item["url"] }}" class="thm-btn pricing-one__btn" style="width: 70%;">
-                            Fale Conosco
-                        </a>
-                    </div><!-- /.pricing-one__single -->
-                </div><!-- /.col-lg-4 -->
-                @endforeach
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </section><!-- /.pricing-one -->    
-    @endif
  
 @endsection

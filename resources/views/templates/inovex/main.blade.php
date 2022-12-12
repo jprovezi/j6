@@ -8,25 +8,25 @@
     <meta name="description" content="@yield('description')">
     <meta name="author" content="J6 Soluções Digitais">
     <!-- favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{config("app.url")}}/templates/inovex/images/favicons/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset("templates/inovex/images/favicons/favicon.png")}}">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500;1,700&display=swap">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/animate.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/hover-min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/swiper.min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/plugins/lightbox2/dist/css/lightbox.min.css">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/animate.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/bootstrap.min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/bootstrap-datepicker.min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/bootstrap-select.min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/fontawesome-all.min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/hover-min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/swiper.min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/jquery.mCustomScrollbar.min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/magnific-popup.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/owl.carousel.min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/owl.theme.default.min.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/plugins/lightbox2/dist/css/lightbox.min.css")}}">
     
     <!-- Template Styles -->
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/style.css">
-    <link rel="stylesheet" href="{{config("app.url")}}/templates/inovex/css/responsive.css">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/style.css")}}">
+    <link rel="stylesheet" href="{{asset("templates/inovex/css/responsive.css")}}">
 
 </head>
 
@@ -180,27 +180,27 @@
     </div>
     
     <!-- template scripts -->
-    <script src="{{config("app.url")}}/templates/inovex/js/jquery.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/bootstrap.bundle.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/bootstrap-datepicker.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/bootstrap-select.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/isotope.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/jquery.ajaxchimp.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/jquery.circleType.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/waypoints.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/jquery.counterup.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/jquery.lettering.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/jquery.magnific-popup.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/jquery.validate.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/owl.carousel.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/TweenMax.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/wow.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/swiper.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/particles.min.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/particel-config.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/js/theme.js"></script>
-    <script src="{{config("app.url")}}/templates/inovex/plugins/lightbox2/dist/js/lightbox.min.js"></script>
+    <script src="{{asset("templates/inovex/js/jquery.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/bootstrap.bundle.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/bootstrap-datepicker.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/bootstrap-select.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/isotope.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/jquery.ajaxchimp.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/jquery.circleType.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/waypoints.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/jquery.counterup.min.js")}}"></script>
+    <!--<script src="{{{asset("templates/inovex/js/jquery.lettering.min.js")}}}/"></script>-->
+    <script src="{{asset("templates/inovex/js/jquery.magnific-popup.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/jquery.mCustomScrollbar.concat.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/jquery.validate.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/owl.carousel.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/TweenMax.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/wow.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/swiper.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/particles.min.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/particel-config.js")}}"></script>
+    <script src="{{asset("templates/inovex/js/theme.js")}}"></script>
+    <script src="{{asset("templates/inovex/plugins/lightbox2/dist/js/lightbox.min.js")}}"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script type="text/javascript">
