@@ -44,10 +44,10 @@
                 <div class="col-lg-8">
                     <div class="portfolio-details__content">
                         <h3>Um pouco mais sobre a J6</h3>
-                        <p>Somos uma Agência 100% digital com experiência e soluções que profissionalizam e trazem resultados para muitas empresas.</p>
-                        <p>Iniciamos nossas atividades em 2022, mas somamos experiência na área desde 2004.
+                        <p>Somos uma Agência digital com foco no posicionamento online dos nossos clientes. Somamos experiência e soluções que profissionalizam e trazem resultados para muitas empresas.</p>
+                        <p>Iniciamos nossas atividades em 2022, mas nossa experiência no mercado é desde 2004.
                             <br>
-                            São 18 anos de experiência, com programação, sites, e marketing digital. Já tendo participado de vários projetos e startups pelo processo.
+                            Foram muitos desafios nesses anos com programação web, sites profissionais, identidades visuais, startups, portais web. Tendo participado de grandes projetos a jobs menores.
                         </p>
                         <p>Hoje entramos no mercado para fazer a diferença, e executar um serviço de qualidade e comprometimento.</p>
                         <div class="row">
@@ -89,10 +89,10 @@
                         <div class="portfolio-details__info-single">
                             <div class="portfolio-details__info-title">
                                 <i class="far fa-tag"></i>
-                                <span>Tags :</span>
+                                <span>Soluções :</span>
                             </div><!-- /.portfolio-details__info-title -->
                             <div class="portfolio-details__info-text">
-                                <p>Sites <br> Sistemas<br> MKT Digital<br> Redes Sociais<br> Artes Digitais</p>
+                                <p>Criação de Sites <br> Sistemas Web<br> SEO Google<br> Redes Sociais<br> Artes Offline</p>
                             </div><!-- /.portfolio-details__info-text -->
                         </div><!-- /.portfolio-details__info-single -->
                     </div><!-- /.portfolio-details__info -->
