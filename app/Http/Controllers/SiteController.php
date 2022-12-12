@@ -87,6 +87,11 @@ public function getDuvidas()
             "resposta" => "Quando o cliente tem uma demanda muito alta, conseguimos sempre ajudar o cliente e tentar encaixar a melhor negociação necessária.",
             "active" => "",
         ],
+        [
+            "pergunta" => "Vocês colocam meu site na 1º página do Google?",
+            "resposta" => "Tentamos, posicionar o site hoje na 1º página sim. Por se tratar de um trabalho árduo, nós possuímos as melhores ferramentas e realizamos esse serviço.",
+            "active" => "",
+        ],
     ];
 
     return $duvidas;
