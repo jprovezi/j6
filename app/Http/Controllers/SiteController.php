@@ -21,7 +21,7 @@ class SiteController extends Controller
                 "titulo" => "Redes Sociais",
                 "descricao" => "Criamos postagens profissionais para as redes sociais da sua empresa. Deixe seu feed com uma melhor apresentação.",
                 "img" => "service-i-1.png",
-                "url-single" => config("app.url")."/solucoes/posts-para-redes-sociais",
+                "url-single" => config("app.url")."/solucoes/redes-sociais",
                 "active" => "",
             ],
             [
@@ -35,7 +35,7 @@ class SiteController extends Controller
                 "titulo" => "Artes Offline",
                 "descricao" => "Comunicação visual de qualidade, como logomarcas, apresentações em PDF, Catálogos Online e muito mais.",
                 "img" => "service-i-3.png",
-                "url-single" => config("app.url")."/solucoes/artes-digital",
+                "url-single" => config("app.url")."/solucoes/artes-offline",
                 "active" => "",
             ],
             [
@@ -218,7 +218,8 @@ public function getDuvidas()
         }else{
 
             //Verificando id passado
-            if($id == "posts-para-redes-sociais"){
+            if($id == "redes-sociais"){
+                $solucoes = $this->getSolucoes();
                 //Ativando menu
                 $solucoes[0]["active"] = "active";
                 $info = [
@@ -247,7 +248,7 @@ public function getDuvidas()
                     
 
             }else if($id == "campanha-no-google-ads"){
-
+                $solucoes = $this->getSolucoes();
                 //Ativando menu
                 $solucoes[1]["active"] = "active";
                 $info = [
@@ -275,8 +276,8 @@ public function getDuvidas()
                     ]
                 ];
                    
-            }else if($id == "artes-digital"){
-
+            }else if($id == "artes-offline"){
+                $solucoes = $this->getSolucoes();
                 //Ativando menu
                 $solucoes[2]["active"] = "active";
                 $info = [
@@ -313,7 +314,8 @@ public function getDuvidas()
 
             }else if($id == "criacao-de-sites"){
                 //Ativando menu
-                $solucoes[4]["active"] = "active";
+                $solucoes = $this->getSolucoes();
+                $solucoes[3]["active"] = "active";
                 $info = [
                     "titulo" => "Site Personalizado",
                     "descricao" => "Um site personalizado ele é 100% customizado para o cliente, como layout, instalação do projeto no servidor do cliente, e regras de negócio dentro do site que puderem surgir como exemplo:<br>
@@ -353,7 +355,7 @@ public function getDuvidas()
             ];
             
             return view("templates.inovex.solucoes-single", [
-                "solucoes" => $this->getSolucoes(),
+                "solucoes" => $solucoes,
                 "info" => $info,
                 "seo" => $seo,
             ]);
