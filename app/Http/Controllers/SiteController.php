@@ -92,6 +92,11 @@ public function getDuvidas()
             "resposta" => "Tentamos, posicionar o site hoje na 1º página sim. Por se tratar de um trabalho árduo, nós possuímos as melhores ferramentas e realizamos esse serviço.",
             "active" => "",
         ],
+        [
+            "pergunta" => "Vocês desenvolvem sistemas web?",
+            "resposta" => "Sim, desenvolvemos desde da ideia, até a implantação final do servidor.",
+            "active" => "",
+        ],        
     ];
 
     return $duvidas;
