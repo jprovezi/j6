@@ -64,7 +64,7 @@
                         </ul><!-- /.main-nav__navigation-box -->
                     </div><!-- /.main-nav__main-navigation -->
                     <div class="main-nav__right">
-                        <a href="#" class="search-popup__toggler main-nav__search"><i class="far fa-search"></i></a>
+                        <!--<a href="#" class="search-popup__toggler main-nav__search"><i class="far fa-search"></i></a>-->
                         <a href="{{ config("app.url"); }}/fale-conosco" class="thm-btn main-nav-one__btn"><span>Fale Conosco</span></a>
                         <!-- /.thm-btn main-nav-one__btn -->
                     </div><!-- /.main-nav__right -->
@@ -103,10 +103,10 @@
                             <div class="footer-widget footer-widget__links__2">
                                 <h3 class="footer-widget__title">Acessos</h3>
                                 <ul class="list-unstyled footer-widget__links-list">
-                                    <li><a href="#">Institucional</a></li>
-                                    <li><a href="#">Dúvidas</a></li>
+                                    <li><a href="{{ route('site.sobre') }}">Institucional</a></li>
+                                    <li><a href="{{ route('site.duvidas') }}">Dúvidas</a></li>
                                     <!--<li><a href="#">Blog</a></li>-->
-                                    <li><a href="#">Portfólio</a></li>
+                                    <li><a href="{{ route('site.portfolio') }}">Portfólio</a></li>
                                 </ul><!-- /.list-unstyled footer-widget__links-list -->
                             </div><!-- /.footer-widget -->
                         </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
