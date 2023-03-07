@@ -1,6 +1,7 @@
 <?php 
 
 namespace App\Helpers;
+use Illuminate\Support\Arr;
 
 
 class Geral
@@ -10,9 +11,10 @@ class Geral
      * Divide o array em duas partes e retorna um array
      *
      * @param Array $array
+     * @param bool $sortear
      * @return array
      */
-    public static function dividirArray(Array $array)
+    public static function dividirArray(Array $array, $sortear = false)
     {
         $tamanhoArr = count($array);
         $metadeArr = $tamanhoArr/2;
@@ -28,7 +30,13 @@ class Geral
         }
 
         $arr = [$arr1, $arr2];
-        return $arr;
+
+        if( !$sortear ){
+            return $arr;
+        }else{
+            return Arr::shuffle($arr);
+        }
+        
         
     }
 

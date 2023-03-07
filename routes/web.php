@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::get('/solucoes/{id?}', [SiteController::class, "solucoes"])->name('site.s
 Route::get('/portfolio', [SiteController::class, "portfolio"])->name('site.portfolio');
 Route::get('/duvidas', [SiteController::class, "duvidas"])->name('site.duvidas');
 Route::get('/fale-conosco', [SiteController::class, "faleConosco"])->name('site.faleconosco');
+Route::post('/contato', [ContatoController::class, 'store'])->name('contato.store');

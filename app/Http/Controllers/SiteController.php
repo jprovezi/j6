@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Seo;
 use App\Helpers\Geral;
+use Illuminate\Support\Arr;
 
 class SiteController extends Controller
 {
@@ -40,9 +41,16 @@ class SiteController extends Controller
             ],
             [
                 "titulo" => "Criação de Sites",
-                "descricao" => "Sites com qualidade excepcional para clientes que necessitam de algo único e inesquecível.",
+                "descricao" => "Criamos sites profissionais com qualidade excepcional para clientes que necessitam de algo único e inesquecível.",
                 "img" => "service-i-5.png",
                 "url-single" => config("app.url")."/solucoes/criacao-de-sites",
+                "active" => "",
+            ],
+            [
+                "titulo" => "Programação WEB",
+                "descricao" => "Desenvolvimento e manutenção de sistemas web, desde o desenho, até a implantação final no servidor.",
+                "img" => "icone-programacao.png",
+                "url-single" => config("app.url")."/solucoes/programacao-web",
                 "active" => "",
             ],
         ];
@@ -83,8 +91,8 @@ public function getDuvidas()
             "active" => "",
         ],
         [
-            "pergunta" => "Quero fazer muitos serviços com a empresa, tenho desconto?",
-            "resposta" => "Quando o cliente tem uma demanda muito alta, conseguimos sempre ajudar o cliente e tentar encaixar a melhor negociação necessária.",
+            "pergunta" => "Qual linguagem de programação vocês trabalham",
+            "resposta" => "Para projetos web, trabalhamos com Laravel versão 9x ou superior, e Vue.JS.",
             "active" => "",
         ],
         [
@@ -95,6 +103,11 @@ public function getDuvidas()
         [
             "pergunta" => "Vocês desenvolvem sistemas web?",
             "resposta" => "Sim, desenvolvemos desde da ideia, até a implantação final do servidor.",
+            "active" => "",
+        ],        
+        [
+            "pergunta" => "Tenho uma startup de um aplicativo novo no mercado, vocês fazem o desenvolvimento?",
+            "resposta" => "Sim, Criamos aplicativos web responsivos, com alta performance, e engajamento com o Google.",
             "active" => "",
         ],        
     ];
@@ -110,6 +123,18 @@ public function getDuvidas()
     public function getClientes()
     {
         $clientes = [
+            [
+                "nome" => "Deltasoft",
+                "img" => "deltasoft.png",
+            ],
+            [
+                "nome" => "Chef Line",
+                "img" => "chefline.png",
+            ],
+            [
+                "nome" => "Beeapp",
+                "img" => "beeapp.png",
+            ],
             [
                 "nome" => "Alux Pro Sports",
                 "img" => "alux.png",
@@ -151,7 +176,7 @@ public function getDuvidas()
                 "img" => "schwanke-casa.png",
             ]
         ];
-        return $clientes;
+        return Arr::shuffle($clientes);
     }
 
     /**
@@ -163,12 +188,15 @@ public function getDuvidas()
     {
         $depoimentos = [
             [
-                "nome" => "Jean Capital Container",
-                "depoimento" => "Tive a oportunidade de ser atendido pelo profissional da J6 no passado, realmente sempre se dedicaram a
-                um trabalho de qualidade e compromisso.",
+                "nome" => "Ataliba Moises Beeapp",
+                "depoimento" => "A J6 conseguiu construir o nosso aplicativo de forma sólida e com atendimento diferenciado. Hoje tenho muito mais tranquilidade no suporte da minha empresa.",
             ],
             [
-                "nome" => "Michele Alux",
+                "nome" => "Douglas Duarte Deltasoft",
+                "depoimento" => "Tive a oportunidade de ser atendido pela J6 para realizar o branding da minha empresa, eles desenvolveram a nossa marca, material offline e nosso site.",
+            ],
+            [
+                "nome" => "Michele Alux Pro Sports",
                 "depoimento" => "A J6 foi a empresa que depois de muito tempo, me apresentou serviços de extrema qualidade a um ótimo custo benefício. Obrigado a todos!",
             ],
             [
@@ -187,7 +215,7 @@ public function getDuvidas()
 
         return view("templates.inovex.home", [
             "clientes" => $this->getClientes(),
-            "depoimentos" => $depoimentos,
+            "depoimentos" => Arr::shuffle($depoimentos),
             "duvidas" => Geral::sortearArray(4,$this->getDuvidas()),
             "solucoes" => $this->getSolucoes(),
         ]);
@@ -286,13 +314,13 @@ public function getDuvidas()
                 //Ativando menu
                 $solucoes[2]["active"] = "active";
                 $info = [
-                    "titulo" => "Artes Digital",
+                    "titulo" => "Artes Offline",
                     "descricao" => "<strong>Uma imagem vale mais que mil palavras</strong>, certamente você já escutou essa frase e ela é verdade.
                     <br>
                     O que chama atenção primeiro das pessoas é as imagens, e após isso o texto, sendo assim oferecemos criação de artes digital de qualidade.
                     <br>
                     Criamos artes digitais como:",
-                    "capa" => "capa-artes-digital.png",
+                    "capa" => "capa-arte-offline.png",
                     "img-exemplo" => [
                         "artes-digital-1.png",
                         "artes-digital-2.png",
@@ -322,15 +350,14 @@ public function getDuvidas()
                 $solucoes = $this->getSolucoes();
                 $solucoes[3]["active"] = "active";
                 $info = [
-                    "titulo" => "Site Personalizado",
+                    "titulo" => "Criação de Sites",
                     "descricao" => "Um site personalizado ele é 100% customizado para o cliente, como layout, instalação do projeto no servidor do cliente, e regras de negócio dentro do site que puderem surgir como exemplo:<br>
                     Sistema de cadastro para franquias, LandingPages customizadas, Sistema de agendamento, Integrações com outros sistemas, etc.
                     <br><br>
                     Em um projeto assim, iniciamos sempre com uma reunião de briefing, e seguimos com reuniões de alinhamento do projeto, até a entrega dele 100% conforme todo o combinado.",
-                    "capa" => "capa-site-personalizado.png",
+                    "capa" => "capa-criacao-de-site.png",
                     "img-exemplo" => [
-                        "sitep-1.png",
-                        "sitep-2.png",
+                        "site-5.png",
                         "sitep-3.png",
                         "sitep-4.png",
                         "sitep-5.png",
@@ -352,6 +379,31 @@ public function getDuvidas()
                     ]
                 ];
 
+            }else if($id == "programacao-web"){
+                //Ativando menu
+                $solucoes = $this->getSolucoes();
+                $solucoes[4]["active"] = "active";
+                $info = [
+                    "titulo" => "Programação Web",
+                    "descricao" => "Há mais de 18 anos a nossa equipe vem trabalhando com programação web de altíssimo nível. <br>Estamos sempre engajados em estabelecer uma metodologia que possa seguir nosso cliente durante todo o processo: desde o momento da criação, passando pelo projeto e até chegar à implantação do servidor final. Para oferecermos os melhores serviços para você, empregamos as tecnologias mais modernas como Laravel Framework e Vue.JS. <br><br>Seja para construir um novo projeto do zero ou dar a manutenção necessária a algo já existente, nós estaremos prontos para te aconselhar e colaborar com excelência e comprometimento, pois é assim que tem funcionado por todos esses anos. Com conhecimento profundo dos sistemas de códigos e as ferramentas certas, somado à devida dedicação, garantimos a entrega de resultados incríveis!",
+                    "capa" => "capa-programacao-web.png",
+                    "img-exemplo" => [
+                        "programacao-beeapp.png", 
+                        "sitep-2.png",                      
+                        "sistema-passe.png",                      
+                                             
+                    ],
+                    "destaques" => [
+                        "Designer UX",
+                        "Laravel Framework",
+                        "Vue.JS",
+                        "Projetos escalonáveis",
+                        "Desde do desenho até o projeto rodando no servidor",
+                        "Compromisso e Qualidade",
+                        "Paixão por códigos",
+                        "Sistemas Responsivos"
+                    ]
+                ];
             }
 
             $seo = [
@@ -375,12 +427,16 @@ public function getDuvidas()
                "titulo" => "Redes Sociais",
             ],
             [
-               "tag" => "artes-digital",
-               "titulo" => "Artes Digital",
+               "tag" => "artes-offline",
+               "titulo" => "Artes Offline",
             ],
             [
-               "tag" => "sites",
-               "titulo" => "Sites",
+               "tag" => "websites",
+               "titulo" => "Websites",
+            ],
+            [
+               "tag" => "programacao-web",
+               "titulo" => "Programação Web",
             ]
         ];
 
@@ -416,9 +472,14 @@ public function getDuvidas()
                 "menu" => $menu[0]
             ],
             [
-                "titulo" => "Site personalizado para construtora",
-                "img" => "sitep-1.png",
-                "menu" => $menu[2]
+                "titulo" => "Sistema de cadastro de imóveis e troca de pontos por vendas",
+                "img" => "sistema-passe.png",
+                "menu" => $menu[3]
+            ],
+            [
+                "titulo" => "Sistema completo de gestão empresarial e onboarding Beeapp",
+                "img" => "sistema-beeapp.png",
+                "menu" => $menu[3]
             ],
             [
                 "titulo" => "Catálogo de produtos esportivos",
@@ -431,13 +492,18 @@ public function getDuvidas()
                 "menu" => $menu[1]
             ],
             [
-                "titulo" => "Site Express Empresa de container",
+                "titulo" => "Site para Empresa de container",
                 "img" => "site-3.png",
                 "menu" => $menu[2]
             ],                                                
             [
-                "titulo" => "Site Express Clínica Pediátrica",
+                "titulo" => "Site com Blog para Clínica Pediátrica",
                 "img" => "site-1.png",
+                "menu" => $menu[2]
+            ],
+            [
+                "titulo" => "Site Dinâmico para empresa de Tecnologia Deltasoft",
+                "img" => "site-5.png",
                 "menu" => $menu[2]
             ],
             [
@@ -466,13 +532,53 @@ public function getDuvidas()
                 "menu" => $menu[1]
             ],
             [
-                "titulo" => "Site Responsivo personalizado",
+                "titulo" => "Site Responsivo com Alto índice de SEO Google",
                 "img" => "sitep-6.png",
                 "menu" => $menu[2]
             ],
             [
                 "titulo" => "Arte para e-mail marketing",
                 "img" => "artes-digital-9.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Aplicação parede Logomarca",
+                "img" => "artes-digital-10.jpg",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Arte para rórulo de bebidas",
+                "img" => "artes-digital-11.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Cartão de visitas impresso",
+                "img" => "artes-digital-12.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Criação de Logomarca",
+                "img" => "artes-digital-13.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Criação e aplicação da Logomarca Deltasoft",
+                "img" => "artes-digital-14.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Arte para pasta de orçamentos e documentos",
+                "img" => "artes-digital-15.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Cartão de visitas impresso Deltasoft",
+                "img" => "artes-digital-16.png",
+                "menu" => $menu[1]
+            ],
+            [
+                "titulo" => "Folder produto Alux Pro Sports",
+                "img" => "artes-digital-17.png",
                 "menu" => $menu[1]
             ],
             [
@@ -496,15 +602,25 @@ public function getDuvidas()
                 "menu" => $menu[0]
             ],
             [
-                "titulo" => "Logomarca clínica de estética",
-                "img" => "artes-digital-10.jpg",
-                "menu" => $menu[1]
-            ],                                                                  
+                "titulo" => "Post para redes sociais",
+                "img" => "post-9.png",
+                "menu" => $menu[0]
+            ],
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-10.png",
+                "menu" => $menu[0]
+            ],
+            [
+                "titulo" => "Post para redes sociais",
+                "img" => "post-11.png",
+                "menu" => $menu[0]
+            ],                                                                
         ];
 
         return view("templates.inovex.portfolio", [
             "menu" => $menu,
-            "portfolio" => $portfolio,
+            "portfolio" => Arr::shuffle($portfolio),
             "solucoes" => $this->getSolucoes(),
         ]);
 
@@ -513,7 +629,7 @@ public function getDuvidas()
     public function duvidas()
     {
         return view("templates.inovex.duvidas",[
-            "duvidas" => Geral::dividirArray($this->getDuvidas()),
+            "duvidas" => Geral::dividirArray($this->getDuvidas(), true),
             "solucoes" => $this->getSolucoes(),
         ]);
     }

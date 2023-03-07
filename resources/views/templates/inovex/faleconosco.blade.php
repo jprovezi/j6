@@ -67,10 +67,11 @@
                 <div class="contact-two__form-wrap">
                     <h3>Nos envie uma mensagem</h3>
 
-                    <form action="{{ config("app.url") }}/fale-conosco" class="contact-one__form" method="POST">
-                        {{ csrf_field() }}
+                    <a href="#" name="form"></a>
+                    <form action="{{ route('contato.store') }}" class="contact-one__form" method="POST">
+                        @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input type="text" placeholder="Nome Completo *" name="nome">
                             </div>
                             <div class="col-md-6">
@@ -79,26 +80,25 @@
                             <div class="col-md-6">
                                 <input type="text" placeholder="Telefone *" name="telefone">
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" placeholder="Assunto *" name="assunto">
-                            </div>
                             <div class="col-md-12">
-                                <textarea name="message" placeholder="Mensagem *" name="mensagem"></textarea>
+                                <textarea name="mensagem" placeholder="Mensagem *" name="mensagem"></textarea>
                             </div>
                             <div class="col-md-12 text-left">
-                                <button type="submit" class="thm-btn contact-one__btn" @disabled(true)>Enviar</button>
+                                <button type="submit" class="thm-btn contact-one__btn">Enviar</button>
                             </div>
-                            @if (false)
+                            @if (session('ok'))
                             <div class="alert alert-success col-md-12 text-left" role="alert" style="margin: 20px 0 0 0;">
                                 <h4 class="alert-heading">Sucesso</h4>
-                                <p>Sua mensagem foi enviada através da galáxia, em breve iremos lhe retornar.</p>
+                                <p>{{ session('ok') }}</p>
                             </div>
-                            @else
+                            @endif
+
+                            @if (session('status'))
                             <div class="alert alert-warning col-md-12 text-left" role="alert" style="margin: 20px 0 0 0;">
                                 <h4 class="alert-heading">Aviso</h4>
-                                <p>Formulário desativado para manutenção. Se precisar entrar em contato use o whatsapp</p>
-                            </div>                                
-                            @endif
+                                <p>{{ session('status') }}</p>
+                            </div>
+                            @endif                                
                         </div>
                     </form>
 
