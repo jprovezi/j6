@@ -502,6 +502,11 @@ public function getDuvidas()
                 "menu" => $menu[2]
             ],
             [
+                "titulo" => "Site instititucional Beeapp Gestão Organizacional",
+                "img" => "site-6.png",
+                "menu" => $menu[2]
+            ],
+            [
                 "titulo" => "Site Dinâmico para empresa de Tecnologia Deltasoft",
                 "img" => "site-5.png",
                 "menu" => $menu[2]
