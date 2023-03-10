@@ -21,35 +21,42 @@ class SiteController extends Controller
             [
                 "titulo" => "Redes Sociais",
                 "descricao" => "Criamos postagens profissionais para as redes sociais da sua empresa. Deixe seu feed com uma melhor apresentação.",
-                "img" => "service-i-1.png",
+                "img" => "capas/icone-1.png",
                 "url-single" => config("app.url")."/solucoes/redes-sociais",
-                "active" => "",
-            ],
-            [
-                "titulo" => "Campanhas no Google ADS",
-                "descricao" => "Para o seu site aparecer na primeira página do Google, quando um cliente pesquisar sobre o seu negócio.",
-                "img" => "service-i-2.png",
-                "url-single" => config("app.url")."/solucoes/campanha-no-google-ads",
                 "active" => "",
             ],
             [
                 "titulo" => "Artes Offline",
                 "descricao" => "Comunicação visual de qualidade, como logomarcas, apresentações em PDF, Catálogos Online e muito mais.",
-                "img" => "service-i-3.png",
+                "img" => "capas/icone-3.png",
                 "url-single" => config("app.url")."/solucoes/artes-offline",
+                "active" => "",
+            ],            
+            [
+                "titulo" => "Campanhas no Google ADS",
+                "descricao" => "Para o seu site aparecer na primeira página do Google, quando um cliente pesquisar sobre o seu negócio.",
+                "img" => "capas/icone-2.png",
+                "url-single" => config("app.url")."/solucoes/campanha-no-google-ads",
+                "active" => "",
+            ],
+            [
+                "titulo" => "SEO",
+                "descricao" => "Estratégias e análises focadas em seu site, para deixar sua empresa na 1º página do Google, e assim conquistar mais clientes.",
+                "img" => "capas/icone-4.png",
+                "url-single" => config("app.url")."/solucoes/seo",
                 "active" => "",
             ],
             [
                 "titulo" => "Criação de Sites",
                 "descricao" => "Criamos sites profissionais com qualidade excepcional para clientes que necessitam de algo único e inesquecível.",
-                "img" => "service-i-5.png",
+                "img" => "capas/icone-5.png",
                 "url-single" => config("app.url")."/solucoes/criacao-de-sites",
                 "active" => "",
             ],
             [
                 "titulo" => "Programação WEB",
                 "descricao" => "Desenvolvimento e manutenção de sistemas web, desde o desenho, até a implantação final no servidor.",
-                "img" => "icone-programacao.png",
+                "img" => "capas/icone-6.png",
                 "url-single" => config("app.url")."/solucoes/programacao-web",
                 "active" => "",
             ],
@@ -263,7 +270,7 @@ public function getDuvidas()
                     das redes sociais.<br><br>
                     A recorrência de postagens profissionais, faz o feed ficar mais bonito, entendível e potencializa a marca e o marketing da sua empresa. Hoje a j6 Soluções Digitais, tem planos para atender 
                     desde pequenos negócios a grandes empresas.",
-                    "capa" => "capa-posts-redes-sociais.png",
+                    "capa" => "capas/1.png",
                     "img-exemplo" => [
                         "post-1.png",
                         "post-2.png",
@@ -283,7 +290,7 @@ public function getDuvidas()
             }else if($id == "campanha-no-google-ads"){
                 $solucoes = $this->getSolucoes();
                 //Ativando menu
-                $solucoes[1]["active"] = "active";
+                $solucoes[2]["active"] = "active";
                 $info = [
                     "titulo" => "Campanha no Google Ads",
                     "descricao" => "
@@ -294,7 +301,7 @@ public function getDuvidas()
                     <br><br>
                     Possuímos planos para pequenas, médias e grandes empresas. Não importa o tamanho do seu negócio, anunciar na internet sempre vai ser uma ótima forma de obter bons resultados.
                     ",
-                    "capa" => "capa-campanha-no-google-ads.png",
+                    "capa" => "capas/2.png",
                     "img-exemplo" => [
                         "google-1.png",
                         "google-2.png",
@@ -309,10 +316,42 @@ public function getDuvidas()
                     ]
                 ];
                    
-            }else if($id == "artes-offline"){
+            }
+            
+            else if($id == "seo"){
                 $solucoes = $this->getSolucoes();
                 //Ativando menu
-                $solucoes[2]["active"] = "active";
+                $solucoes[3]["active"] = "active";
+                $info = [
+                    "titulo" => "SEO",
+                    "descricao" => "Você tem o problema de não conseguir colocar seu site da empresa na primeira página do Google? Ou está cansado de não saber como melhorar a performance do seu site, sem ter os recursos necessários para realizar uma análise avançada? Nossa solução é o serviço SEO.<br><br>
+                    O Serviço SEO é um pacote que inclui ferramentas e recursos especialmente desenvolvidos para auxiliar sua empresa a alcançar resultados satisfatórios no meio digital. Ele contém análises profundas do website feitas pelo Google Analitycs e determinadas palavras-chave que serão usadas nas campanhas publicitarias. Além disso, oferecemos também conteúdo criativo destinado à criação de blog posts direcionados às principais tendências de mercado e interesses dos visitantes do seu website.<br><br>
+                    A solução definitiva para as suas preocupações acerca dessa área vem com nosso serviço SEO: você ganha um maior controle sobre o trabalho realizado no marketing digital da sua empresa; obtém mais visibilidade na web através das principais palavras-chave relevantes; produz conteúdos originais que irão engajar mais clientes potenciais; monitoriza facilmente as performances online através da análise do Google Analitycs; enfim, conquista posicionamento superior nos motores de busca com rapidez e praticidade!
+                    ",
+                    "capa" => "capas/4.png",
+                    "img-exemplo" => [
+                        "seo-1.png",
+                        "google-2.png",
+                    ],
+                    "destaques" => [
+                        "Aumento das suas vendas",
+                        "Aumento das visitas em seu site",
+                        "Análise avançadas dos acessos do site",
+                        "Criação de conteúdo para o blog",
+                        "Criação e manutenção de páginas no site",
+                        "Assessoria inicial de melhora do SEO do site",
+                        "Relatório de análise de palavras chaves de alto desempenho",
+                        "Melhora na pontuação do site",
+                    ]
+                ];
+                   
+            }
+            
+            
+            else if($id == "artes-offline"){
+                $solucoes = $this->getSolucoes();
+                //Ativando menu
+                $solucoes[1]["active"] = "active";
                 $info = [
                     "titulo" => "Artes Offline",
                     "descricao" => "<strong>Uma imagem vale mais que mil palavras</strong>, certamente você já escutou essa frase e ela é verdade.
@@ -320,7 +359,7 @@ public function getDuvidas()
                     O que chama atenção primeiro das pessoas é as imagens, e após isso o texto, sendo assim oferecemos criação de artes digital de qualidade.
                     <br>
                     Criamos artes digitais como:",
-                    "capa" => "capa-arte-offline.png",
+                    "capa" => "capas/3.png",
                     "img-exemplo" => [
                         "artes-digital-1.png",
                         "artes-digital-2.png",
@@ -348,24 +387,27 @@ public function getDuvidas()
             }else if($id == "criacao-de-sites"){
                 //Ativando menu
                 $solucoes = $this->getSolucoes();
-                $solucoes[3]["active"] = "active";
+                $solucoes[4]["active"] = "active";
                 $info = [
                     "titulo" => "Criação de Sites",
                     "descricao" => "Um site personalizado ele é 100% customizado para o cliente, como layout, instalação do projeto no servidor do cliente, e regras de negócio dentro do site que puderem surgir como exemplo:<br>
                     Sistema de cadastro para franquias, LandingPages customizadas, Sistema de agendamento, Integrações com outros sistemas, etc.
                     <br><br>
-                    Em um projeto assim, iniciamos sempre com uma reunião de briefing, e seguimos com reuniões de alinhamento do projeto, até a entrega dele 100% conforme todo o combinado.",
-                    "capa" => "capa-criacao-de-site.png",
+                    Em um projeto assim, iniciamos sempre com uma reunião de briefing, e seguimos com reuniões de alinhamento do projeto, até a entrega dele 100% conforme todo o combinado.<br><br>
+                    Alguns projetos online<br>
+                    <a href='https://www.beeapp.com.br'>www.beeapp.com.br</a><br>
+                    <a href='https://www.deltasoft.com.br'>www.deltasoft.com.br</a><br>
+                    <a href='https://www.mmreefer.com.br'>www.mmreefer.com.br</a><br>
+                    <a href='http://www.postosmeta.com.br'>www.postsometa.com.br</a><br>
+                    ",
+                    "capa" => "capas/5.png",
                     "img-exemplo" => [
                         "site-5.png",
-                        "sitep-3.png",
+                        "site-6.png",
                         "sitep-4.png",
                         "sitep-5.png",
-                        "sitep-6.png",
                         "site-1.png",
-                        "site-2.png",
-                        "site-3.png",
-                        "site-4.png",                        
+                        "site-3.png",                      
                     ],
                     "destaques" => [
                         "Layout 100% customizado para o cliente",
@@ -382,11 +424,11 @@ public function getDuvidas()
             }else if($id == "programacao-web"){
                 //Ativando menu
                 $solucoes = $this->getSolucoes();
-                $solucoes[4]["active"] = "active";
+                $solucoes[5]["active"] = "active";
                 $info = [
                     "titulo" => "Programação Web",
                     "descricao" => "Há mais de 18 anos a nossa equipe vem trabalhando com programação web de altíssimo nível. <br>Estamos sempre engajados em estabelecer uma metodologia que possa seguir nosso cliente durante todo o processo: desde o momento da criação, passando pelo projeto e até chegar à implantação do servidor final. Para oferecermos os melhores serviços para você, empregamos as tecnologias mais modernas como Laravel Framework e Vue.JS. <br><br>Seja para construir um novo projeto do zero ou dar a manutenção necessária a algo já existente, nós estaremos prontos para te aconselhar e colaborar com excelência e comprometimento, pois é assim que tem funcionado por todos esses anos. Com conhecimento profundo dos sistemas de códigos e as ferramentas certas, somado à devida dedicação, garantimos a entrega de resultados incríveis!",
-                    "capa" => "capa-programacao-web.png",
+                    "capa" => "capas/6.png",
                     "img-exemplo" => [
                         "programacao-beeapp.png", 
                         "sitep-2.png",                      

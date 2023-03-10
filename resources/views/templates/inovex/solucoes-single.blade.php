@@ -16,9 +16,9 @@
                 <li><a href="{{ config('app.url') }}/solucoes">Soluções</a></li>
                 <li><span>{{ $info['titulo'] }}</span></li>
             </ul><!-- /.thm-breadcrumb -->
+            <a name="inicio"></a>
         </div><!-- /.container text-center -->
     </section><!-- /.page-header -->
-
     <section class="service-details">
         <div class="container">
             <div class="row">
@@ -28,7 +28,7 @@
                             <ul class="list-unstyled sidebar__category-list">
                                 @foreach ($solucoes as $item)
                                     <li class="{{ $item['active'] }}">
-                                        <a href="{{ $item['url-single'] }}">{{ $item['titulo'] }}</a>
+                                        <a href="{{ $item['url-single'] }}#inicio">{{ $item['titulo'] }}</a>
                                     </li>
                                 @endforeach
                             </ul>

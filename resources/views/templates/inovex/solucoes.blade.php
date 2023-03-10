@@ -30,7 +30,7 @@
                 <div class="service-one__single">
                     <div class="service-one__icon">
                         <div class="">
-                            <img src="{{ asset("templates/inovex/images/shapes/".$item["img"]) }}">
+                            <img src="{{ asset("j6/".$item["img"]) }}">
                         </div><!-- /.service-one__icon-inner -->
                     </div><!-- /.service-one__icon -->
                     <div class="service-one__content">
@@ -53,15 +53,5 @@
         </a>
     </div><!-- /.container -->
 </section><!-- /.cta-one -->
-
-<section class="pricing-one">
-    <div class="container">
-        <div class="block-title text-center">
-            <p class="color-2"><span>Nossos Planos</span></p>
-            <h3>Conheça alguns planos básicos <br> <span>das nossas soluções</span></h3>
-        </div><!-- /.block-title text-center -->
-
-    </div><!-- /.container -->
-</section><!-- /.pricing-one -->
 
 @endsection
