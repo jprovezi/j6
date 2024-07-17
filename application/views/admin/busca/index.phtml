@@ -1,0 +1,401 @@
+<?php
+$dados["notificacoes"] = $notificacoes;
+$dados["totalNotificacoesNaoLidas"] = $totalNotificacoesNaoLidas;
+?>
+<!doctype html>
+<html lang="pt-br">
+<!--HEAD + CSS-->
+<?= $this->loadview('admin/includes/head'); ?>
+<style>
+    .destaque-busca {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <!--TOPO + MENU-->
+    <?= $this->loadview('admin/includes/header', $dados); ?>
+
+    <!--CONTEÚDO-->
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12" style="margin: 30px 0;">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h3 class="page-title m-0">
+                                    <?= $titulo; ?>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php if ($totalResultado < 1) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Que pena, não encontramos nada por enquanto!</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaMenu) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Acessos ao sistema (<?= count($buscaMenu); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaMenu as $valor) : ?>
+                                        <a href="<?= SITE_URL, "/" . $valor["url"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <i class="<?= $valor["icone"]; ?>"></i>
+                                                <?= $valor["nome"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaUsuarios) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Usuários do Sistema (<?= count($buscaUsuarios); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaUsuarios as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/usuarios/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["nome"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaBlog) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Blog (<?= count($buscaBlog); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaBlog as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/blog-admin/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaLeads) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Leads (<?= count($buscaLeads); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaLeads as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/leads" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["nome"]; ?> -
+                                                <?= $valor["assunto"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaBanner) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Banner do site (<?= count($buscaBanner); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaBanner as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/banner-principal/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaDuvidas) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Dúvidas do Site (<?= count($buscaDuvidas); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaDuvidas as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/duvidas/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaEquipe) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Equipe do Site (<?= count($buscaEquipe); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaEquipe as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/equipe-admin/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaInstitucional) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Institucional da Empresa (<?= count($buscaInstitucional); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaInstitucional as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/institucional/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                Editar dados institucional da empresa
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaPaginaExtra) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Páginas Extras do Site (<?= count($buscaPaginaExtra); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaPaginaExtra as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/paginas-extras/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaPqNosEscolher) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Porque Nos Escolher do Site (<?= count($buscaPqNosEscolher); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaPqNosEscolher as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/porque-nos-escolher/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaProdutos) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Produtos (<?= count($buscaProdutos); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaProdutos as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/produtos-admin/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaServicos) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Serviços (<?= count($buscaServicos); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaServicos as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/servicos-admin/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaProjetos) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Projetos (<?= count($buscaProjetos); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaProjetos as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/projetos-admin/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaSeo) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">SEO (<?= count($buscaSeo); ?>)</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaSeo as $valor) : ?>
+                                        <a href="<?= SITE_URL; ?>/seo/editar/<?= $valor["id"]; ?>" style="margin: 8px;">
+                                            <button type="button" class="btn btn-sistema">
+                                                <?= $valor["titulo"]; ?>
+                                            </button>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+            <?php if ($buscaPensador) : ?>
+                <div class="row">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="m-t-0">Frase do Guru</h4>
+                                <div class="row">
+                                    <?php foreach ($buscaPensador as $valor) : ?>
+                                        <blockquote class="blockquote" style="margin-top: 20px;">
+                                            <p><?= $valor["frase"]; ?></p>
+                                            <footer class="blockquote-footer"><?= $valor["autor"]; ?></footer>
+                                        </blockquote> 
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container-fluid -->
+            <?php endif; ?>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm bloco-botao-cadastro">
+                                <a href="<?= SITE_URL; ?>/admin" class="btn btn-sistema-fechar" style="margin-right: 20px;">
+                                    <i class="fas fa-arrow-left"></i> Voltar
+                                </a>
+                                <?php if ($buscaPensador) : ?>
+                                <a href="<?= SITE_URL; ?>/busca/frase" class="btn btn-sistema">
+                                    <i class="fas fa-yin-yang"></i> Guru me inspire novamente
+                                </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--CONTEÚDO-->
+
+
+    <!--FOOTER-->
+    <?= $this->loadview('admin/includes/footer'); ?>
+
+    <!--JAVSCRIPT-->
+    <?= $this->loadview('admin/includes/scripts'); ?>
+</body>
+
+</html>

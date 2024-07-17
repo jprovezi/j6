@@ -1,0 +1,97 @@
+<?php
+	$dados["config"] = $config;
+	$dados["layout"] = $layout;
+	$dados["fraseMotivacional"] = $fraseMotivacional;
+	$dados["paginasExtras"] = $paginasExtras;
+	$dados["seo"] = $seo;
+	$dados["menuTopo"] = $menuTopo;
+	$dados["menuFooter"] = $menuFooter;
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head',$dados); ?>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+			
+
+			<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+			<?php $this->loadview('templates/charles/includes/header',$dados); ?>
+
+
+			<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+			<div class="theme-inner-banner section-spacing">
+				<div class="overlay">
+					<div class="container">
+						<h1><?=$menuPagina; ?></h1>
+					</div> <!-- /.container -->
+				</div> <!-- /.overlay -->
+			</div> <!-- /.theme-inner-banner -->
+
+		<!-- 
+			=============================================
+				CallOut Banner 
+			============================================== 
+			-->
+			<div class="callout-banner callout-banner-institucional no-bg">
+			<div class="container clearfix">
+				<h3 class="title"><?= $config["slogan"]; ?></h3>
+				<p>Confira abaixo os clientes que fazem ou já fizeram parte da história da nossa empresa!</p>
+				<a href="<?= SITE_URL."/".Common::slug($menuContato); ?>" class="theme-button-one"><?=$menuContato; ?></a>
+			</div>
+		</div> <!-- /.callout-banner -->
+
+			<!-- 
+			=============================================
+				Lista de Clientes
+			============================================== 
+			-->			
+			<div class="container">
+				<div class="row" style="margin-bottom: 70px;">
+					<div class="col-sm-9 col-sm-12">
+						<?php foreach ($galeria as $valor) : ?>
+						<div class="col-sm-4 float-left">
+							<div class="single-case-block">
+								<a href="<?= Common::getImg("clientes/".$dadosBanco["dir_galeria"]."/thumb1000_".$valor); ?>" data-fancybox="gallery-valores" class="fancybox">
+									<img src="<?= Common::getImg("clientes/".$dadosBanco["dir_galeria"]."/thumb360_".$valor); ?>">
+								</a>
+							</div> <!-- /.single-case-block -->
+						</div> <!-- /.col- -->
+						<?php endforeach; ?>
+					</div>
+				</div> <!-- /.row -->
+        	</div> <!-- /.container -->			
+
+
+			<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+			<?php $this->loadview('templates/charles/includes/footer',$dados); ?>			
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+    	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    	<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

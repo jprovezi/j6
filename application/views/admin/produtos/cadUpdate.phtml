@@ -1,0 +1,392 @@
+<?php
+$dados["notificacoes"] = $notificacoes;
+$dados["totalNotificacoesNaoLidas"] = $totalNotificacoesNaoLidas;
+
+
+?>
+<!doctype html>
+<html lang="pt-br">
+<!--HEAD + CSS-->
+<?= $this->loadview('admin/includes/head'); ?>
+<style>
+    .bloco-nova-categoria {
+        display: none;
+    }
+    .bloco-remover-categoria {
+        display: none;
+    }
+</style>
+
+<body>
+    <!--TOPO + MENU-->
+    <?= $this->loadview('admin/includes/header', $dados); ?>
+
+    <!--CONTEÚDO-->
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+
+                                <ol class="breadcrumb">
+                                    <?php foreach ($breadcrumb as $indice => $valor) : ?>
+                                        <?php if (!empty($valor["url"])) : ?>
+                                            <li class="breadcrumb-item"><a href="<?= $valor["url"]; ?>"><?= $valor["nome"]; ?></a></li>
+                                        <?php else : ?>
+                                            <li class="breadcrumb-item active"><a><?= $valor["nome"]; ?></a></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </ol>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!--Conteúdo-->
+                            <section>
+                                <form id="cadastroForm" enctype="multipart/form-data" action="" onsubmit="return false;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Imagens do Produto (1200x921)</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <?php foreach ($galeria as $valor) : ?>
+                                                                        <a href="javascript:onclick=salvarCapaGaleria('<?= SITE_URL . "/produtos-admin/salvar-capa-galeria/" . $valor . "/" . $dadosBanco["id"]; ?>');">
+                                                                            <img src="<?= STATIC_URL; ?>/img/produtos/<?= $dadosBanco["dir_galeria"]; ?>/thumb550_<?= $valor; ?>" class="img-thumbnail img-galeria <?= ($dadosBanco["capa"] == $valor) ? "img-galeria-selected" : ""; ?>" width="250px">
+                                                                        </a><br>
+                                                                        <a href="javascript:onclick=excluirCapaGaleria('<?= SITE_URL . "/produtos-admin/excluir-capa-galeria/" . $dadosBanco["dir_galeria"] . "/" . $valor; ?>');">
+                                                                            <span class="badge badge-danger">X</span>
+                                                                        </a>
+                                                                    <?php endforeach ?>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" data-toggle="tooltip" title="Fotos do produto">
+                                                                            <i class="fas fa-camera"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="file" class="form-control" id="foto" name="foto" multiple="" accept="image/x-png,image/gif,image/jpeg">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+
+                                                            <?php if ($galeria) : ?>
+                                                                <div class="col-lg-6">
+                                                                    <button type="button" class="btn btn-danger float-right botao-efeito" onclick="excluirTodasFotosGaleria('<?= SITE_URL . '/produtos-admin/excluir-todas-fotos/' . $dadosBanco['dir_galeria']; ?>');">
+                                                                        Remover todas as fotos <i class="mdi mdi-delete"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!--Fim Campo input-->
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Foto-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Detalhes do Produto</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Nome do produto">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-pencil-alt"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Título *" id="titulo" name="titulo" value="<?= $dadosBanco["titulo"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Preço">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-money-bill-wave"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Preço" id="preco" name="preco" value="<?= $dadosBanco["preco"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Se inserir um link de pagamento, um botão irá aparecer no site">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-link"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Link de Pagamento" id="link_pagamento" name="link_pagamento" value="<?= $dadosBanco["link_pagamento"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Você pode inserir uma url do youtube, que um vídeo será vinculado ao produto">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-youtube"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="URL Youtube" id="url_video" name="url_video" value="<?= $dadosBanco["url_video"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->                                                            
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Aqui você pode inserir uma URL em um botão de ação no final da publicação">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-link"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="URL Botão de Ação" id="url_botao" name="url_botao" value="<?= $dadosBanco["url_botao"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Aqui você escreve o nome do botão de ação">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-text-width"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Nome Botão de Ação" id="texto_botao" name="texto_botao" value="<?= $dadosBanco["texto_botao"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->                                                            
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-12">
+                                                                    <span class="input-group-text" data-toggle="tooltip" title="Descreva o produto">
+                                                                        <i class="fas fa-text-width"></i>
+                                                                    </span>
+                                                                    <textarea name="texto" id="texto" rows="15" placeholder="Escreva informações do seu Produto" style="width: 100%;" class="form-control"><?= $dadosBanco["texto"]; ?></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Categoria do Produto</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Se quiser poderá vincular o produto a uma categoria">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-window-restore"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select name="categoria_id" class="custom-select" id="categoria_id" onchange="blocoNovaCategoria(this.value);">
+                                                                        <option value="" <?= (is_null($dadosBanco["categoria_id"])) ? "selected" : ""; ?>>Sem Categoria</option>
+                                                                        <option value="nova">Nova Categoria (+)</option>
+                                                                        <option value="" disabled>------ Selecione a Categoria Abaixo -----</option>
+                                                                        <?php foreach ($categoria as $valor) : ?>
+                                                                            <option value="<?= $valor["id"]; ?>" <?= ($dadosBanco["categoria_id"] == $valor["id"]) ? "selected" : ""; ?> class="categoria-<?=$valor["id"];?>">
+                                                                                <?= $valor["titulo"]; ?>
+                                                                            </option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-4 bloco-nova-categoria">
+                                                                <div class="input-group mb-12">
+                                                                    <span class="input-group-text" data-toggle="tooltip" title="Nome da nova categoria">
+                                                                        <i class="far fa-window-restore"></i>
+                                                                    </span>
+                                                                    <input type="text" class="form-control" placeholder="Nome da Categoria" id="novaCategoria" name="novaCategoria" value="">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-2 bloco-nova-categoria">
+                                                                <div class="input-group mb-12">
+                                                                    <button type="button" class="btn btn-secondary float-right" id="bt-adicionar-categoria" onclick="adicionarCategoria('<?=$urlCategoria; ?>',$('#novaCategoria').val());">
+                                                                        Adicionar <i class="fas fa-plus-circle"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-2 bloco-remover-categoria">
+                                                                <div class="input-group mb-12">
+                                                                    <button type="button" class="btn btn-danger float-right" id="bt-adicionar-categoria" onclick="removerCategoria('<?=$urlCategoriaRemover; ?>',$('#categoria_id').val());">
+                                                                        Remover <i class="mdi mdi-close"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Documentos-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Configurações</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Se deixar Sim, o produto será exibido">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-tv"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select name="ativo" class="custom-select" id="ativo">
+                                                                        <option value="S" <?= ($dadosBanco["ativo"] == "S") ? "selected" : ""; ?>>Publicar: (Sim)</option>
+                                                                        <option value="N" <?= ($dadosBanco["ativo"] == "N") ? "selected" : ""; ?>>Publicar: (Não)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Se deixar Sim, o produto irá aparecer na home do site">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-star"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select name="destaque" class="custom-select" id="destaque">
+                                                                        <option value="S" <?= ($dadosBanco["destaque"] == "S") ? "selected" : ""; ?>>Destaque Home: (Sim)</option>
+                                                                        <option value="N" <?= ($dadosBanco["destaque"] == "N" || Common::getMetodo() == "cadastrar") ? "selected" : ""; ?>>Destaque Home: (Não)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Documentos-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <button type="button" class="btn btn-success float-right botao-efeito" id="bt-salvar" onclick="formSubmit('#cadastroForm','<?= $urlAction; ?>');">
+                                                    Salvar <i class="mdi mdi-check"></i>
+                                                </button>
+                                                <div id="resposta-form" class="float-right" style="margin: 0 10px 0 0;">
+                                                    <!--Resposta do Server-->
+                                                    <p>Campos com * são obrigatórios</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div> <!-- end container-fluid -->
+        </div>
+    </div>
+    <!--CONTEÚDO-->
+
+
+    <!--FOOTER-->
+    <?= $this->loadview('admin/includes/footer'); ?>
+
+    <!--JAVSCRIPT-->
+    <?= $this->loadview('admin/includes/scripts'); ?>
+
+    <script>
+        $(document).ready(function() {
+            $("#preco").maskMoney({
+                prefix: "R$ ",
+                decimal: ",",
+                thousands: "."
+        });
+        });
+        //Lendo Enter do documento para chamar o form
+        /*$("input[type='text']").on('keydown', function(event) {
+            if (event.keyCode === 13) {
+                formSubmit('#cadastroForm', '<?//= $urlAction; ?>');
+            }
+        });*/
+
+        function blocoNovaCategoria(valor) {
+            if (valor == 'nova') {
+                $(".bloco-nova-categoria").css("display", "block");
+                $(".bloco-remover-categoria").css("display", "none");
+            } else {
+                $(".bloco-nova-categoria").css("display", "none");
+            }
+            if(valor != "" && valor != "nova"){
+                $(".bloco-remover-categoria").css("display", "block");
+            }
+            if(valor == ""){
+                $(".bloco-remover-categoria").css("display", "none");
+            }
+        }
+
+        function adicionarCategoria(urlServidor, valor) {
+            $.ajax({
+                url: urlServidor,
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    titulo:valor
+                },
+                success: function(e) {
+                    blocoNovaCategoria('fechar');
+                    $('#categoria_id').append('<option value="'+e.id+'" class="categoria-'+e.id+'">' + valor + '</option>');
+                    $(".categoria-"+e.id).prop('selected',true);
+                }
+            });
+        }
+
+        function removerCategoria(urlServidor, valor) {
+            var escolhaUsuario = confirm("Deseja realmente remover a categoria? Ela será removida de todos os produtos vinculados!");
+            if (escolhaUsuario) {            
+                $.ajax({
+                    url: urlServidor,
+                    type: 'POST',
+                    dataType: "json",
+                    data: {
+                        id:valor
+                    },
+                    success: function(e) {
+                        $('.categoria-'+e.id).remove();
+                        $(".bloco-remover-categoria").css("display", "none");
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

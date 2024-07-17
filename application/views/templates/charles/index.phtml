@@ -1,0 +1,276 @@
+<?php
+$dados["config"] = $config;
+$dados["layout"] = $layout;
+$dados["fraseMotivacional"] = $fraseMotivacional;
+$dados["banners"] = $banners;
+$dados["duvidas"] = $duvidas;
+$dados["blog"] = $blog;
+$dados["paginasExtras"] = $paginasExtras;
+$dados["seo"] = $seo;
+$dados["menuTopo"] = $menuTopo;
+$dados["menuFooter"] = $menuFooter;
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head', $dados); ?>
+
+<body>
+	<div class="main-page-wrapper">
+
+		<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
+
+
+
+		<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+		<?php $this->loadview('templates/charles/includes/header', $dados); ?>
+
+
+		<!-- 
+			=============================================
+				Theme Main Banner
+			============================================== 
+			-->
+		<?php $this->loadview('templates/charles/includes/banner-home', $dados); ?>
+
+		<!--
+			=====================================================
+				Why Choose us
+			=====================================================
+			-->
+		<?php if (count($porquenosescolher) >= 1) : ?>
+			<div class="why-choose-us section-spacing" style="margin-top: 120px;">
+				<div class="container">
+					<div class="theme-title-one">
+						<h2><?= $menuPqNosEscolher; ?></h2>
+					</div> <!-- /.theme-title-one -->
+
+					<div class="wrapper">
+						<div class="row">
+							<?php foreach ($porquenosescolher as $valor) : ?>
+								<div class="col-lg-4 col-12">
+									<div class="single-block">
+										<i class="icon <?= $valor["icone"]; ?>"></i>
+										<h5 style="color:#000;"><?= $valor["titulo"]; ?></h5>
+										<p><?= $valor["texto"]; ?></p>
+									</div> <!-- /.single-block -->
+								</div> <!-- /.col- -->
+							<?php endforeach; ?>
+						</div> <!-- /.row -->
+					</div> <!-- /.wrapper -->
+				</div> <!-- /.container -->
+			</div> <!-- /.why-choose-us -->
+		<?php endif; ?>
+
+		<!--
+			=====================================================
+				Short Banner
+			=====================================================
+			-->
+			<?php if (!empty($config['slogan'])) : ?>
+			<?php $this->loadview('templates/charles/includes/banner-slogan', $dados); ?>
+		<?php endif; ?>		
+
+		<div class="about-compnay section-spacing">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-12">
+						<img src="<?= Common::getImg("institucional/{$institucional['dir_galeria']}/thumb585_{$institucional['capa']}"); ?>" style=" border-radius: 10px; margin-top: 10px;">
+						</div>
+						<div class="col-lg-6 col-12">
+							<div class="text">
+								<div class="theme-title-one">
+									<h2>Quem Somos</h2>
+									<p><?= nl2br(Common::reduzirTexto($institucional["texto"], 435)); ?></p>
+									<br>
+									<a href="<?= SITE_URL . "/" . Common::slug($menuEmpresa); ?>">
+										<button class="theme-button-one">SAIBA MAIS</button>
+									</a>
+								</div> <!-- /.theme-title-one -->
+							</div> <!-- /.text -->
+						</div> <!-- /.col- -->
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+			</div>		
+
+
+		<!-- 
+			=============================================
+				Serviços / Produtos
+			============================================== 
+			-->
+		<?php if (count($destaques) >= 1) : ?>
+			<div class="our-case section-spacing">
+				<div class="container">
+
+				<div class="theme-title-one">
+						<h2>Alguns Jobs</h2>
+					</div> <!-- /.theme-title-one -->
+
+					<div class="wrapper">
+						<div class="row">
+							<div class="col-sm-9 col-sm-12">
+								<?php foreach ($destaques as $valor) : ?>
+									<div class="col-sm-4 float-left" style="min-height: 500px;">
+										<div class="single-case-block">
+											<a href="<?= SITE_URL; ?>/<?= Common::slug($valor["titulo"]); ?>">
+												<img src="<?= Common::getImg("{$valor['path']}/{$valor['dir_galeria']}/thumb550_{$valor['capa']}", "blog"); ?>">
+											</a>
+
+											<div class="float-left">
+												<a href="<?= SITE_URL; ?>/<?= Common::slug($valor["titulo"]); ?>">
+													<h5><?= $valor["titulo"]; ?></h5>
+												</a>
+											</div>
+										</div> <!-- /.single-case-block -->
+									</div> <!-- /.col- -->
+								<?php endforeach; ?>
+							</div>
+
+						</div> <!-- /.row -->
+					</div> <!-- /.wrapper -->
+				</div> <!-- /.container -->
+			</div> <!-- /.our-case -->
+		<?php endif; ?>
+
+		<div class="our-case section-spacing">
+				<div class="container">
+					<div class="view-all">
+						<a href="<?= SITE_URL . "/jobs";?>" class="theme-button-one">
+						Ver mais Jobs
+						</a>
+					</div>
+				</div>
+			</div>		
+
+
+		<!--
+			=====================================================
+				Faq Section
+			=====================================================
+			-->
+		<?php if (count($duvidas) >= 1) : ?>
+			<div class="faq-section">
+				<div class="overlay">
+					<div class="container">
+						<div class="theme-title-one">
+							<h2><?= $menuDuvidas; ?></h2>
+							<p>Abaixo as principais dúvidas dos nossos clientes, solucionadas para você.</p>
+						</div> <!-- /.theme-title-one -->
+
+						<div class="wrapper row no-gutters">
+							<div class="col-xl-12 col-lg-12 order-last">
+								<div class="faq-content">
+									<div class="accordion-one">
+										<div class="panel-group theme-accordion" id="accordion">
+											<?php foreach ($duvidas as $i => $valor) : ?>
+												<div class="panel">
+													<div class="panel-heading">
+														<h6 class="panel-title">
+															<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $i; ?>">
+																<?= $valor["titulo"]; ?></a>
+														</h6>
+													</div>
+													<div id="collapse<?= $i; ?>" class="panel-collapse collapse">
+														<div class="panel-body">
+															<p><?= Common::reduzirTexto($valor["texto"], 250); ?></p>
+														</div>
+													</div>
+												</div> <!-- /panel 1 -->
+											<?php endforeach; ?>
+										</div> <!-- end #accordion -->
+									</div> <!-- End of .accordion-one -->
+								</div> <!-- /.faq-content -->
+							</div> <!-- /.col- -->
+						</div> <!-- /.wrapper -->
+					</div> <!-- /.container -->
+				</div> <!-- /.overlay -->
+			</div> <!-- /.faq-section -->
+
+			<div class="our-case section-spacing">
+				<div class="container">
+					<div class="view-all">
+						<a href="<?= SITE_URL . "/" . Common::slug($menuDuvidas); ?>" class="theme-button-one"><?= $menuDuvidas; ?></a>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+
+
+
+
+
+
+		<!--
+			=====================================================
+				Latest News
+			=====================================================
+			-->
+		<?php if (count($blog) >= 1) : ?>
+			<div class="our-blog latest-news section-spacing">
+				<div class="container">
+					<div class="theme-title-one">
+						<h2><?=$menuBlog; ?></h2>
+						<p>Abaixo últimas informações postadas pela nossa empresa.</p>
+					</div> <!-- /.theme-title-one -->
+					<div class="wrapper">
+						<div class="clearfix">
+							<div class="latest-news-slider">
+
+								<?php foreach ($blog as $valor) : ?>
+									<div class="item">
+										<a href="<?= SITE_URL; ?>/<?=Common::slug($valor["titulo"]); ?>">
+
+											<div class="image-box">
+												<img src="<?= Common::getImg("blog/{$valor['dir_galeria']}/thumb550_{$valor['capa']}", "blog"); ?>" style="border-radius: 5px;">
+											</div> <!-- /.image-box -->
+
+											<div class="post-meta" style="margin-top: -20px;">
+												<h5 class="title">
+													<a href="<?= SITE_URL; ?>/<?=Common::slug($valor["titulo"]); ?>">
+														<?= $valor["titulo"]; ?>
+													</a>
+												</h5>
+												<div class="overlay">
+													<a href="<?= SITE_URL; ?>/<?=Common::slug($valor["titulo"]); ?>" style="padding: 5px; font-size: 12px;">
+														<?= Common::converteTimestamp($valor["data"]); ?>
+													</a>
+												</div>
+											</div> <!-- /.post-meta -->
+										</a>
+									</div> <!-- /.col- -->
+								<?php endforeach; ?>
+
+							</div> <!-- /.latest-news-slider -->
+						</div> <!-- /.row -->
+					</div> <!-- /.wrapper -->
+				</div> <!-- /.container -->
+			</div> <!-- /.our-blog -->
+		<?php endif; ?>
+
+
+		<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+		<?php $this->loadview('templates/charles/includes/footer', $dados); ?>
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+	</div> <!-- /.main-page-wrapper -->
+</body>
+
+</html>

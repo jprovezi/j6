@@ -1,0 +1,141 @@
+<?php
+$dados["notificacoes"] = $notificacoes;
+$dados["totalNotificacoesNaoLidas"] = $totalNotificacoesNaoLidas;
+?>
+<!doctype html>
+<html lang="pt-br">
+<!--HEAD + CSS-->
+<?= $this->loadview('admin/includes/head'); ?>
+
+<body>
+    <!--TOPO + MENU-->
+    <?= $this->loadview('admin/includes/header', $dados); ?>
+
+    <!--CONTEÚDO-->
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+
+                                <ol class="breadcrumb">
+                                    <?php foreach ($breadcrumb as $indice => $valor) : ?>
+                                        <?php if (!empty($valor["url"])) : ?>
+                                            <li class="breadcrumb-item"><a href="<?= $valor["url"]; ?>"><?= $valor["nome"]; ?></a></li>
+                                        <?php else : ?>
+                                            <li class="breadcrumb-item active"><a><?= $valor["nome"]; ?></a></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </ol>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!--Conteúdo-->
+                            <section>
+                                <form id="cadastroForm" enctype="multipart/form-data" action="" onsubmit="return false;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Logo dos Clientes (1000x800)</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <?php foreach ($galeria as $valor) : ?>
+                                                                        <img src="<?= STATIC_URL; ?>/img/clientes/<?= $dadosBanco["dir_galeria"]; ?>/thumb360_<?= $valor; ?>" class="img-thumbnail" style="width: 200px; margin: 15px;"><br>
+                                                                        <a href="javascript:onclick=excluirCapaGaleria('<?= SITE_URL . "/clientes-admin/excluir-capa-galeria/" . $dadosBanco["dir_galeria"] . "/" . $valor; ?>');">
+                                                                            <span class="badge badge-danger">X</span>
+                                                                        </a>
+                                                                    <?php endforeach ?>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Insira as logos dos clientes">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-camera"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="file" class="form-control" id="foto" name="foto" multiple="" accept="image/x-png,image/gif,image/jpeg">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            
+                                                            <?php if($galeria): ?>
+                                                            <div class="col-lg-6">
+                                                            <button type="button" class="btn btn-danger float-right botao-efeito" onclick="excluirTodasFotosGaleria('<?=SITE_URL.'/clientes-admin/excluir-todas-fotos/'.$dadosBanco['dir_galeria']; ?>');">
+                                                                Remover todas as fotos <i class="mdi mdi-delete"></i>
+                                                            </button>
+                                                            </div>
+                                                            <!--Fim Campo input-->  
+                                                            <?php endif; ?>                                                          
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Foto-->
+            
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <button type="button" class="btn btn-success float-right botao-efeito" id="bt-salvar" onclick="formSubmit('#cadastroForm','<?= $urlAction; ?>');">
+                                                    Salvar <i class="mdi mdi-check"></i>
+                                                </button>
+                                                <div id="resposta-form" class="float-right" style="margin: 0 10px 0 0;">
+                                                    <!--Resposta do Server-->
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div> <!-- end container-fluid -->
+        </div>
+    </div>
+    <!--CONTEÚDO-->
+
+
+    <!--FOOTER-->
+    <?= $this->loadview('admin/includes/footer'); ?>
+
+    <!--JAVSCRIPT-->
+    <?= $this->loadview('admin/includes/scripts'); ?>
+
+    <script>
+        $(document).ready(function(){
+            /*$('#whatsapp').mask('(00) 0 0000-0000');
+            $('#nascimento').mask('00/00/0000');
+            $('#cpf').mask('000.000.000-00');*/
+        });
+        //Lendo Enter do documento para chamar o form
+        /*$("input[type='text']").on('keydown', function(event) {
+            if (event.keyCode === 13){
+                formSubmit('#cadastroForm','<?= $urlAction; ?>');
+            }
+        });*/                
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<?php
+	$dados["config"] = $config;
+	$dados["layout"] = $layout;
+	$dados["fraseMotivacional"] = $fraseMotivacional;
+	$dados["paginasExtras"] = $paginasExtras;
+	$dados["seo"] = $seo;
+	$dados["menuTopo"] = $menuTopo;
+	$dados["menuFooter"] = $menuFooter;
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head',$dados); ?>
+
+<body>
+	<div class="main-page-wrapper">
+
+		<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
+
+
+
+		<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+		<?php $this->loadview('templates/charles/includes/header',$dados); ?>
+
+
+		<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+		<div class="theme-inner-banner section-spacing">
+			<div class="overlay">
+				<div class="container">
+					<h1>Equipe</h1>
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.theme-inner-banner -->
+
+
+
+		<!--
+			=====================================================
+				Our Team
+			=====================================================
+			-->
+		<div class="our-team section-spacing">
+			<div class="container">
+				<div class="wrapper">
+					<div class="row">
+						<?php foreach ($equipe as $i => $valor) : ?>
+							<div class="col-lg-3 col-sm-6 col-12">
+								<div class="team-member">
+									<div class="image-box">
+									<?php if(!empty($valor["texto"])): ?>
+										<a href="javascript:void(0);" data-toggle="modal" data-target="#modal-<?= $i; ?>">
+											<img src="<?= Common::getImg("equipe/{$valor['dir_galeria']}/thumb270_{$valor['capa']}"); ?>" alt="<?=$valor["nome"]; ?>">
+										</a>
+										<?php else: ?>
+											<img src="<?= Common::getImg("equipe/{$valor['dir_galeria']}/thumb270_{$valor['capa']}"); ?>" alt="<?=$valor["nome"]; ?>">
+										<?php endif; ?>
+									</div> <!-- /.image-box -->
+									<div class="text">
+										<h6><?=$valor["titulo"]; ?></h6>
+										<span><?=$valor["cargo"]; ?></span>
+									</div> <!-- /.text -->
+								</div> <!-- /.team-member -->
+							</div> <!-- /.col- -->
+
+							<!-- Modal -->
+							<div class="modal fade" id="modal-<?= $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLongTitle"><?=$valor["titulo"]." - ".$valor["cargo"]; ?></h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body" style="text-align: justify;">
+											<img src="<?= Common::getImg("equipe/{$valor['dir_galeria']}/thumb270_{$valor['capa']}"); ?>" alt="<?=$valor["nome"]; ?>" class="imagem-modal">
+											<?=nl2br($valor["texto"]); ?>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						<?php endforeach; ?>
+					</div> <!-- /.row -->
+				</div> <!-- /.wrapper -->
+			</div> <!-- /.container -->
+		</div> <!-- /.our-team -->
+
+
+
+
+		<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+		<?php $this->loadview('templates/charles/includes/footer',$dados); ?>
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+	</div> <!-- /.main-page-wrapper -->
+</body>
+
+</html>

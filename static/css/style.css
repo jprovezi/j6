@@ -1,0 +1,66 @@
+.bg-grey{
+    background-color: #ccc;
+}
+
+.img-tabela {
+    border: 2px solid #edf0f0;
+    height: 36px;
+    width: 36px;
+    float: left;
+    border-radius: 50%!important;
+}
+
+.img-modal {
+    border: 2px solid #edf0f0;
+    height: 150px;
+    width: 150px;
+    float: right;
+    border-radius: 50%!important;
+}
+
+.botao-lista{
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.bloco-botao-cadastro{
+    text-align: right;
+}
+
+.botao-efeito{
+    border-radius: 25px;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.breadcrumb{
+    font-size: 20px;
+}
+
+.img-galeria{
+    margin: 12px;
+    cursor: pointer;
+}
+
+.img-galeria:hover{
+    border: 1px solid #3FB618;
+}
+
+.img-galeria-selected{
+    border: 1px solid #3FB618;
+}
+.tox-notifications-container {
+    display: none !important;
+}
+.imagem-modal{
+    position: relative;
+    float: left;
+    margin: 10px;
+    width: 18%;
+    border-radius: 10px;
+}
+#galeria-modal{
+    margin-top: 30px;
+}

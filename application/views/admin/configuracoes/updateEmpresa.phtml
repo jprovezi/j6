@@ -1,0 +1,409 @@
+<?php
+$dados["notificacoes"] = $notificacoes;
+$dados["totalNotificacoesNaoLidas"] = $totalNotificacoesNaoLidas;
+?>
+<!doctype html>
+<html lang="pt-br">
+<!--HEAD + CSS-->
+<?= $this->loadview('admin/includes/head'); ?>
+<link rel="stylesheet" media="screen" type="text/css" href="<?= STATIC_URL; ?>/plugins/colorpicker/css/colorpicker.css" />
+
+<body>
+    <!--TOPO + MENU-->
+    <?= $this->loadview('admin/includes/header', $dados); ?>
+
+    <!--CONTEÚDO-->
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+
+                                <ol class="breadcrumb">
+                                    <?php foreach ($breadcrumb as $indice => $valor) : ?>
+                                        <?php if (!empty($valor["url"])) : ?>
+                                            <li class="breadcrumb-item"><a href="<?= $valor["url"]; ?>"><?= $valor["nome"]; ?></a></li>
+                                        <?php else : ?>
+                                            <li class="breadcrumb-item active"><a><?= $valor["nome"]; ?></a></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </ol>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!--Conteúdo-->
+                            <section>
+                                <form id="cadastroForm" enctype="multipart/form-data" action="" onsubmit="return false;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Logo da empresa - 450 x 200</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <?php foreach ($galeria as $valor) : ?>
+                                                                        <a href="javascript:onclick=salvarCapaGaleria('<?= $breadcrumb[0]["url"] . "/salvar-capa-galeria/" . $valor . "/" . $dadosBanco["id"]; ?>');">
+                                                                            <img src="<?= STATIC_URL; ?>/img/sistema/<?= $dadosBanco["dir_galeria"]; ?>/thumb450_<?= $valor; ?>" class="img-thumbnail img-galeria <?= ($dadosBanco["capa"] == $valor) ? "img-galeria-selected" : ""; ?>">
+                                                                        </a><br>
+                                                                        <a href="javascript:onclick=excluirCapaGaleria('<?= $breadcrumb[0]['url'] . "/excluir-capa-galeria/" . $dadosBanco["dir_galeria"] . "/" . $valor; ?>');">
+                                                                            <span class="badge badge-danger">X</span>
+                                                                        </a>
+                                                                    <?php endforeach ?>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Selecione a logo da sua empresa">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-camera"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="file" class="form-control" id="foto" name="foto" multiple="" accept="image/x-png,image/gif,image/jpeg">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+
+                                                            <?php if ($galeria) : ?>
+                                                                <div class="col-lg-6">
+                                                                    <button type="button" class="btn btn-danger float-right botao-efeito" onclick="excluirTodasFotosGaleria('<?= $breadcrumb[0]['url'] . '/excluir-todas-fotos/' . $dadosBanco['dir_galeria']; ?>');">
+                                                                        Remover todas as fotos <i class="mdi mdi-delete"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!--Fim Campo input-->
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Foto-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Dados da empresa</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="CNPJ">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-user-tie"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="CNPJ" id="cnpj" name="cnpj" value="<?= $dadosBanco["cnpj"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Nome Fantasia">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-edit"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Nome Fantasia" id="nome_fantasia" name="nome_fantasia" value="<?= $dadosBanco["nome_fantasia"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Razão Social">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-edit"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Razão Social" id="razao_social" name="razao_social" value="<?= $dadosBanco["razao_social"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Email">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-envelope"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Email" id="email" name="email" value="<?= $dadosBanco["email"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Telefone">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-phone"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Telefone" id="telefone" name="telefone" value="<?= $dadosBanco["telefone"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Endereço completo">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-edit"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Endereço" id="endereco" name="endereco" value="<?= $dadosBanco["endereco"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Horário de funcionamento">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-clock"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Horário de Funcionamento" id="horario_funcionamento" name="horario_funcionamento" value="<?= $dadosBanco["horario_funcionamento"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Slogan da empresa">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-registered"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Slogan da Empresa" id="slogan" name="slogan" value="<?= $dadosBanco["slogan"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Redes Sociais</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Site">
+                                                                        <span class="input-group-text">
+                                                                            <i class="far fa-hand-point-up"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Site" id="site" name="site" value="<?= $dadosBanco["site"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Instagram">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-instagram"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Instagram" id="instagram" name="instagram" value="<?= $dadosBanco["instagram"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Facebook">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-facebook"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Facebook" id="facebook" name="facebook" value="<?= $dadosBanco["facebook"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Linkedin">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-linkedin"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Linkedin" id="linkedin" name="linkedin" value="<?= $dadosBanco["linkedin"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Youtube">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-youtube"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Youtube" id="youtube" name="youtube" value="<?= $dadosBanco["youtube"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Twitter">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-twitter"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Twitter" id="twitter" name="twitter" value="<?= $dadosBanco["twitter"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Google Maps</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Iframe do Google Maps">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-map-marked-alt"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <textarea name="google_maps" id="google_maps" rows="5" placeholder="Use o iframe do google maps aqui" style="width: 100%;" class="form-control"><?= $dadosBanco["google_maps"]; ?></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Pixel</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Pixel do Facebook e Google Analytics">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-laptop-code"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <textarea name="pixel" id="pixel" rows="5" placeholder="Cole seu script aqui" style="width: 100%;" class="form-control"><?= $dadosBanco["pixel"]; ?></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Site em Manutenção</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Se deixar Sim, o site entrará no modo de Manutenção">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-tools"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select name="site_construcao" class="custom-select" id="ativo">
+                                                                        <option value="S" <?= ($dadosBanco["site_construcao"] == "S") ? "selected" : ""; ?>>Manutenção: (Sim)</option>
+                                                                        <option value="N" <?= ($dadosBanco["site_construcao"] == "N") ? "selected" : ""; ?>>Manutenção: (Não)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Frase que aparece na página de site em manutenção">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-text-width"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Frase de manutenção" id="frase_site_construcao" name="frase_site_construcao" value="<?= $dadosBanco["frase_site_construcao"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <button type="button" class="btn btn-success float-right botao-efeito" id="bt-salvar" onclick="formSubmit('#cadastroForm','<?= $urlAction; ?>');">
+                                                    Salvar <i class="mdi mdi-check"></i>
+                                                </button>
+                                                <div id="resposta-form" class="float-right" style="margin: 0 10px 0 0;">
+                                                    <!--Resposta do Server-->
+                                                    <p>Campos com * são obrigatórios</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div> <!-- end container-fluid -->
+        </div>
+    </div>
+    <!--CONTEÚDO-->
+
+
+    <!--FOOTER-->
+    <?= $this->loadview('admin/includes/footer'); ?>
+
+    <!--JAVSCRIPT-->
+    <?= $this->loadview('admin/includes/scripts'); ?>
+    <script src="<?= STATIC_URL . "/plugins/colorpicker/js/colorpicker.js"; ?>"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#cnpj').mask('00.000.000/0000-00');
+        });
+
+        //Lendo Enter do documento para chamar o form
+        $("input[type='text']").on('keydown', function(event) {
+            if (event.keyCode === 13){
+                formSubmit('#cadastroForm','<?= $urlAction; ?>');
+            }
+        });
+    </script>
+</body>
+
+</html>

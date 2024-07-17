@@ -1,0 +1,210 @@
+<?php
+$dados["notificacoes"] = $notificacoes;
+$dados["totalNotificacoesNaoLidas"] = $totalNotificacoesNaoLidas;
+?>
+<!doctype html>
+<html lang="pt-br">
+<!--HEAD + CSS-->
+<?= $this->loadview('admin/includes/head'); ?>
+<link rel="stylesheet" media="screen" type="text/css" href="<?= STATIC_URL; ?>/plugins/colorpicker/css/colorpicker.css" />
+
+<body>
+    <!--TOPO + MENU-->
+    <?= $this->loadview('admin/includes/header', $dados); ?>
+
+    <!--CONTEÚDO-->
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+
+                                <ol class="breadcrumb">
+                                    <?php foreach ($breadcrumb as $indice => $valor) : ?>
+                                        <?php if (!empty($valor["url"])) : ?>
+                                            <li class="breadcrumb-item"><a href="<?= $valor["url"]; ?>"><?= $valor["nome"]; ?></a></li>
+                                        <?php else : ?>
+                                            <li class="breadcrumb-item active"><a><?= $valor["nome"]; ?></a></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </ol>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!--Conteúdo-->
+                            <section>
+                                <form id="cadastroForm" enctype="multipart/form-data" action="" onsubmit="return false;">
+                                    <div class="container">
+            
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Template</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Selecione o template do seu site aqui">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-layer-group"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select name="template" class="custom-select" id="template">
+                                                                        <option value="charles" <?= ($dadosBanco["template"] == "charles") ? "selected" : ""; ?>>Charles</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">CSS</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+
+                                                            <div class="col-lg-12">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Se você entender de CSS, aqui poderá editar qualquer opção do site.">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fab fa-css3-alt"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <textarea name="css" id="css" rows="20" placeholder="Aqui você pode configurar o CSS do site" style="width: 100%;" class="form-control"><?=$dadosBanco["css"]; ?></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Cores do Site</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Essa opção será responsável por formar as cores principais do site, como botões, navegação e titulos.">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-fill-drip"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Cor Primária" id="cor_primaria" name="cor_primaria" value="<?= $dadosBanco["cor_primaria"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Essa opção complementam as cores principais.">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-fill-drip"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Cor Secundária" id="cor_secundaria" name="cor_secundaria" value="<?= $dadosBanco["cor_secundaria"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="As cores terciarias serão responsáveis pelos titulos internos das cores principais.">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-fill-drip"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Cor Secundária" id="cor_terciaria" name="cor_terciaria" value="<?= $dadosBanco["cor_terciaria"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <button type="button" class="btn btn-success float-right botao-efeito" id="bt-salvar" onclick="formSubmit('#cadastroForm','<?= $urlAction; ?>',false);">
+                                                    Salvar <i class="mdi mdi-check"></i>
+                                                </button>
+                                                <div id="resposta-form" class="float-right" style="margin: 0 10px 0 0;">
+                                                    <!--Resposta do Server-->
+                                                    <p>Campos com * são obrigatórios</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div> <!-- end container-fluid -->
+        </div>
+    </div>
+    <!--CONTEÚDO-->
+
+
+    <!--FOOTER-->
+    <?= $this->loadview('admin/includes/footer'); ?>
+
+    <!--JAVSCRIPT-->
+    <?= $this->loadview('admin/includes/scripts'); ?>
+    <script src="<?= STATIC_URL . "/plugins/colorpicker/js/colorpicker.js"; ?>"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#cnpj').mask('00.000.000/0000-00');
+
+            $('#cor_primaria, #cor_secundaria, #cor_terciaria').ColorPicker({
+                    onSubmit: function(hsb, hex, rgb, el) {
+                        $(el).val(hex);
+                        $(el).ColorPickerHide();
+                    },
+                    onBeforeShow: function() {
+                        $(this).ColorPickerSetColor(this.value);
+                    }
+                })
+                .bind('keyup', function() {
+                    $(this).ColorPickerSetColor(this.value);
+                });
+        });
+
+        //Lendo Enter do documento para chamar o form
+        $("input[type='text']").on('keydown', function(event) {
+            if (event.keyCode === 13){
+                formSubmit('#cadastroForm','<?= $urlAction; ?>',false);
+            }
+        });        
+    </script>
+</body>
+
+</html>

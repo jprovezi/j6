@@ -1,0 +1,125 @@
+<?php
+$dados["config"] = $config;
+$dados["layout"] = $layout;
+$dados["fraseMotivacional"] = $fraseMotivacional;
+$dados["paginasExtras"] = $paginasExtras;
+$dados["seo"] = $seo;
+$dados["menuTopo"] = $menuTopo;
+$dados["menuFooter"] = $menuFooter;
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head', $dados); ?>
+
+<body>
+	<div class="main-page-wrapper">
+
+		<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
+
+
+
+		<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+		<?php $this->loadview('templates/charles/includes/header', $dados); ?>
+
+
+		<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+		<div class="theme-inner-banner section-spacing">
+			<div class="overlay">
+				<div class="container">
+					<h1><?= $blog["titulo"]; ?></h1>
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.theme-inner-banner -->
+
+
+		<!-- 
+			=============================================
+				Our Blog
+			============================================== 
+			-->
+		<div class="blog-inner-page section-spacing">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-12 our-blog">
+						<div class="post-wrapper">
+
+							<div class="single-blog">
+								<div class="">
+									<div class="overlay">
+										<a href="javascript:void(0);" class="date" style="padding: 5px 15px; margin: 10px 0;">
+											<?= Common::converteTimestamp($blog["data"]); ?>
+										</a>
+									</div>
+								</div> <!-- /.image-box -->
+								<div class="post-meta">
+									<p style="text-align: justify;"><?= $documento; ?></p>
+								</div> <!-- /.post-meta -->
+
+							</div> <!-- /.single-blog -->
+
+							<!--FOTOS EXTRAS-->
+							<div class="inner-box">
+								<div class="row">
+									<?php foreach ($galeria as $valor) : ?>
+										<div class="col-sm-3">
+											<a href="<?= Common::getImg("blog/{$blog['dir_galeria']}/thumb1200_{$valor}", "blog"); ?>" data-fancybox="gallery" class="fancybox">
+												<img src="<?= Common::getImg("blog/{$blog['dir_galeria']}/thumb550_{$valor}", "blog"); ?>">
+											</a>
+										</div>
+									<?php endforeach; ?>
+								</div>
+							</div>
+							<div class="row">
+								<button class="theme-button-one" onclick="javascript:redir('<?= $urlAction; ?>');" style="margin: 20px 0 0 15px;">
+									Retornar
+								</button>
+							</div>
+
+						</div> <!-- /.post-wrapper -->
+
+					</div>
+
+
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.blog-inner-page -->
+
+
+
+
+		<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+		<?php $this->loadview('templates/charles/includes/footer', $dados); ?>
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+		<script>
+			function redir(url) {
+				window.location.href = url;
+			}
+
+		</script>		
+	</div> <!-- /.main-page-wrapper -->
+</body>
+
+</html>

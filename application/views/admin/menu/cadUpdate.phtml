@@ -1,0 +1,195 @@
+<?php
+$dados["notificacoes"] = $notificacoes;
+$dados["totalNotificacoesNaoLidas"] = $totalNotificacoesNaoLidas;
+
+
+?>
+<!doctype html>
+<html lang="pt-br">
+<!--HEAD + CSS-->
+<?= $this->loadview('admin/includes/head'); ?>
+<style>
+    .bloco-nova-categoria {
+        display: none;
+    }
+    .bloco-remover-categoria {
+        display: none;
+    }
+</style>
+
+<body>
+    <!--TOPO + MENU-->
+    <?= $this->loadview('admin/includes/header', $dados); ?>
+
+    <!--CONTEÚDO-->
+    <div class="wrapper">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+
+                                <ol class="breadcrumb">
+                                    <?php foreach ($breadcrumb as $indice => $valor) : ?>
+                                        <?php if (!empty($valor["url"])) : ?>
+                                            <li class="breadcrumb-item"><a href="<?= $valor["url"]; ?>"><?= $valor["nome"]; ?></a></li>
+                                        <?php else : ?>
+                                            <li class="breadcrumb-item active"><a><?= $valor["nome"]; ?></a></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </ol>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!--Conteúdo-->
+                            <section>
+                                <form id="cadastroForm" enctype="multipart/form-data" action="" onsubmit="return false;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Menu do Site</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" data-toggle="tooltip" title="Esse é o nome padrão do Menu e não pode ser alterado">
+                                                                            <i class="fas fa-pencil-alt"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Título" id="titulo" name="titulo" value="<?= $dadosBanco["titulo"]; ?>" disabled="disabled">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->                                                        
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" data-toggle="tooltip" title="Você pode inserir um apelido no menu para alterar o nome dele">
+                                                                            <i class="fas fa-pencil-alt"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Apelido" id="pseudo_titulo" name="pseudo_titulo" value="<?= $dadosBanco["pseudo_titulo"]; ?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->                                                        
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Dados Usuário-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card border-light mb-3">
+                                                    <div class="card-header">Modo de Exibição</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mb-3">
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Se deixar Sim, o menu irá aparecer no topo">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-chevron-circle-up"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select name="menu_topo" class="custom-select" id="menu_topo">
+                                                                        <option value="S" <?= ($dadosBanco["menu_topo"] == "S") ? "selected" : ""; ?>>Menu Topo: (Sim)</option>
+                                                                        <option value="N" <?= ($dadosBanco["menu_topo"] == "N") ? "selected" : ""; ?>>Menu Topo: (Não)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-6">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Se deixar Sim, o menu irá aparecer no rodapé">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-chevron-circle-down"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <select name="menu_footer" class="custom-select" id="menu_footer">
+                                                                        <option value="S" <?= ($dadosBanco["menu_footer"] == "S") ? "selected" : ""; ?>>Menu Rodapé: (Sim)</option>
+                                                                        <option value="N" <?= ($dadosBanco["menu_footer"] == "N") ? "selected" : ""; ?>>Menu Rodapé: (Não)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->
+                                                            <div class="col-lg-3">
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend" data-toggle="tooltip" title="Ordem que o menu aparece no sistema">
+                                                                        <span class="input-group-text">
+                                                                            <i class="fas fa-sort-numeric-up"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Ordem do Menu" id="ordem" name="ordem" value="<?=$dadosBanco["ordem"];?>">
+                                                                </div>
+                                                            </div>
+                                                            <!--Fim Campo input-->                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Fim Documentos-->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <button type="button" class="btn btn-success float-right botao-efeito" id="bt-salvar" onclick="formSubmit('#cadastroForm','<?= $urlAction; ?>',false);">
+                                                    Salvar <i class="mdi mdi-check"></i>
+                                                </button>
+                                                <div id="resposta-form" class="float-right" style="margin: 0 10px 0 0;">
+                                                    <!--Resposta do Server-->
+                                                    <p>Campos com * são obrigatórios</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div> <!-- end container-fluid -->
+        </div>
+    </div>
+    <!--CONTEÚDO-->
+
+
+    <!--FOOTER-->
+    <?= $this->loadview('admin/includes/footer'); ?>
+
+    <!--JAVSCRIPT-->
+    <?= $this->loadview('admin/includes/scripts'); ?>
+
+    <script>
+        $(document).ready(function() {
+            $('#ordem').mask('00');
+        });
+
+        //Lendo Enter do documento para chamar o form
+        $("input[type='text']").on('keydown', function(event) {
+            if (event.keyCode === 13) {
+                formSubmit('#cadastroForm', '<?= $urlAction; ?>', false);
+            }
+        });
+    </script>
+</body>
+
+</html>

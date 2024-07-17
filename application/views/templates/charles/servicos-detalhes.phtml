@@ -1,0 +1,258 @@
+<?php
+$dados["config"] = $config;
+$dados["layout"] = $layout;
+$dados["fraseMotivacional"] = $fraseMotivacional;
+$dados["paginasExtras"] = $paginasExtras;
+$dados["seo"] = $seo;
+$dados["menuTopo"] = $menuTopo;
+$dados["menuFooter"] = $menuFooter;
+
+//Cores do menu
+if ($servico["id"] == 129) {
+	$cor = "#5027A2";
+} else if ($servico["id"] == 130) {
+	$cor = "#1E97BF";
+} else if ($servico["id"] == 131) {
+	$cor = "#C95481";
+} else if ($servico["id"] == 132) {
+	$cor = "#62549F";
+}
+
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head', $dados); ?>
+
+<style>
+
+.bt-lista-item{
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 20px;
+	background-color: <?=$cor;?>;
+	color: #fff;
+	margin: 0 10px 10px 0;
+	float: left;
+}
+
+
+.bt-lista-item:hover{
+	color: #fff;
+	opacity: 0.8;
+}
+
+</style>
+
+<body>
+	<div class="main-page-wrapper">
+
+		<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
+
+
+
+		<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+		<?php $this->loadview('templates/charles/includes/header', $dados); ?>
+
+
+		<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+		<div class="theme-inner-banner section-spacing" style="background-color: <?= $cor; ?>;">
+			<div class="overlay">
+				<div class="container">
+					<h1><?= $servico["titulo"]; ?></h1>
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.theme-inner-banner -->
+
+
+		<!-- 
+			=============================================
+				detalhe produtos
+			============================================== 
+			-->
+		<div class="about-compnay no-bg section-spacing detalhe-produtos">
+			<div class="overlay">
+				<div class="container">
+					<div class="row">
+						<?php if (!empty($servico["texto"]) || !empty($servico["url_video"])) : ?>
+							<div class="col-lg-8 col-12 text order-lg-last">
+								<div class="texto-plugin" style="text-align: justify;">
+									<p><?= nl2br($servico["texto"]); ?></p>
+								</div>
+
+								<!--BOTÃO VIDEO-->
+								<?php if (!empty($servico["url_video"])) : ?>
+									<div class="row" style="text-align: center; width: 100%; margin-top: 20px;">
+										<div class="col-12">
+											<div>
+												<a data-fancybox href="<?= $servico["url_video"]; ?>" class="theme-button-one">
+													ASSISTIR VÍDEO
+												</a>
+											</div>
+										</div>
+									</div>
+								<?php endif; ?>
+							</div> <!-- /.col- -->
+						<?php endif; ?>
+						<div class="col-sm order-lg-first imagem-company">
+							<a href="<?= Common::getImg("servicos/{$servico['dir_galeria']}/thumb1200_{$servico['capa']}", "blog"); ?>" data-fancybox="capa" class="fancybox">
+								<img src="<?= Common::getImg("servicos/{$servico['dir_galeria']}/thumb770_{$servico['capa']}", "blog"); ?>">
+							</a>
+							<div class="wrapper" style="margin: 10px 0 0 0;">
+								<div class="row">
+									<?php //foreach ($galeria as $valor) : 
+									?>
+									<!--<div class="col-3">
+											<a href="<? //= Common::getImg("servicos/{$servico['dir_galeria']}/thumb1200_{$valor}", "blog"); 
+														?>" data-fancybox="gallery" class="fancybox">
+												<img src="<? //= Common::getImg("servicos/{$servico['dir_galeria']}/thumb550_{$valor}", "blog"); 
+															?>">
+											</a>
+										</div>-->
+									<?php //endforeach; 
+									?>
+									<?php if (!empty($servico["preco"]) || !empty($servico["link_pagamento"])) : ?>
+										<div class="container" style="width:95%;">
+											<?php if (!empty($servico["preco"])) : ?>
+												<hr>
+												<p style="font-size: 20px;">VALOR: <strong><?= $servico["preco"]; ?></strong></p>
+											<?php endif; ?>
+											<?php if (!empty($servico["link_pagamento"])) : ?>
+												<hr>
+												<div class="view-all">
+													<a href="<?= $servico["link_pagamento"]; ?>" class="botao-pagamento theme-button-one">COMPRAR</a>
+												</div>
+											<?php endif; ?>
+										</div>
+									<?php endif; ?>
+								</div>
+							</div>
+						</div>
+
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.about-compnay-two -->
+
+
+
+
+		<div class="shop-details">
+			<div class="container">
+				<div class="related-product shop-page">
+					<div class="theme-title-one">
+						<h2 style="color: <?=$cor; ?>;">O que podemos oferecer a sua empresa</h2>
+					</div> <!-- /.theme-title-one -->
+					<div class="celarfix">
+
+						<div class="row">
+							<div class="col-md-6 col-12">
+								<?php foreach($botoesOferecemos as $valor): ?>
+									<?php if(!empty($valor["titulo"])): ?>
+										<a class="bt-lista-item" href="<?=$valor["url"]; ?>">
+											<i class="fas fa-check-circle" style="margin-right: 10px;"></i><?=$valor["titulo"]; ?>
+										</a>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							</div>
+							<?php if(!empty($galeria[0])): ?>
+								<div class="col-md-6 col-12">
+									<img src="<?= STATIC_URL; ?>/img/servicos/<?=$servico["dir_galeria"]; ?>/thumb770_<?=$galeria[0]; ?>" style="border-radius: 5px;">
+								</div>
+							<?php endif; ?>
+						</div>
+
+					</div>
+				</div> <!-- /.related-product -->
+			</div>
+		</div>
+
+		<div style="margin: 100px 0 0 0;"></div>
+
+
+		<!--
+			=====================================================
+				Outros itens
+			=====================================================
+			-->
+		<?php if (count($jobs) >= 1) : ?>
+			<div class="shop-details">
+				<div class="container">
+					<div class="related-product shop-page">
+						<div class="theme-title-one">
+							<h2 style="color: <?=$cor; ?>;"><?= $tituloJobs; ?></h2>
+						</div> <!-- /.theme-title-one -->
+						<div class="celarfix">
+							<div class="related-product-slider">
+
+								<?php foreach ($jobs as $valor) : ?>
+									<div class="item">
+										<div class="single-product">
+											<div class="single-case-block">
+												<a href="<?= SITE_URL; ?>/<?= Common::slug($valor["titulo"]); ?>">
+													<img src="<?= Common::getImg("projetos/{$valor['dir_galeria']}/thumb550_{$valor['capa']}", "blog"); ?>">
+												</a>
+
+												<div class="float-left">
+													<a href="<?= SITE_URL; ?>/<?= Common::slug($valor["titulo"]); ?>">
+														<h5><?= Common::reduzirTexto($valor["titulo"], 62); ?></h5>
+													</a>
+												</div>
+											</div> <!-- /.single-case-block -->
+										</div> <!-- /.single-product -->
+									</div> <!-- /.col- -->
+								<?php endforeach; ?>
+
+							</div> <!-- /.related-product-slider -->
+						</div>
+					</div> <!-- /.related-product -->
+				</div>
+			</div>
+		<?php endif; ?>
+
+
+		<!--BOTÃO AÇÃO-->
+		<?php if (!empty($servico["url_botao"])) : ?>
+			<div class="container">
+				<div class="col-12">
+					<div style="text-align: center; margin-bottom: 40px;">
+						<a href="<?= $servico["url_botao"]; ?>" class="theme-button-one" style="line-height: 18px; padding: 18px; background-color: <?=$cor; ?>;">
+							<?= (empty($servico["texto_botao"])) ? "Saiba Mais" : $servico["texto_botao"]; ?>
+						</a>
+					</div>
+				</div>
+			</div>
+
+		<?php endif; ?>		
+
+
+
+		<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+		<?php $this->loadview('templates/charles/includes/footer', $dados); ?>
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+	</div> <!-- /.main-page-wrapper -->
+</body>
+
+</html>

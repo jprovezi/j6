@@ -1,0 +1,197 @@
+<?php
+$dados["config"] = $config;
+$dados["layout"] = $layout;
+$dados["fraseMotivacional"] = $fraseMotivacional;
+$dados["paginasExtras"] = $paginasExtras;
+$dados["seo"] = $seo;
+$dados["menuTopo"] = $menuTopo;
+$dados["menuFooter"] = $menuFooter;
+
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head', $dados); ?>
+
+<body>
+	<div class="main-page-wrapper">
+
+		<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
+
+
+
+		<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+		<?php $this->loadview('templates/charles/includes/header', $dados); ?>
+
+
+		<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+		<div class="theme-inner-banner section-spacing">
+			<div class="overlay">
+				<div class="container">
+					<h1><?= $produto["titulo"]; ?></h1>
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.theme-inner-banner -->
+
+		<!-- 
+			=============================================
+				CallOut Banner 
+			============================================== 
+			-->
+		<div class="callout-banner callout-banner-institucional no-bg">
+			<div class="container clearfix">
+				<h3 class="title"><?= $config["slogan"]; ?></h3>
+				<p><?= $fraseMotivacional["frase"]; ?></p>
+				<a href="<?= SITE_URL."/".Common::slug($menuContato["titulo"]); ?>" class="theme-button-one"><?=$menuContato["titulo"]; ?></a>
+			</div>
+		</div> <!-- /.callout-banner -->		
+
+
+		<!-- 
+			=============================================
+				detalhe produtos
+			============================================== 
+			-->
+		<div class="about-compnay no-bg section-spacing detalhe-produtos">
+			<div class="overlay">
+				<div class="container">
+					<div class="row">
+						<?php if (!empty($produto["texto"]) || !empty($produto["url_video"])) : ?>
+							<div class="col-lg-6 col-12 text order-lg-last">
+								<div class="texto-plugin" style="text-align: justify;">
+									<p><?= nl2br($produto["texto"]); ?></p>
+								</div>
+
+								<!--BOTÃO VIDEO-->
+								<?php if (!empty($produto["url_video"])) : ?>
+									<div class="row" style="text-align: center; width: 100%; margin-top: 20px;">
+										<div class="col-12">
+											<div>
+												<a data-fancybox href="<?= $produto["url_video"]; ?>" class="theme-button-one">
+													ASSISTIR VÍDEO
+												</a>
+											</div>
+										</div>
+									</div>
+								<?php endif; ?>
+								<!--BOTÃO AÇÃO-->
+								<?php if (!empty($produto["url_botao"])) : ?>
+									<div class="row" style="text-align: center; width: 100%; margin-top: 20px;">
+										<div class="col-12">
+											<div>
+												<a href="<?= $produto["url_botao"]; ?>" class="theme-button-one">
+													<?=(empty($produto["texto_botao"])) ? "Saiba Mais" : $produto["texto_botao"]; ?>
+												</a>
+											</div>
+										</div>
+									</div>
+								<?php endif; ?>								
+							</div> <!-- /.col- -->
+						<?php endif; ?>
+						<div class="col-sm order-lg-first imagem-company">
+							<a href="<?= Common::getImg("produtos/{$produto['dir_galeria']}/thumb1200_{$produto['capa']}", "blog"); ?>" data-fancybox="capa" class="fancybox">
+								<img src="<?= Common::getImg("produtos/{$produto['dir_galeria']}/thumb770_{$produto['capa']}", "blog"); ?>">
+							</a>
+							<div class="wrapper" style="margin: 10px 0 0 0;">
+								<div class="row">
+									<?php foreach ($galeria as $valor) : ?>
+										<div class="col-3">
+											<a href="<?= Common::getImg("produtos/{$produto['dir_galeria']}/thumb1200_{$valor}", "blog"); ?>" data-fancybox="gallery" class="fancybox">
+												<img src="<?= Common::getImg("produtos/{$produto['dir_galeria']}/thumb550_{$valor}", "blog"); ?>">
+											</a>
+										</div>
+									<?php endforeach; ?>
+									<?php if (!empty($produto["preco"]) || !empty($produto["link_pagamento"])) : ?>
+										<div class="container" style="width:95%;">
+											<?php if (!empty($produto["preco"])) : ?>
+												<hr>
+												<p style="font-size: 20px;">VALOR: <strong><?=$produto["preco"]; ?></strong></p>
+											<?php endif; ?>
+											<?php if (!empty($produto["link_pagamento"])) : ?>
+												<hr>
+												<div class="view-all">
+													<a href="<?=$produto["link_pagamento"]; ?>" class="botao-pagamento theme-button-one">COMPRAR</a>
+												</div>
+											<?php endif; ?>
+										</div>
+									<?php endif; ?>
+								</div>
+							</div>
+						</div>
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.about-compnay-two -->
+
+
+		<!--
+			=====================================================
+				Outros itens
+			=====================================================
+			-->
+		<?php if(count($outrosprodutos) >= 1): ?>
+		<div class="shop-details">
+			<div class="container">
+				<div class="related-product shop-page">
+					<div class="theme-title-one">
+						<h2>outros <?= $menuPagina; ?></h2>
+					</div> <!-- /.theme-title-one -->
+					<div class="celarfix">
+						<div class="related-product-slider">
+
+							<?php foreach ($outrosprodutos as $valor) : ?>
+								<div class="item">
+									<div class="single-product">
+										<div class="single-case-block">
+											<a href="<?= SITE_URL; ?>/<?= Common::slug($valor["titulo"]); ?>">
+												<img src="<?= Common::getImg("produtos/{$valor['dir_galeria']}/thumb550_{$valor['capa']}", "blog"); ?>">
+											</a>
+
+											<div class="float-left">
+												<a href="<?= SITE_URL; ?>/<?= Common::slug($valor["titulo"]); ?>">
+													<h5><?=Common::reduzirTexto($valor["titulo"],62); ?></h5>
+												</a>
+											</div>
+										</div> <!-- /.single-case-block -->
+									</div> <!-- /.single-product -->
+								</div> <!-- /.col- -->
+							<?php endforeach; ?>
+
+						</div> <!-- /.related-product-slider -->
+					</div>
+				</div> <!-- /.related-product -->
+			</div>
+		</div>
+		<?php endif; ?>
+
+
+
+		<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+		<?php $this->loadview('templates/charles/includes/footer', $dados); ?>
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+	</div> <!-- /.main-page-wrapper -->
+</body>
+
+</html>

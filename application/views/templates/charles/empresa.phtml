@@ -1,0 +1,202 @@
+<?php
+$dados["config"] = $config;
+$dados["layout"] = $layout;
+$dados["fraseMotivacional"] = $fraseMotivacional;
+$dados["paginasExtras"] = $paginasExtras;
+$dados["seo"] = $seo;
+$dados["menuTopo"] = $menuTopo;
+$dados["menuFooter"] = $menuFooter;
+$dados["menuTopo"] = $menuTopo;
+$dados["menuFooter"] = $menuFooter;
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<?php $this->loadview('templates/charles/includes/head', $dados); ?>
+
+<body>
+	<div class="main-page-wrapper">
+
+		<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
+
+
+
+		<!-- 
+			=============================================
+				Theme Header Two
+			============================================== 
+			-->
+		<?php $this->loadview('templates/charles/includes/header', $dados); ?>
+
+
+		<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+		<div class="theme-inner-banner">
+			<div class="overlay">
+				<div class="container">
+					<h1>Conheça a J6 Agência Web</h1>
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.theme-inner-banner -->
+
+
+
+		<!-- 
+			=============================================
+				About Company Stye Two
+			============================================== 
+			-->
+		<div class="about-compnay no-bg section-spacing">
+			<div class="overlay">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-12 text order-lg-last">
+							<div class="texto-plugin" style="text-align: justify;">
+								<p><?= nl2br($institucional["texto"]); ?></p>
+							</div>
+						</div> <!-- /.col- -->
+						<div class="col-sm order-lg-first imagem-company">
+							<a href="<?= Common::getImg("institucional/{$institucional['dir_galeria']}/thumb1000_{$institucional['capa']}"); ?>" data-fancybox="gallery" class="fancybox">
+								<img src="<?= Common::getImg("institucional/{$institucional['dir_galeria']}/thumb585_{$institucional['capa']}"); ?>">
+							</a>
+							<div class="wrapper" style="margin: 10px 0 0 0;">
+								<div class="row">
+									<?php foreach ($galeria as $valor) : ?>
+										<div class="col-3">
+											<a href="<?= Common::getImg("institucional/{$institucional['dir_galeria']}/thumb1000_{$valor}"); ?>" data-fancybox="gallery" class="fancybox">
+												<img src="<?= Common::getImg("institucional/{$institucional['dir_galeria']}/thumb585_{$valor}"); ?>">
+											</a>
+										</div>
+									<?php endforeach; ?>
+								</div>
+							</div>
+						</div>
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.about-compnay-two -->
+
+
+		<!--
+			=====================================================
+				Why We Best
+			=====================================================
+			-->
+		<?php if(!empty($institucional["missao"]) || !empty($institucional["visao"]) || !empty($institucional["valores"])): ?>	
+		<div class="why-we-best">
+			<div class="overlay">
+				<div class="container">
+					<div class="theme-title-one">
+						<h2 class="titulo-missao">NOSSOS VALORES</h2>
+						<p class="titulo-missao">Toda empresa é formada por seus valores, conheça abaixo os nossos</p>
+					</div> <!-- /.theme-title-one -->
+
+					<div class="wrapper row no-gutters">
+						<div class="col-lg-6 col-12 order-lg-last">
+							<div class="img-box">
+								<a href="<?= Common::getImg("institucional/{$institucional['dir_galeria']}/thumb1000_{$institucional['capa']}"); ?>" data-fancybox="gallery-valores" class="fancybox">
+									<img src="<?= Common::getImg("institucional/{$institucional['dir_galeria']}/thumb585_{$institucional['capa']}"); ?>">
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-12 order-lg-first">
+							<ul class="best-list-item">
+								<?php if(!empty($institucional["missao"])): ?>
+								<li>
+									<i class="icon flaticon-puzzle"></i>
+									<h5 class="cor-m-v-v">MISSÃO</h5>
+									<p class="cor-m-v-v"><?=$institucional["missao"]; ?></p>
+								</li>
+								<?php endif; ?>
+								<?php if(!empty($institucional["visao"])): ?>
+								<li>
+									<i class="icon flaticon-technology"></i>
+									<h5 class="cor-m-v-v">VISÃO</h5>
+									<p class="cor-m-v-v"><?=$institucional["visao"]; ?></p>
+								</li>
+								<?php endif; ?>
+								<?php if(!empty($institucional["valores"])): ?>
+								<li>
+									<i class="icon flaticon-medal"></i>
+									<h5 class="cor-m-v-v">VALORES</h5>
+									<p class="cor-m-v-v"><?=$institucional["valores"]; ?></p>
+								</li>
+								<?php endif; ?>
+							</ul>
+						</div> <!-- /.col- -->
+					</div> <!-- /.wrapper -->
+				</div> <!-- /.container -->
+			</div> <!-- /.overlay -->
+		</div> <!-- /.why-we-best -->
+		<?php endif; ?>
+
+
+		<!--
+			=====================================================
+				Theme Counter
+			=====================================================
+			-->
+		<?php if (!empty($institucional["numero_1"])) : ?>
+			<div class="theme-counter-two section-spacing">
+				<div class="container">
+					<div class="clearfix">
+						<div class="cunter-wrapper">
+							<div class="row">
+								<?php for ($i = 0; $i < 8; $i++) :
+
+									$varNumero = "numero_" . $i;
+									$varTextoNumero = "texto_numero_" . $i;
+
+								?>
+
+									<?php if (!empty($institucional[$varNumero])) : ?>
+										<div class="col-md-3 col-6">
+											<div class="single-counter-box">
+												<div class="number"><span class="timer" data-from="0" data-to="<?= $institucional[$varNumero]; ?>" data-speed="1200" data-refresh-interval="5">0</span>+</div>
+												<p><?= $institucional[$varTextoNumero]; ?></p>
+											</div> <!-- /.single-counter-box -->
+										</div> <!-- /.col- -->
+									<?php endif; ?>
+
+								<?php endfor; ?>
+							</div> <!-- /.row -->
+						</div> <!-- /.cunter-wrapper -->
+					</div> <!-- /.clearfix -->
+				</div> <!-- /.container -->
+			</div> <!-- /.theme-counter -->
+		<?php endif; ?>
+
+		<?php if (!empty($equipe)) : ?>
+			<div class="our-case section-spacing">
+				<div class="container">
+					<div class="view-all">
+						<a href="<?= SITE_URL."/".Common::slug($menuEquipe); ?>" class="theme-button-one"><?=$menuEquipe; ?></a>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+
+		<!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+		<?php $this->loadview('templates/charles/includes/footer', $dados); ?>
+
+
+		<!-- Optional JavaScript _____________________________  -->
+
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<!-- jQuery -->
+		<?php $this->loadview('templates/charles/includes/scripts'); ?>
+	</div> <!-- /.main-page-wrapper -->
+</body>
+
+</html>

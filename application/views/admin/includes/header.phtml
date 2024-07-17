@@ -1,0 +1,168 @@
+<?php
+
+$usuario = Session::get('dadosUsuario');
+$menu = Session::get('menu');
+$perfil = Session::get("dadosPerfil");
+$configuracoes = Session::get("config");
+
+
+?>
+<div class="header-bg">
+    <!-- Navigation Bar-->
+    <header id="topnav">
+        <div class="topbar-main">
+            <div class="container-fluid">
+
+                <!-- Logo-->
+                <div>
+                    <a href="<?=SITE_URL;?>/admin" class="logo">
+                        <img src="<?= STATIC_URL; ?>/img/sistema/<?=$configuracoes["dir_galeria"]."/thumb450_".$configuracoes["capa"]; ?>" class="logo-lg" height="75">
+                        <img src="<?= STATIC_URL; ?>/img/sistema/<?=$configuracoes["dir_galeria"]."/thumb450_".$configuracoes["capa"]; ?>" class="logo-sm" height="50">
+                    </a>
+                </div>
+                <!-- End Logo-->
+
+                <div class="menu-extras topbar-custom navbar p-0">
+                    <ul class="list-inline d-none d-lg-block mb-0">
+                        <li class="hide-phone app-search float-left">
+                            <form role="search" class="navbar-form" id="form-busca" method="POST" action="<?=SITE_URL;?>/busca">
+                                <input type="text" placeholder="Procurar..." class="form-control search-bar" name="busca">
+                                <a href="javascript:document.getElementById('form-busca').submit();"><i class="fa fa-search"></i></a>
+                            </form>
+                        </li>
+                    </ul>                    
+                    <ul class="mb-0 nav navbar-right ml-auto list-inline">
+                        <li class="list-inline-item dropdown notification-list">
+                            <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light notification-icon-box" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-bell"></i>
+                                <?php if($totalNotificacoesNaoLidas > 0): ?> 
+                                    <span class="badge badge-xs badge-danger"></span>
+                                <?php endif; ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-lg">
+                                <li class="text-center notifi-title">Notificações <span id="notificacaoNumerica" class="badge badge-xs badge-success"><?=$totalNotificacoesNaoLidas;?></span></li>
+                                <li class="list-group">
+
+                                    <?php foreach( $notificacoes as $valor ): ?>
+                                    <a href="<?=( is_null($valor["url"]) ) ? "javascript:void(0)" : $valor["url"];?>" class="dropdown-item notify-item mt-2" onmouseover="gravarNotificacao('<?=SITE_URL.'/api/abrir-notificacao'; ?>',<?=$valor['id'];?>);">
+                                        <div id="in-<?=$valor['id']; ?>" class="notify-icon <?=($valor["aberta"] == "N") ? 'bg-info' : 'bg-grey'; ?>"><i class="ion ion-md-mail"></i></div>
+                                        <p class="notify-details">
+                                            <span class="text-muted"><?=substr($valor["mensagem"],0,80);?></span>
+                                        </p>
+                                    </a>
+                                    <?php endforeach; ?>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="list-inline-item notification-list d-none d-sm-inline-block">
+                            <a href="#" id="btn-fullscreen" class="waves-effect waves-light notification-icon-box"><i class="fas fa-expand"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                <img src="<?=Common::getImg("usuarios/{$usuario['dir_galeria']}/thumb100_{$usuario['capa']}","user");?>" class="rounded-circle">
+                                <span class="profile-username">
+                                    <?=Common::PrimeiroNome($usuario["nome"]); ?><span class="mdi mdi-chevron-down font-15"></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="<?=SITE_URL;?>/meu-perfil/editar/<?=$usuario['id'];?>" class="dropdown-item">
+                                        <i class="fas fa-user"></i>
+                                        <span style="margin-left: 6px;">Editar meu Perfil</span>
+                                    </a>
+                                </li>                                
+                                <?php foreach($menu["config"] as $valor): ?>
+                                <?php if( !empty(Common::verificaOcorrenciaArrayMatriz($perfil, "id_menu", $valor["id"])) ): ?>
+                                <li>
+                                    <a href="<?=SITE_URL."/".$valor["url"];?>" class="dropdown-item">
+                                        <i class="<?=$valor["icone"];?>"></i>
+                                        <span style="margin-left: 6px;"><?=$valor["nome"];?></span>
+                                    </a>
+                                </li>
+                                <?php endif; ?>
+                                <?php endforeach; ?>
+                                <li class="dropdown-divider"></li>
+                                <li><a href="<?=SITE_URL;?>/admin/logout" class="dropdown-item"> Sair</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item dropdown notification-list list-inline-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </li>
+
+                    </ul>
+
+                </div>
+                <!-- end menu-extras -->
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end topbar-main -->
+
+        <!-- MENU Start -->
+        <div class="navbar-custom">
+            <div class="container-fluid">
+
+                <div id="navigation">
+
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+
+                        <?php foreach($menu["pai"] as $indice => $valor): ?>
+                        <?php if( !empty(Common::verificaOcorrenciaArrayMatriz($perfil, "id_menu", $valor["id"])) ): ?>
+                        <li class="has-submenu">
+                            <a href="#">
+                                <?=$valor["nome"];?> <i class="mdi mdi-chevron-down mdi-drop"></i>
+                            </a>
+                            <ul class="submenu">
+                                <?php foreach($valor["filhos"] as $indice => $valorFilho): ?>
+                                    <?php if( !empty(Common::verificaOcorrenciaArrayMatriz($perfil, "id_menu", $valorFilho["id"])) ): ?>
+                                    <li>
+                                        <a href="<?=SITE_URL."/".$valorFilho["url"]; ?>">
+                                            <i class="<?=$valorFilho["icone"];?>"></i>
+                                            <span style="margin-left: 6px;"><?=$valorFilho["nome"];?></span>
+                                        </a>
+                                    </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </li>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+
+                        <?php foreach($menu["unico"] as $indice => $valor): ?>
+                            <?php if( !empty(Common::verificaOcorrenciaArrayMatriz($perfil, "id_menu", $valor["id"])) ): ?>
+                            <li class="has-submenu">
+                            <a href="<?=SITE_URL."/".$valor["url"]; ?>">
+                                <?=$valor["nome"];?>
+                            </a>
+                            <?php endif; ?>
+                        </li>
+                        <?php endforeach; ?>
+
+                        <li></li>
+                        <!--li hack para lado direito submenu-->
+                    </ul>
+                    <!-- End navigation menu -->
+                </div>
+                <!-- end #navigation -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end navbar-custom -->
+    </header>
+    <!-- End Navigation Bar-->
+
+</div>
